@@ -18,17 +18,54 @@ body {
   overflow-x: clip;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading-text {
+  font-family: var(--font-display), serif;
+}
+
+p,
+li,
+label,
+input,
+textarea,
+select,
+button,
+a,
+.subheading-text {
+  font-family: var(--font-body), sans-serif;
+}
+
 .hero-overlay {
   background: rgba(31, 79, 178, 0.72);
 }
 
 .editorial-card {
-  background: color-mix(in srgb, var(--surface-low) 80%, #ffffff);
-  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  position: relative;
+  background: color-mix(in srgb, var(--accent-blue) 12%, #ffffff);
+  border: 1px solid color-mix(in srgb, var(--accent-warm) 38%, #ffffff);
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.editorial-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 4px;
+  border-radius: 0.75rem 0.75rem 0 0;
+  background: var(--accent-warm);
 }
 
 .editorial-card:hover {
   transform: translateY(-2px);
+  background: color-mix(in srgb, var(--accent-blue) 18%, #ffffff);
+  border-color: color-mix(in srgb, var(--accent-warm) 58%, #ffffff);
   box-shadow: 0 16px 40px rgba(0, 17, 58, 0.08);
 }
 
@@ -69,6 +106,29 @@ body {
 
 .tone-gold {
   background: #f2c84b;
+}
+
+.btn-primary {
+  background: var(--accent-blue);
+  color: #ffffff;
+  transition: background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.btn-primary:hover {
+  background: #173e96;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(31, 79, 178, 0.28);
+}
+
+.btn-outline {
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.btn-outline:hover {
+  background: color-mix(in srgb, var(--accent-warm) 28%, transparent);
+  border-color: var(--accent-warm);
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .section-cobalt {

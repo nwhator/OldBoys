@@ -44,7 +44,7 @@ export default async function HomePage() {
     <main className="overflow-x-hidden">
       <section className="relative isolate min-h-[72vh] overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=2200&q=80"
+          src="/favicon.svg"
           alt="Alumni gathering"
           fill
           priority
@@ -61,8 +61,8 @@ export default async function HomePage() {
               Holy Ghost College Owerri Old Boys' Association connects alumni through mentorship, reunions, scholarships, and meaningful community impact across Nigeria and beyond.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/about" className="rounded-md bg-white px-5 py-2 text-xs font-bold uppercase tracking-wider text-(--primary)">Explore Our Story</Link>
-              <Link href="/login" className="rounded-md border border-white/40 px-5 py-2 text-xs font-bold uppercase tracking-wider text-white">Member Login</Link>
+              <Link href="/about" className="btn-primary rounded-md px-5 py-2 text-xs font-bold uppercase tracking-wider">Explore Our Story</Link>
+              <Link href="/login" className="btn-outline rounded-md border border-white/40 px-5 py-2 text-xs font-bold uppercase tracking-wider text-white">Member Login</Link>
             </div>
           </div>
         </div>
@@ -75,7 +75,10 @@ export default async function HomePage() {
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-slate-500">Membership</p>
             <h3 className="mt-3 text-3xl font-black text-(--primary)">Member Status</h3>
             <p className="mt-3 text-sm text-slate-600">Access your profile, verify standing, and manage your association records.</p>
-            <Link href="/dashboard" className="mt-6 inline-block text-sm font-bold text-(--primary-container)">Check Status</Link>
+            <div className="relative mt-4 h-24 overflow-hidden rounded-lg">
+              <Image src="https://images.unsplash.com/photo-1523240795612-9a054b0db644" alt="Members at alumni meet" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+            </div>
+            <Link href="/dashboard" className="btn-primary mt-6 inline-block rounded-md px-4 py-2 text-sm font-bold">Check Status</Link>
           </article>
 
           <article className="reveal-up rounded-xl tone-blue p-8 text-white md:col-span-4">
@@ -84,7 +87,7 @@ export default async function HomePage() {
             <p className="mt-3 text-sm text-white/80">Review candidates, manifestos, and timelines for transparent alumni leadership transitions.</p>
             <div className="mt-6 flex items-center justify-between rounded-lg bg-(--primary) px-4 py-3">
               <span className="text-xs font-bold uppercase tracking-widest text-white/80">Election Center</span>
-              <Link href="/voting" className="text-sm font-bold text-amber-300">Details</Link>
+              <Link href="/voting" className="btn-outline rounded-md border border-amber-300 px-3 py-1 text-sm font-bold text-amber-300">Details</Link>
             </div>
           </article>
 
@@ -138,6 +141,17 @@ export default async function HomePage() {
               <p className="mt-3 text-sm leading-relaxed text-slate-600">{pillar.description}</p>
             </article>
           ))}
+        </div>
+        <div className="mt-6 grid gap-3 sm:grid-cols-3">
+          <div className="relative h-32 overflow-hidden rounded-xl">
+            <Image src="https://images.unsplash.com/photo-1529390079861-591de354faf5" alt="Alumni mentorship" fill className="object-cover" sizes="33vw" />
+          </div>
+          <div className="relative h-32 overflow-hidden rounded-xl">
+            <Image src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40" alt="Leadership meeting" fill className="object-cover" sizes="33vw" />
+          </div>
+          <div className="relative h-32 overflow-hidden rounded-xl">
+            <Image src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="Scholarship support" fill className="object-cover" sizes="33vw" />
+          </div>
         </div>
         </div>
       </section>
@@ -240,10 +254,10 @@ export default async function HomePage() {
             Become part of a trusted Old Boys platform for engagement, service, and intergenerational impact. Membership onboarding is controlled and approval-based.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link href="/signup" className="rounded-md bg-white px-5 py-2 text-xs font-bold uppercase tracking-wider text-(--primary)">
+            <Link href="/signup" className="btn-primary rounded-md px-5 py-2 text-xs font-bold uppercase tracking-wider">
               Start Registration
             </Link>
-            <Link href="/contact" className="rounded-md border border-white/40 px-5 py-2 text-xs font-bold uppercase tracking-wider text-white">
+            <Link href="/contact" className="btn-outline rounded-md border border-white/40 px-5 py-2 text-xs font-bold uppercase tracking-wider text-white">
               Contact Secretariat
             </Link>
           </div>
