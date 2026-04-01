@@ -110,3 +110,14 @@ export type EmailTemplate = {
   updated_at: string;
   created_at: string;
 };
+
+export type CommunityMember = {
+  id: string;
+  full_name: string;
+  avatar_url: string | null;
+  role: UserRole;
+  membership_status: MembershipStatus;
+  created_at: string;
+  set_label: string;
+  chapter: string;
+};

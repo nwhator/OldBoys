@@ -2,6 +2,7 @@ import type {
   AuditSetting,
   BlogPost,
   Candidate,
+  CommunityMember,
   ContactMessage,
   Election,
   EmailTemplate,
@@ -12,6 +13,7 @@ import type {
   Profile
 } from "@/types";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
 export async function getPublishedBlogPosts() {
   const supabase = await createSupabaseServerClient();
@@ -195,4 +197,28 @@ export async function getEmailTemplates() {
   const supabase = await createSupabaseServerClient();
   const { data } = await supabase.from("email_templates").select("*").order("name", { ascending: true }).returns<EmailTemplate[]>();
   return data ?? [];
+}
+
+export async function getPublicCommunityMembers(limit = 24) {
+  const admin = createSupabaseAdminClient();
+  const { data } = await admin
+    .from("users")
+    .select("id,full_name,avatar_url,role,membership_status,created_at")
+    .eq("membership_status", "approved")
+    .order("created_at", { ascending: false })
+    .limit(limit)
+    .returns<Profile[]>();
+
+  return (data ?? []).map(
+    (member): CommunityMember => ({
+      id: member.id,
+      full_name: member.full_name,
+      avatar_url: member.avatar_url,
+      role: member.role,
+      membership_status: member.membership_status,
+      created_at: member.created_at,
+      set_label: `Set ${new Date(member.created_at).getFullYear()}`,
+      chapter: member.role === "admin" ? "Executive Chapter" : "General Chapter"
+    })
+  );
 }

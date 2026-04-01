@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getLatestPublishedBlogPosts } from "@/lib/data";
+import { getLatestPublishedBlogPosts, getPublicCommunityMembers } from "@/lib/data";
 
 export default async function HomePage() {
   const latestPosts = await getLatestPublishedBlogPosts(3);
+  const communityPreview = await getPublicCommunityMembers(6);
   const highlights = [
-    { label: "Registered Members", value: "2,400+", note: "Across local and diaspora chapters" },
     { label: "Scholarships Supported", value: "160", note: "Students funded through alumni initiatives" },
     { label: "Active Chapters", value: "24", note: "Coordinated chapter leadership structure" },
     { label: "Years of Legacy", value: "90+", note: "Generations of brotherhood and service" }
@@ -68,16 +68,17 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-14 md:px-8">
+      <section className="section-cobalt py-14">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="grid gap-6 md:grid-cols-12">
-          <article className="editorial-card rounded-xl p-8 md:col-span-4">
+          <article className="editorial-card reveal-up tone-cream rounded-xl p-8 md:col-span-4">
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-slate-500">Membership</p>
             <h3 className="mt-3 text-3xl font-black text-(--primary)">Member Status</h3>
             <p className="mt-3 text-sm text-slate-600">Access your profile, verify standing, and manage your association records.</p>
             <Link href="/dashboard" className="mt-6 inline-block text-sm font-bold text-(--primary-container)">Check Status</Link>
           </article>
 
-          <article className="rounded-xl bg-(--primary-container) p-8 text-white md:col-span-4">
+          <article className="reveal-up rounded-xl tone-blue p-8 text-white md:col-span-4">
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-amber-300">Elections</p>
             <h3 className="mt-3 text-3xl font-black">Upcoming Elections</h3>
             <p className="mt-3 text-sm text-white/80">Review candidates, manifestos, and timelines for transparent alumni leadership transitions.</p>
@@ -87,7 +88,7 @@ export default async function HomePage() {
             </div>
           </article>
 
-          <article className="rounded-xl border border-slate-200 bg-white p-2 md:col-span-4">
+          <article className="reveal-up rounded-xl border border-slate-200 bg-white p-2 md:col-span-4">
             <div className="mb-2 rounded-lg p-4">
               <h3 className="text-2xl font-black text-(--primary)">Gallery Updates</h3>
               <p className="mt-1 text-sm text-slate-600">Moments from chapter events, reunions, and service projects.</p>
@@ -102,21 +103,25 @@ export default async function HomePage() {
             </div>
           </article>
         </div>
+        </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-14 md:px-8">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="section-honey py-14">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {highlights.map((item) => (
-            <article key={item.label} className="editorial-card rounded-xl p-5">
+            <article key={item.label} className="editorial-card reveal-up rounded-xl p-5">
               <p className="text-xs uppercase tracking-[0.25em] text-slate-500">{item.label}</p>
               <p className="mt-2 text-4xl font-black text-(--primary)">{item.value}</p>
               <p className="mt-2 text-sm text-slate-600">{item.note}</p>
             </article>
           ))}
         </div>
+        </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-14 md:px-8">
+      <section className="section-mint py-14">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-slate-500">What We Stand For</p>
@@ -128,27 +133,31 @@ export default async function HomePage() {
         </div>
         <div className="grid gap-5 md:grid-cols-2">
           {pillars.map((pillar) => (
-            <article key={pillar.title} className="editorial-card rounded-xl p-6">
+            <article key={pillar.title} className="editorial-card reveal-up rounded-xl p-6">
               <h3 className="text-2xl font-black text-(--primary)">{pillar.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-slate-600">{pillar.description}</p>
             </article>
           ))}
         </div>
+        </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-14 md:px-8">
+      <section className="section-rose py-14">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="grid gap-6 lg:grid-cols-3">
           {timeline.map((item) => (
-            <article key={item.title} className="rounded-xl border border-slate-200 bg-white p-6">
+            <article key={item.title} className="reveal-up rounded-xl border border-slate-200 bg-white p-6">
               <p className="text-xs font-bold uppercase tracking-[0.3em] text-slate-500">{item.period}</p>
               <h3 className="mt-2 text-2xl font-black text-(--primary)">{item.title}</h3>
               <p className="mt-2 text-sm text-slate-600">{item.detail}</p>
             </article>
           ))}
         </div>
+        </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-14 md:px-8">
+      <section className="section-lilac py-14">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="mb-6 flex items-center justify-between gap-4">
           <h2 className="text-3xl font-black text-(--primary)">Dispatch from the Heritage</h2>
           <Link href="/blog" className="text-sm font-bold text-(--primary-container)">View all</Link>
@@ -188,10 +197,43 @@ export default async function HomePage() {
             ))}
           </aside>
         </div>
+        </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-16 md:px-8">
-        <div className="rounded-2xl bg-(--primary) px-6 py-10 text-center text-white md:px-10">
+      <section className="section-peach py-14">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
+        <div className="mb-6 flex items-center justify-between gap-4">
+          <h2 className="text-3xl font-black text-(--primary)">Community Members</h2>
+          <Link href="/community" className="text-sm font-bold text-(--primary-container)">Open directory</Link>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {communityPreview.map((member) => (
+            <article key={member.id} className="editorial-card reveal-up rounded-xl p-5">
+              <div className="flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-(--primary-container) text-sm font-black text-white">
+                  {member.full_name
+                    .split(" ")
+                    .filter(Boolean)
+                    .slice(0, 2)
+                    .map((part) => part[0]?.toUpperCase() ?? "")
+                    .join("")}
+                </div>
+                <div>
+                  <h3 className="text-lg font-black text-(--primary)">{member.full_name}</h3>
+                  <p className="text-xs uppercase tracking-wider text-slate-500">{member.set_label}</p>
+                </div>
+              </div>
+              <p className="mt-3 text-sm text-slate-600">{member.chapter}</p>
+            </article>
+          ))}
+          {communityPreview.length === 0 ? <p className="text-sm text-slate-600">Community members will appear after approvals.</p> : null}
+        </div>
+        </div>
+      </section>
+
+      <section className="py-14">
+        <div className="mx-auto max-w-7xl px-4 pb-2 md:px-8">
+        <div className="rounded-2xl tone-blue px-6 py-10 text-center text-white md:px-10">
           <p className="text-xs font-bold uppercase tracking-[0.35em] text-amber-300">Join The Network</p>
           <h2 className="mt-3 text-3xl font-black md:text-5xl">Reconnect, Contribute, and Build Legacy</h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm text-white/85 md:text-base">
@@ -205,6 +247,7 @@ export default async function HomePage() {
               Contact Secretariat
             </Link>
           </div>
+        </div>
         </div>
       </section>
     </main>
