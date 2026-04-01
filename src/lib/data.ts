@@ -181,7 +181,7 @@ export async function getGalleryItems(isPublic = false) {
     query = query.eq("is_published", true);
   }
 
-  const { data } = await query.o  rder("sort_order", { ascending: true }).returns<GalleryItem[]>();
+  const { data } = await query.order("sort_order", { ascending: true }).returns<GalleryItem[]>();
   return data ?? [];
 }
 
