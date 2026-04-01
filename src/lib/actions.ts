@@ -206,7 +206,7 @@ export async function saveAuditSetting(formData: FormData) {
   revalidatePath("/admin/audit-settings");
 }
 
-export async function saveEmailTemplate(formData: FormData) {
+export async function saveEmailTemplate(formData: FormData): Promise<void> {
   await requireAdmin();
   const id = String(formData.get("id") ?? "").trim();
   const name = String(formData.get("name") ?? "").trim();
@@ -473,14 +473,14 @@ export async function updateContactMessageStatus(formData: FormData) {
   revalidatePath("/admin/messages");
 }
 
-export async function sendTemplatedEmail(formData: FormData) {
+export async function sendTemplatedEmail(formData: FormData): Promise<void> {
   await requireAdmin();
   const to = String(formData.get("to") ?? "").trim();
   const templateName = String(formData.get("template_name") ?? "").trim();
   const recipientName = String(formData.get("recipient_name") ?? "Member").trim();
 
   if (!to || !templateName) {
-    return { ok: false, error: "Recipient and template are required." };
+    return;
   }
 
   const supabase = await createSupabaseServerClient();
@@ -492,13 +492,13 @@ export async function sendTemplatedEmail(formData: FormData) {
 
   const fileTemplate = renderEmailTemplate(templateName, recipientName);
   if (!template && !fileTemplate) {
-    return { ok: false, error: "Template not found." };
+    return;
   }
 
   const useDbTemplate = Boolean(template?.is_active);
   const useFileTemplate = Boolean(fileTemplate);
   if (!useDbTemplate && !useFileTemplate) {
-    return { ok: false, error: "Template is inactive and no file template exists." };
+    return;
   }
 
   const subject = useDbTemplate
@@ -508,6 +508,7 @@ export async function sendTemplatedEmail(formData: FormData) {
     ? template!.body.replaceAll("{{name}}", recipientName)
     : fileTemplate!.html;
   const result = await sendEmailHook({ to, subject, html });
-
-  return result.ok ? { ok: true } : { ok: false, error: "Email hook failed or not configured." };
+  if (!result.ok) {
+    return;
+  }
 }
