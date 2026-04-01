@@ -17,6 +17,7 @@ export function SignupForm() {
 		const fullName = String(formData.get("full_name") ?? "").trim();
 		const email = String(formData.get("email") ?? "").trim();
 		const password = String(formData.get("password") ?? "");
+		const registrationCode = String(formData.get("registration_code") ?? "").trim();
 
 		const supabase = createSupabaseBrowserClient();
 		const { error: signUpError } = await supabase.auth.signUp({
@@ -24,7 +25,8 @@ export function SignupForm() {
 			password,
 			options: {
 				data: {
-					full_name: fullName
+					full_name: fullName,
+					registration_code: registrationCode
 				}
 			}
 		});
@@ -58,6 +60,12 @@ export function SignupForm() {
 					Password
 				</label>
 				<input id="password" name="password" type="password" minLength={8} required className="w-full rounded-md border border-slate-200 px-3 py-2" />
+			</div>
+			<div>
+				<label htmlFor="registration_code" className="mb-1 block text-xs font-bold uppercase tracking-widest text-slate-600">
+					Registration Access Code
+				</label>
+				<input id="registration_code" name="registration_code" required className="w-full rounded-md border border-slate-200 px-3 py-2" />
 			</div>
 			{error && <p className="text-sm text-red-700">{error}</p>}
 			{success && <p className="text-sm text-emerald-700">{success}</p>}

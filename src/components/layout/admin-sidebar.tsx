@@ -4,9 +4,17 @@ import { BrandMark } from "@/components/layout/brand-mark";
 const links = [
   { href: "/admin", label: "Overview" },
   { href: "/admin/approvals", label: "Approvals" },
+  { href: "/admin/member-management", label: "Members" },
   { href: "/admin/elections", label: "Elections" },
+  { href: "/admin/elections/setup", label: "Election Setup" },
+  { href: "/admin/elections/center", label: "Election Center" },
   { href: "/admin/candidates", label: "Candidates" },
   { href: "/admin/blog", label: "Blog" },
+  { href: "/admin/leadership", label: "Leadership" },
+  { href: "/admin/gallery", label: "Gallery" },
+  { href: "/admin/email-templates", label: "Email Templates" },
+  { href: "/admin/audit-settings", label: "Audit Settings" },
+  { href: "/admin/messages", label: "Messages" },
   { href: "/admin/payments", label: "Payments" }
 ];
 

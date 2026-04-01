@@ -16,6 +16,7 @@ export async function MemberHeader() {
         </div>
         <nav className="hidden items-center gap-4 text-sm font-semibold md:flex">
           <Link href="/dashboard">Dashboard</Link>
+          <Link href="/profile">Profile</Link>
           <Link href="/voting">Voting</Link>
           <Link href="/payments">Payments</Link>
         </nav>

@@ -1,4 +1,16 @@
-import type { BlogPost, Candidate, Election, Payment, Position, Profile } from "@/types";
+import type {
+  AuditSetting,
+  BlogPost,
+  Candidate,
+  ContactMessage,
+  Election,
+  EmailTemplate,
+  GalleryItem,
+  LeadershipProfile,
+  Payment,
+  Position,
+  Profile
+} from "@/types";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export async function getPublishedBlogPosts() {
@@ -8,6 +20,19 @@ export async function getPublishedBlogPosts() {
     .select("*")
     .eq("published", true)
     .order("created_at", { ascending: false })
+    .returns<BlogPost[]>();
+
+  return data ?? [];
+}
+
+export async function getLatestPublishedBlogPosts(limit = 3) {
+  const supabase = await createSupabaseServerClient();
+  const { data } = await supabase
+    .from("blog_posts")
+    .select("*")
+    .eq("published", true)
+    .order("created_at", { ascending: false })
+    .limit(limit)
     .returns<BlogPost[]>();
 
   return data ?? [];
@@ -78,6 +103,12 @@ export async function getPendingUsers() {
   return data ?? [];
 }
 
+export async function getAllUsers() {
+  const supabase = await createSupabaseServerClient();
+  const { data } = await supabase.from("users").select("*").order("created_at", { ascending: false }).returns<Profile[]>();
+  return data ?? [];
+}
+
 export async function getMemberPayments(userId: string) {
   const supabase = await createSupabaseServerClient();
   const { data } = await supabase
@@ -116,5 +147,52 @@ export async function getAllPayments() {
 export async function getAllBlogPosts() {
   const supabase = await createSupabaseServerClient();
   const { data } = await supabase.from("blog_posts").select("*").order("created_at", { ascending: false }).returns<BlogPost[]>();
+  return data ?? [];
+}
+
+export async function getContactMessages() {
+  const supabase = await createSupabaseServerClient();
+  const { data } = await supabase
+    .from("contact_messages")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .returns<ContactMessage[]>();
+
+  return data ?? [];
+}
+
+export async function getLeadershipProfiles(isPublic = false) {
+  const supabase = await createSupabaseServerClient();
+  let query = supabase.from("leadership_profiles").select("*").order("sort_order", { ascending: true }).returns<LeadershipProfile[]>();
+
+  if (isPublic) {
+    query = query.eq("is_active", true);
+  }
+
+  const { data } = await query;
+  return data ?? [];
+}
+
+export async function getGalleryItems(isPublic = false) {
+  const supabase = await createSupabaseServerClient();
+  let query = supabase.from("gallery_items").select("*").order("sort_order", { ascending: true }).returns<GalleryItem[]>();
+
+  if (isPublic) {
+    query = query.eq("is_published", true);
+  }
+
+  const { data } = await query;
+  return data ?? [];
+}
+
+export async function getAuditSettings() {
+  const supabase = await createSupabaseServerClient();
+  const { data } = await supabase.from("audit_settings").select("*").order("key", { ascending: true }).returns<AuditSetting[]>();
+  return data ?? [];
+}
+
+export async function getEmailTemplates() {
+  const supabase = await createSupabaseServerClient();
+  const { data } = await supabase.from("email_templates").select("*").order("name", { ascending: true }).returns<EmailTemplate[]>();
   return data ?? [];
 }
