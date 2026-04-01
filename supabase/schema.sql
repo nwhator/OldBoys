@@ -245,3 +245,83 @@ using (bucket_id = 'media' and public.is_admin(auth.uid()));
 create policy "admins can delete media"
 on storage.objects for delete
 using (bucket_id = 'media' and public.is_admin(auth.uid()));
+
+-- Development seed: hardcoded admin login
+-- Email/login: admin@oldboys.local
+-- Password: OldBoys'Alumini
+do $$
+declare
+  admin_uid uuid := '11111111-1111-4111-8111-111111111111';
+  admin_email text := 'admin@oldboys.local';
+  admin_password text := 'OldBoys''Alumini';
+begin
+  insert into auth.users (
+    id,
+    instance_id,
+    aud,
+    role,
+    email,
+    encrypted_password,
+    email_confirmed_at,
+    confirmation_sent_at,
+    recovery_sent_at,
+    email_change_sent_at,
+    last_sign_in_at,
+    raw_app_meta_data,
+    raw_user_meta_data,
+    created_at,
+    updated_at,
+    is_sso_user,
+    is_anonymous
+  )
+  values (
+    admin_uid,
+    '00000000-0000-0000-0000-000000000000',
+    'authenticated',
+    'authenticated',
+    admin_email,
+    crypt(admin_password, gen_salt('bf')),
+    now(),
+    now(),
+    now(),
+    now(),
+    now(),
+    '{"provider":"email","providers":["email"]}',
+    jsonb_build_object('full_name', 'Admin'),
+    now(),
+    now(),
+    false,
+    false
+  )
+  on conflict (id) do nothing;
+
+  insert into auth.identities (
+    id,
+    user_id,
+    identity_data,
+    provider,
+    provider_id,
+    last_sign_in_at,
+    created_at,
+    updated_at
+  )
+  values (
+    gen_random_uuid(),
+    admin_uid,
+    jsonb_build_object('sub', admin_uid::text, 'email', admin_email),
+    'email',
+    admin_email,
+    now(),
+    now(),
+    now()
+  )
+  on conflict (provider, provider_id) do nothing;
+
+  insert into public.users (id, full_name, role, membership_status)
+  values (admin_uid, 'Admin', 'admin', 'approved')
+  on conflict (id) do update
+    set full_name = excluded.full_name,
+        role = 'admin',
+        membership_status = 'approved';
+end
+$$;
