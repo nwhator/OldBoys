@@ -5,9 +5,10 @@
   --surface-low: #f4f4ef;
   --primary: #00113a;
   --primary-container: #002366;
-  --secondary: #b8860b;
-  --accent-blue: #254ea8;
-  --accent-warm: #d9a525;
+  --secondary: #e0ad1f;
+  --accent-blue: #1f4fb2;
+  --accent-warm: #f2c84b;
+  --accent-lilac: #b89cff;
   --ink: #1a1c19;
 }
 
@@ -60,7 +61,7 @@ body {
 }
 
 .tone-cream {
-  background: #fff2cc;
+  background: #ffffff;
 }
 
 .tone-blue {
@@ -72,27 +73,15 @@ body {
 }
 
 .section-cobalt {
-  background: #dce8ff;
+  background: #d3e2ff;
 }
 
 .section-honey {
-  background: #ffe7a6;
-}
-
-.section-mint {
-  background: #d9f6ea;
-}
-
-.section-rose {
-  background: #ffe0d6;
+  background: #f9dd82;
 }
 
 .section-lilac {
-  background: #e7ddff;
-}
-
-.section-peach {
-  background: #ffd9bb;
+  background: #c683ea;
 }
 
 @keyframes fade-in-up {

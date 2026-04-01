@@ -120,7 +120,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section-mint py-14">
+      <section className="section-lilac py-14">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -142,7 +142,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section-rose py-14">
+      <section className="section-cobalt py-14">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="grid gap-6 lg:grid-cols-3">
           {timeline.map((item) => (
@@ -156,7 +156,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section-lilac py-14">
+      <section className="section-honey py-14">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="mb-6 flex items-center justify-between gap-4">
           <h2 className="text-3xl font-black text-(--primary)">Dispatch from the Heritage</h2>
@@ -200,7 +200,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section-peach py-14">
+      <section className="section-lilac py-14">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="mb-6 flex items-center justify-between gap-4">
           <h2 className="text-3xl font-black text-(--primary)">Community Members</h2>
@@ -234,7 +234,7 @@ export default async function HomePage() {
       <section className="py-14">
         <div className="mx-auto max-w-7xl px-4 pb-2 md:px-8">
         <div className="rounded-2xl tone-blue px-6 py-10 text-center text-white md:px-10">
-          <p className="text-xs font-bold uppercase tracking-[0.35em] text-amber-300">Join The Network</p>
+          <p className="text-xs font-bold uppercase tracking-[0.35em] text-[#f2c84b]">Join The Network</p>
           <h2 className="mt-3 text-3xl font-black md:text-5xl">Reconnect, Contribute, and Build Legacy</h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm text-white/85 md:text-base">
             Become part of a trusted Old Boys platform for engagement, service, and intergenerational impact. Membership onboarding is controlled and approval-based.
