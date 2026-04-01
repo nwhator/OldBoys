@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Sovereign Archive | Admin Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Manrope:wght@400;500;700&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary": "#ffffff",
+              "outline": "#757682",
+              "surface-container-high": "#e8e8e3",
+              "primary-fixed-dim": "#b3c5ff",
+              "on-secondary-fixed": "#241a00",
+              "on-background": "#1a1c19",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed-dim": "#e9c349",
+              "primary-fixed": "#dbe1ff",
+              "on-secondary": "#ffffff",
+              "inverse-surface": "#2f312e",
+              "on-primary": "#ffffff",
+              "tertiary-fixed-dim": "#e6c272",
+              "secondary-container": "#fed65b",
+              "on-tertiary-fixed-variant": "#5a4300",
+              "on-primary-fixed": "#00174a",
+              "background": "#fafaf5",
+              "tertiary-fixed": "#ffdf9a",
+              "tertiary-container": "#352600",
+              "on-secondary-fixed-variant": "#574500",
+              "surface-variant": "#e3e3de",
+              "surface-bright": "#fafaf5",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#2a4386",
+              "surface-container-highest": "#e3e3de",
+              "outline-variant": "#c5c6d2",
+              "on-surface": "#1a1c19",
+              "primary-container": "#002366",
+              "on-surface-variant": "#444650",
+              "surface-dim": "#dadad5",
+              "on-secondary-container": "#745c00",
+              "inverse-on-surface": "#f1f1ec",
+              "secondary-fixed": "#ffe088",
+              "on-tertiary-fixed": "#251a00",
+              "surface-tint": "#435b9f",
+              "on-primary-container": "#758dd5",
+              "on-error-container": "#93000a",
+              "error": "#ba1a1a",
+              "secondary": "#735c00",
+              "error-container": "#ffdad6",
+              "tertiary": "#1c1200",
+              "surface-container-low": "#f4f4ef",
+              "surface-container": "#eeeee9",
+              "surface": "#fafaf5",
+              "primary": "#00113a",
+              "on-tertiary-container": "#ab8b41",
+              "inverse-primary": "#b3c5ff"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Manrope"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-shift { background-color: #f4f4ef; }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface antialiased">
+<!-- TopAppBar Navigation -->
+<header class="bg-white/70 backdrop-blur-xl fixed top-0 w-full z-50 shadow-[0_20px_40px_rgba(0,17,58,0.06)]">
+<div class="flex justify-between items-center px-8 py-4 w-full max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-4">
+<span class="text-xl font-headline font-bold tracking-tight text-primary">The Sovereign Archive</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex gap-6">
+<a class="text-primary font-bold border-b-2 border-secondary py-1 text-sm" href="#">Admin Dashboard</a>
+<a class="text-slate-500 hover:text-primary transition-colors text-sm py-1" href="#">Legacy Records</a>
+<a class="text-slate-500 hover:text-primary transition-colors text-sm py-1" href="#">Chapter Network</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-slate-500 hover:bg-blue-50/50 p-2 rounded-full transition-all" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-slate-500 hover:bg-blue-50/50 p-2 rounded-full transition-all" data-icon="settings">settings</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="Close-up portrait of a professional Nigerian man in a bespoke navy suit with thoughtful expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUucffy8gTlXJ49tliLqj2wfujYTIdaX9czAXQnYhYb991ke1zD1eooov6BdxUTAeDsT_sCzZsWLp45dL5Wm-zx8thkqpm2gryoBfkbpFn_9SGtHNUwSWLlFn1UtJ2l100-bdp-wL069vEoXO9stgL-R10rnnKDKn1ZwT4zt5zQGCEsiEd3bK5j6BYMzE6UtM9JkxPHPNkDtvwlq3WY9DQkzygWBSmL_uiIBNwMTCChHkyp6fI3sPW7LORuD-A3XWpQjqB_8JK0C8"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class="flex min-h-screen pt-20">
+<!-- SideNavBar -->
+<aside class="h-[calc(100vh-5rem)] w-64 fixed left-0 top-20 bg-slate-50 flex flex-col py-8 z-40">
+<div class="px-8 mb-8">
+<h2 class="text-lg font-headline text-primary font-bold">Admin Portal</h2>
+<p class="text-xs text-slate-500 tracking-widest uppercase">Prestige &amp; Legacy</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-primary font-bold bg-white rounded-l-full ml-4 pl-4 py-3 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 pl-8 py-3 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+<span class="font-label text-sm">Member Approvals</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 pl-8 py-3 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+<span class="font-label text-sm">Elections</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 pl-8 py-3 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label text-sm">Finances</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 pl-8 py-3 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+<span class="font-label text-sm">Settings</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full bg-primary text-white py-3 px-4 rounded-lg font-label text-xs tracking-wider uppercase hover:shadow-lg transition-all active:scale-95">
+                    Export Reports
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-64 p-10 space-y-14">
+<!-- Hero Stats / Bento Grid Start -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="md:col-span-2 bg-primary-container p-8 rounded-xl text-white relative overflow-hidden flex flex-col justify-between min-h-[220px]">
+<div class="relative z-10">
+<h1 class="font-headline text-3xl mb-2">Welcome, Director</h1>
+<p class="text-on-primary-container max-w-xs text-sm">Managing the heritage and future of the Lagos association with excellence.</p>
+</div>
+<div class="flex gap-4 relative z-10">
+<div class="bg-white/10 backdrop-blur px-4 py-2 rounded">
+<p class="text-xs uppercase opacity-70">Pending Approval</p>
+<p class="text-xl font-bold">24</p>
+</div>
+<div class="bg-white/10 backdrop-blur px-4 py-2 rounded">
+<p class="text-xs uppercase opacity-70">Active Election</p>
+<p class="text-xl font-bold">Presidential '24</p>
+</div>
+</div>
+<div class="absolute right-[-20%] bottom-[-20%] opacity-20 transform -rotate-12">
+<span class="material-symbols-outlined text-[12rem]" data-icon="castle">castle</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-xl flex flex-col justify-center">
+<span class="material-symbols-outlined text-secondary text-4xl mb-4" data-icon="account_balance_wallet">account_balance_wallet</span>
+<h3 class="text-slate-500 font-label text-xs uppercase tracking-widest mb-1">Total Treasury</h3>
+<p class="text-2xl font-bold text-primary">₦12.8M</p>
+<p class="text-xs text-green-600 mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span> +12% this month
+                    </p>
+</div>
+<div class="bg-surface-container-low p-8 rounded-xl flex flex-col justify-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-4" data-icon="groups">groups</span>
+<h3 class="text-slate-500 font-label text-xs uppercase tracking-widest mb-1">Active Members</h3>
+<p class="text-2xl font-bold text-primary">1,422</p>
+<p class="text-xs text-slate-400 mt-2">15 Chapters Worldwide</p>
+</div>
+</section>
+<!-- Member Approvals Section -->
+<section>
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-headline text-2xl text-primary font-bold">Pending Member Approvals</h2>
+<p class="text-slate-500 text-sm">Review applications for the 2024 Alumni Induction.</p>
+</div>
+<button class="text-primary text-sm font-bold flex items-center gap-1 hover:underline">
+                        View All Applications <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Applicant Card 1 -->
+<div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all group">
+<div class="flex items-center gap-4 mb-6">
+<img alt="Profile" class="w-14 h-14 rounded-full object-cover" data-alt="Portrait of a young Nigerian female professional in business casual attire with a warm smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdvYpyKHm9g6BshVO4G3T3kIhu1FCj6zesj8Q_ahkqSBcYZ9eVI7Lg5fLgcvpzOBANWRKOfSEpRxuRy32PWy9oaO8Y254cehVl7MluUyhWt9svcD7acPcxNfSh0H0yur2tICSzcAFr8FZK1jR61VlZu5Na-kktg8J3eAuJPW99Xx1nGi305-YRzDb7H4idqcfHnyhD72GS4C-FgUiQUB11tAN2cvJJ-DZoQeIYRbS_jlwC4NCHmpXqSG8Q40RMFV1UZJDQZznU2d8"/>
+<div>
+<h4 class="font-bold text-primary">Dr. Amaka Okafor</h4>
+<p class="text-xs text-slate-500">Medicine, Class of '08</p>
+</div>
+</div>
+<div class="space-y-2 mb-6">
+<p class="text-xs text-slate-600 bg-slate-50 p-3 rounded">"Applying to rejoin the legacy network and mentor junior alumni in the healthcare sector."</p>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 bg-primary text-white py-2 rounded text-xs font-bold hover:bg-opacity-90 transition-all">Approve</button>
+<button class="flex-1 bg-surface-container-highest text-primary py-2 rounded text-xs font-bold hover:bg-slate-200 transition-all">Decline</button>
+</div>
+</div>
+<!-- Applicant Card 2 -->
+<div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all group">
+<div class="flex items-center gap-4 mb-6">
+<img alt="Profile" class="w-14 h-14 rounded-full object-cover" data-alt="Nigerian man in traditional white agbada smiling confidently in a high-end office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgaQtcK4HZgBSQYm6dlba3oxefMaxvj8H0AAEQAXfLCnX0qQV4QB-LC4oho4e05Fu8Mbau7HWFXaJKXos8uLsHzEqxLffutY6dhokck7Q0i_hhzbH8qorGI4XU7eMyTfm4ct12QgDkUhwKtoz8JVbrS1mZP4hMs4fBjYc7bZ-KkOOipEVt7yyDJdjCyeOJ_zuh7cSn9NQziEJia9Iz8Q3RxuYZ4mKg5hstsE0p2lO8l7xC3LKO06X6PE1xWPlPpke5e4oFHXKBSfU"/>
+<div>
+<h4 class="font-bold text-primary">Engr. Tunde Adeboye</h4>
+<p class="text-xs text-slate-500">Engineering, Class of '12</p>
+</div>
+</div>
+<div class="space-y-2 mb-6">
+<p class="text-xs text-slate-600 bg-slate-50 p-3 rounded">"Focused on infrastructure development. Seeking to collaborate with the Diaspora chapter."</p>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 bg-primary text-white py-2 rounded text-xs font-bold hover:bg-opacity-90 transition-all">Approve</button>
+<button class="flex-1 bg-surface-container-highest text-primary py-2 rounded text-xs font-bold hover:bg-slate-200 transition-all">Decline</button>
+</div>
+</div>
+<!-- Applicant Card 3 -->
+<div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all group border-2 border-dashed border-slate-200 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-slate-300 text-4xl mb-2" data-icon="person_search">person_search</span>
+<p class="text-sm font-medium text-slate-400">22 more pending reviews</p>
+<button class="mt-4 text-xs font-bold text-secondary tracking-widest uppercase hover:underline">Enter Review Mode</button>
+</div>
+</div>
+</section>
+<!-- Election & Candidate Management Section -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+<div class="lg:col-span-2 space-y-8">
+<div>
+<h2 class="font-headline text-2xl text-primary font-bold mb-2">Election Management</h2>
+<p class="text-slate-500 text-sm">Configure current polling sessions and candidate profiles.</p>
+</div>
+<div class="bg-surface-container p-8 rounded-2xl">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-bold text-primary uppercase text-xs tracking-widest">Active: 2024 Executive Council</h3>
+<span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-[10px] font-bold">POLLS OPEN</span>
+</div>
+<div class="space-y-6">
+<div class="flex items-center gap-6 p-4 bg-white rounded-lg">
+<div class="w-12 h-12 bg-secondary/10 rounded flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+</div>
+<div>
+<p class="text-xs text-slate-400 uppercase font-bold">Election Dates</p>
+<p class="text-sm font-bold text-primary">Oct 12th — Oct 15th, 2024</p>
+</div>
+<button class="ml-auto material-symbols-outlined text-slate-300 hover:text-primary" data-icon="edit">edit</button>
+</div>
+<div class="border-t border-slate-200 pt-6">
+<h4 class="text-sm font-bold text-primary mb-4">Candidates (Presidential)</h4>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex items-center gap-3 p-3 bg-white rounded-lg border border-slate-100">
+<img alt="Candidate" class="w-10 h-10 rounded object-cover" data-alt="Portrait of a distinguished Nigerian senior professional with glasses and a friendly, authoritative gaze" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMZ_clKUYWmLugwCIelEiBN7nEFRTfW1kGkQQ4FKfJ-5dya7wr8lDEs9-Kzr_HLupZO20woRz_jZGzn_HBGaYKcABNdbCNBN_4dFKHmrx7zKZl1hEMwLrPwXeFdf7bYv0eYWjn3eBUZl55BvHwiIYVAZ9AF48CLZJ_S483RFK1TKp11JevA8uN7tZhlxkpt-caM6qMkJDNh0yd-jNlvUAVmtA8-Z28RnVinZ_T2bJemN1WDEb1yzunhai9tvVVpqBvSIepCKhRJGI"/>
+<div>
+<p class="text-xs font-bold">Chief Ola Williams</p>
+<p class="text-[10px] text-slate-400">42% (597 Votes)</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-white rounded-lg border border-slate-100">
+<img alt="Candidate" class="w-10 h-10 rounded object-cover" data-alt="Professional Nigerian woman in a sharp green blazer, looking forward with confidence" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQKqLX3BLkeROlBFdqpAkNeKknqXx9axZ7GUigCseewXfNSj1bdIZT67pJ_BDyW4mceP0xjEPdqxcwUrf9DgOTRK-_cZaEnlBKloweNfRjtWCNtgBNjPZHyuy1fTat776IsrQ136GhSXLU-wdpB1KCjmP5SV1wKIpllpdoBflT4j8REJshGptVN-ozoPJUHt_KmcdBMAZu-pkNlCxPZfkreJyYlYkHxjssg2K2cGSOKjK7PtrnpHNM2UvENrt14JZgWDCePHkSPG8"/>
+<div>
+<p class="text-xs font-bold">Barr. Ifeoma Nze</p>
+<p class="text-[10px] text-slate-400">58% (825 Votes)</p>
+</div>
+</div>
+<div class="flex items-center justify-center gap-2 p-3 border-2 border-dashed border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer">
+<span class="material-symbols-outlined text-slate-300" data-icon="add_circle">add_circle</span>
+<p class="text-xs font-bold text-slate-400">Add Candidate</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-primary text-white p-8 rounded-2xl flex flex-col">
+<h3 class="font-headline text-xl mb-6">Create New Election</h3>
+<form class="space-y-6 flex-1">
+<div>
+<label class="block text-[10px] uppercase tracking-widest text-on-primary-container mb-2">Election Title</label>
+<input class="w-full bg-white/10 border-none rounded focus:ring-secondary text-sm placeholder:text-white/30" placeholder="e.g. Lagos Chapter Lead" type="text"/>
+</div>
+<div>
+<label class="block text-[10px] uppercase tracking-widest text-on-primary-container mb-2">Positions</label>
+<div class="flex flex-wrap gap-2">
+<span class="bg-white/20 px-3 py-1 rounded-full text-[10px] flex items-center gap-1">President <span class="material-symbols-outlined text-[10px]" data-icon="close">close</span></span>
+<span class="bg-white/20 px-3 py-1 rounded-full text-[10px] flex items-center gap-1">Secretary <span class="material-symbols-outlined text-[10px]" data-icon="close">close</span></span>
+<button class="bg-secondary text-primary px-3 py-1 rounded-full text-[10px] font-bold" type="button">+ Add</button>
+</div>
+</div>
+<div class="pt-4 border-t border-white/10">
+<button class="w-full bg-secondary text-primary py-3 rounded font-bold text-xs tracking-widest uppercase hover:bg-secondary-container transition-all">Launch Nomination Phase</button>
+</div>
+</form>
+</div>
+</section>
+<!-- Payment Tracking Section -->
+<section class="space-y-8">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline text-2xl text-primary font-bold">Financial Tracking</h2>
+<p class="text-slate-500 text-sm">Real-time ledger of dues and contributions.</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-container-high rounded text-xs font-bold text-primary">All Transactions</button>
+<button class="px-4 py-2 bg-white rounded text-xs font-bold text-slate-400">Pending</button>
+</div>
+</div>
+<div class="bg-white rounded-xl shadow-sm overflow-hidden">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-slate-50 border-b border-slate-100">
+<th class="px-8 py-4 text-[10px] uppercase tracking-widest font-bold text-slate-400">Member</th>
+<th class="px-8 py-4 text-[10px] uppercase tracking-widest font-bold text-slate-400">Type</th>
+<th class="px-8 py-4 text-[10px] uppercase tracking-widest font-bold text-slate-400">Date</th>
+<th class="px-8 py-4 text-[10px] uppercase tracking-widest font-bold text-slate-400">Amount</th>
+<th class="px-8 py-4 text-[10px] uppercase tracking-widest font-bold text-slate-400">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-50">
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-primary font-bold text-[10px]">OB</div>
+<div>
+<p class="text-xs font-bold text-primary">Obioma Bello</p>
+<p class="text-[10px] text-slate-400">Chapter: London</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-4 text-xs text-slate-600">Annual Dues 2024</td>
+<td class="px-8 py-4 text-xs text-slate-400">Oct 02, 2023</td>
+<td class="px-8 py-4 text-xs font-bold text-primary">₦50,000</td>
+<td class="px-8 py-4">
+<span class="inline-flex items-center gap-1 text-[10px] font-bold text-green-600 bg-green-50 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[10px]" data-icon="check_circle" data-weight="fill">check_circle</span> PAID
+                                    </span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-secondary font-bold text-[10px]">SM</div>
+<div>
+<p class="text-xs font-bold text-primary">Segun Musa</p>
+<p class="text-[10px] text-slate-400">Chapter: Lagos</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-4 text-xs text-slate-600">Scholarship Fund</td>
+<td class="px-8 py-4 text-xs text-slate-400">Sep 28, 2023</td>
+<td class="px-8 py-4 text-xs font-bold text-primary">₦250,000</td>
+<td class="px-8 py-4">
+<span class="inline-flex items-center gap-1 text-[10px] font-bold text-green-600 bg-green-50 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[10px]" data-icon="check_circle" data-weight="fill">check_circle</span> PAID
+                                    </span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 font-bold text-[10px]">TA</div>
+<div>
+<p class="text-xs font-bold text-primary">Tolani Adeleke</p>
+<p class="text-[10px] text-slate-400">Chapter: Abuja</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-4 text-xs text-slate-600">Gala Dinner Seat</td>
+<td class="px-8 py-4 text-xs text-slate-400">Sep 25, 2023</td>
+<td class="px-8 py-4 text-xs font-bold text-primary">₦75,000</td>
+<td class="px-8 py-4">
+<span class="inline-flex items-center gap-1 text-[10px] font-bold text-amber-600 bg-amber-50 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[10px]" data-icon="schedule">schedule</span> PENDING
+                                    </span>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="bg-slate-50 px-8 py-4 flex justify-center">
+<button class="text-xs font-bold text-primary hover:underline">View Transaction Archive</button>
+</div>
+</div>
+</section>
+<!-- Bottom Margin for breathing room -->
+<div class="pb-20"></div>
+</main>
+</div>
+<!-- Floating Action Button (Only on primary dashboard) -->
+<button class="fixed bottom-8 right-8 bg-secondary text-primary w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-[60]">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</body></html>

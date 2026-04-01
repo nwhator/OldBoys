@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Manrope:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-error-container": "#93000a",
+            "surface-container-lowest": "#ffffff",
+            "secondary-fixed": "#ffe088",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "surface-dim": "#dadad5",
+            "surface-container-low": "#f4f4ef",
+            "on-tertiary-fixed": "#251a00",
+            "on-background": "#1a1c19",
+            "error": "#ba1a1a",
+            "on-secondary-container": "#745c00",
+            "tertiary": "#1c1200",
+            "surface-container-high": "#e8e8e3",
+            "inverse-on-surface": "#f1f1ec",
+            "secondary-fixed-dim": "#e9c349",
+            "on-primary-container": "#758dd5",
+            "outline": "#757682",
+            "background": "#fafaf5",
+            "surface-variant": "#e3e3de",
+            "surface-tint": "#435b9f",
+            "on-secondary-fixed-variant": "#574500",
+            "on-primary-fixed-variant": "#2a4386",
+            "secondary-container": "#fed65b",
+            "primary": "#00113a",
+            "outline-variant": "#c5c6d2",
+            "on-surface-variant": "#444650",
+            "surface-bright": "#fafaf5",
+            "on-tertiary-fixed-variant": "#5a4300",
+            "on-tertiary-container": "#ab8b41",
+            "on-primary-fixed": "#00174a",
+            "surface": "#fafaf5",
+            "primary-fixed": "#dbe1ff",
+            "tertiary-fixed-dim": "#e6c272",
+            "on-secondary": "#ffffff",
+            "inverse-primary": "#b3c5ff",
+            "on-surface": "#1a1c19",
+            "surface-container": "#eeeee9",
+            "primary-fixed-dim": "#b3c5ff",
+            "tertiary-container": "#352600",
+            "primary-container": "#002366",
+            "error-container": "#ffdad6",
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#ffdf9a",
+            "surface-container-highest": "#e3e3de",
+            "on-secondary-fixed": "#241a00",
+            "inverse-surface": "#2f312e",
+            "secondary": "#735c00"
+          },
+          fontFamily: {
+            "headline": ["Noto Serif"],
+            "body": ["Manrope"],
+            "label": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #c5c6d2;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- SideNavBar -->
+<aside class="h-screen w-72 fixed left-0 top-0 overflow-y-auto bg-white dark:bg-slate-900 flex flex-col py-8 space-y-2 z-50">
+<div class="px-8 mb-10">
+<div class="flex items-center gap-3 mb-2">
+<img alt="Lagos Heritage Crest" class="w-10 h-10 object-contain" data-alt="Official heraldic crest of a prestigious Nigerian institution featuring intricate gold patterns and deep blue symbols" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9P1jmqAOXNgX-lBgYsetwAL5XH6yQ0ufAd0lSJE038mrdFVnVHkR4lCZSwbGx50NxUjDfVyMbowCC0IhSeHjdyrP6kUhF2W-D0cGRzCaJG-i6vzEHWK5XRz7FMOuLQAyHALRJsxXuUhd2ysZy6xg3Nct1u8tSi-nYKXxPSzM5fcPSKdMuORSqCCUmrNMvjE0xM4zKvmM_JVi54suit2GvxeVUztIdawWGJDWN_sRkUXFiYbWKXdSCCkuyej5NiM8JqXqTL0t1NTM"/>
+<h1 class="font-headline font-bold text-primary text-xl leading-tight">Admin Console</h1>
+</div>
+<p class="text-xs font-label uppercase tracking-widest text-secondary font-semibold">Excellence &amp; Legacy</p>
+</div>
+<nav class="flex-1">
+<a class="text-slate-600 dark:text-slate-400 mx-4 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg flex items-center gap-3 group transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="font-label">Dashboard</span>
+</a>
+<a class="bg-primary-container text-white rounded-lg mx-4 px-4 py-3 shadow-lg shadow-blue-900/20 flex items-center gap-3 group" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
+<span class="font-label">Member Registry</span>
+</a>
+<a class="text-slate-600 dark:text-slate-400 mx-4 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg flex items-center gap-3 group transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined text-xl">how_to_vote</span>
+<span class="font-label">Election Center</span>
+</a>
+<a class="text-slate-600 dark:text-slate-400 mx-4 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg flex items-center gap-3 group transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined text-xl">account_balance</span>
+<span class="font-label">Financial Ledger</span>
+</a>
+<a class="text-slate-600 dark:text-slate-400 mx-4 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg flex items-center gap-3 group transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined text-xl">auto_stories</span>
+<span class="font-label">Archive Vault</span>
+</a>
+</nav>
+<div class="px-4 mt-auto pt-8">
+<button class="w-full bg-secondary text-white font-label py-3 rounded-lg flex justify-center items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-lg">download</span>
+        Export Reports
+      </button>
+<div class="mt-6 border-t border-outline-variant/20 pt-6 space-y-1">
+<a class="text-slate-400 hover:text-primary mx-4 px-4 py-2 flex items-center gap-3 text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">help</span>
+          Help Center
+        </a>
+<a class="text-slate-400 hover:text-error mx-4 px-4 py-2 flex items-center gap-3 text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">logout</span>
+          Logout
+        </a>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-72 min-h-screen relative">
+<!-- TopAppBar -->
+<header class="bg-[#fafaf5]/80 backdrop-blur-xl sticky top-0 z-40 shadow-[0_20px_40px_rgba(0,35,102,0.06)]">
+<div class="flex justify-between items-center w-full px-12 py-4 mx-auto">
+<div class="flex items-center gap-8">
+<span class="font-headline text-2xl font-bold tracking-tight text-primary">The Sovereign Archive</span>
+<nav class="hidden lg:flex gap-6">
+<a class="text-slate-500 hover:text-primary transition-colors font-label text-sm uppercase tracking-widest" href="#">Directory</a>
+<a class="text-slate-500 hover:text-primary transition-colors font-label text-sm uppercase tracking-widest" href="#">Elections</a>
+<a class="text-slate-500 hover:text-primary transition-colors font-label text-sm uppercase tracking-widest" href="#">Finances</a>
+<a class="text-slate-500 hover:text-primary transition-colors font-label text-sm uppercase tracking-widest" href="#">Legacy</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-secondary/50 w-64" placeholder="Search archives..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-outline hover:bg-slate-100/50 rounded-full transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-outline hover:bg-slate-100/50 rounded-full transition-all">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="flex items-center gap-3 pl-4 border-l border-outline-variant/30">
+<img alt="Administrator profile" class="w-8 h-8 rounded-full object-cover shadow-sm" data-alt="Close-up portrait of a professional Nigerian man in a tailored charcoal suit, smiling confidently with soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh0ZPeHrvZPEZgMl-x2FB21pu1wPmrT-KIDsfroaJ-5aBWjmvFHCxwP3k8uakZxCdHZqbpFbEqjtXaf4afq2cRRyD1bKQX_SFb6Pu5N3E0faOIQ2Wp7-8mcnnhherab8Y8beWcH-u-KOxp6dqLsxr56qty5Gi3kurTobZmvlLuCPvqDVYNFpvz0ZlrGpKsSnxvmBnvAXC5eZMAdjaGRSzpSjh_vyOPKwS5FkbClCNmh0pm5pL-wXtNG6Ti8yNFV0raSoyzT7eOqvs"/>
+<span class="font-label text-xs font-semibold text-primary">Admin Portal</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<section class="p-12 max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="mb-12">
+<h2 class="font-headline text-4xl font-bold text-primary mb-2">Member Registry</h2>
+<p class="font-body text-outline text-lg">Curating the collective excellence of the Lagos Heritage alumni network.</p>
+</div>
+<!-- Filters Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+<div class="col-span-1 md:col-span-1 bg-surface-container-low p-6 rounded-xl flex flex-col gap-2">
+<label class="font-label text-xs uppercase tracking-widest text-secondary font-bold">Graduation Set</label>
+<select class="bg-transparent border-none font-body text-primary text-lg p-0 focus:ring-0 cursor-pointer">
+<option>All Eras</option>
+<option>Set of 1998</option>
+<option>Set of 2005</option>
+<option>Set of 2012</option>
+</select>
+</div>
+<div class="col-span-1 md:col-span-1 bg-surface-container-low p-6 rounded-xl flex flex-col gap-2">
+<label class="font-label text-xs uppercase tracking-widest text-secondary font-bold">Status</label>
+<select class="bg-transparent border-none font-body text-primary text-lg p-0 focus:ring-0 cursor-pointer">
+<option>All Members</option>
+<option>Active</option>
+<option>Pending</option>
+<option>Inactive</option>
+</select>
+</div>
+<div class="col-span-1 md:col-span-1 bg-surface-container-low p-6 rounded-xl flex flex-col gap-2">
+<label class="font-label text-xs uppercase tracking-widest text-secondary font-bold">Industry</label>
+<select class="bg-transparent border-none font-body text-primary text-lg p-0 focus:ring-0 cursor-pointer">
+<option>All Sectors</option>
+<option>Finance &amp; Fintech</option>
+<option>Oil &amp; Gas</option>
+<option>Creative Arts</option>
+<option>Legal Services</option>
+</select>
+</div>
+<div class="col-span-1 md:col-span-1 flex items-center justify-end">
+<button class="bg-primary text-white px-8 py-4 rounded-lg font-label font-semibold shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2">
+<span class="material-symbols-outlined">filter_list</span>
+            Apply Filters
+          </button>
+</div>
+</div>
+<!-- Sophisticated Table -->
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-[0_32px_64px_-12px_rgba(0,0,0,0.05)]">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-8 py-5 font-label text-xs uppercase tracking-widest text-outline font-bold">Alumni Member</th>
+<th class="px-8 py-5 font-label text-xs uppercase tracking-widest text-outline font-bold">Professional Background</th>
+<th class="px-8 py-5 font-label text-xs uppercase tracking-widest text-outline font-bold text-center">Set</th>
+<th class="px-8 py-5 font-label text-xs uppercase tracking-widest text-outline font-bold">Status</th>
+<th class="px-8 py-5 font-label text-xs uppercase tracking-widest text-outline font-bold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Member" class="w-full h-full object-cover" data-alt="Professional Nigerian woman with elegant braided hair wearing a silk emerald blouse in a high-end office environment with natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhuIP0j9udq_U5A_qDrdrAoMcbvvMo51X_i79MVSsdslnfF5WsEfU28UxtMAprabz_YUjUT9US2y8XRuYwDb7lFnmDxA8wdYC5VnBDeMZoGcKmRTwjhnCzy7CrG-19oqPcTHfpWAQr0twytd-bBCxW43yNNnf_m7KOf0y7M-mRQKs_LUSjo4-i5Ej8MimE29gklWmXAm-y15uMUznsPFfpu31kwWaGCTx3lUeuTwXMY0MUbaWkC_YmR39NCrN8wnlphajbG5R9dIE"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-primary">Dr. Amara Okoro</h4>
+<p class="font-label text-xs text-outline">amara.okoro@healthcare.ng</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-primary">Chief Medical Officer</span>
+<span class="text-xs text-outline font-body">Healthcare &amp; Research</span>
+</div>
+</td>
+<td class="px-8 py-6 text-center">
+<span class="bg-primary-container/10 text-primary px-3 py-1 rounded-full text-xs font-bold">1998</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="text-xs font-bold uppercase tracking-wider text-emerald-600">Active</span>
+</div>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-primary hover:bg-white rounded-md border border-transparent hover:border-outline-variant/30" title="View Profile">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 text-secondary hover:bg-white rounded-md border border-transparent hover:border-outline-variant/30" title="Message">
+<span class="material-symbols-outlined text-lg">mail</span>
+</button>
+<button class="p-2 text-error hover:bg-white rounded-md border border-transparent hover:border-outline-variant/30" title="Suspend">
+<span class="material-symbols-outlined text-lg">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Member" class="w-full h-full object-cover" data-alt="Distinguished Nigerian man in a modern traditional Agbada garment, smiling in a brightly lit library setting with golden accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANqhzFif93L60FqKrQAvjL2UFuPk7mlLapR7GndqUUu525VBFcqJvH3aEN134ASCJ8vxnLQEwSXS4-wcNNVTDBMJ-P0WyHs4q998_KJfZBCA7f_dOLXef6TV7Hdt-pEdq4aQYnoawo1dZC4seMsZRsv5IEL6ZhRgSSW10tlQdFBJ1pAJbPv9yLfL1gxp4x0VJEyd2-im13pFvI2Gpv00XNLfgpgmyq33Lcx7ipLljC2VZnsRlgHtCebMUPXfNsxEeK4n4meJycKYY"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-primary">Babatunde Adeniyi</h4>
+<p class="font-label text-xs text-outline">b.adeniyi@lex.consulting</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-primary">Senior Legal Partner</span>
+<span class="text-xs text-outline font-body">Corporate Law</span>
+</div>
+</td>
+<td class="px-8 py-6 text-center">
+<span class="bg-primary-container/10 text-primary px-3 py-1 rounded-full text-xs font-bold">2005</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-xs font-bold uppercase tracking-wider text-secondary">Pending</span>
+</div>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-primary hover:bg-white rounded-md border border-transparent hover:border-outline-variant/30" title="View Profile">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 text-secondary hover:bg-white rounded-md border border-transparent hover:border-outline-variant/30" title="Message">
+<span class="material-symbols-outlined text-lg">mail</span>
+</button>
+<button class="p-2 text-error hover:bg-white rounded-md border border-transparent hover:border-outline-variant/30" title="Suspend">
+<span class="material-symbols-outlined text-lg">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Member" class="w-full h-full object-cover" data-alt="Young Nigerian male professional in tech, wearing glasses and a minimalist sweater, working on a laptop in a modern minimalist space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAjjQxJKfUUAuBSta0SukLhkFI2g_ZJBqVLK22XDLelwSV5krY3rv-Cg86meHvzr_Pt3FBP1wx_EE8hm3xMt3dGCin5hXXlNJ4kkFQThxdbojc1sAjeDNDf7X2Ycne6qNuQG0aRDUaL90dKWuppjcgZp5Ics8RZiHH4p3IES5NDwF9QRtq_f0cZ1B2ovonHttGDorGmRv-JmoL0GA4AYd0Bn5xeyFI4Z9LsiTZGPp9p3bU-Quoebc9_J5JCNSo4ova5KqI1xVlJq8"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-primary">Chidi Okafor</h4>
+<p class="font-label text-xs text-outline">c.okafor@fintech-hub.io</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-primary">Product Director</span>
+<span class="text-xs text-outline font-body">Financial Technology</span>
+</div>
+</td>
+<td class="px-8 py-6 text-center">
+<span class="bg-primary-container/10 text-primary px-3 py-1 rounded-full text-xs font-bold">2012</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="text-xs font-bold uppercase tracking-wider text-emerald-600">Active</span>
+</div>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-primary hover:bg-white rounded-md border border-transparent hover:border-outline-variant/30" title="View Profile">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 text-secondary hover:bg-white rounded-md border border-transparent hover:border-outline-variant/30" title="Message">
+<span class="material-symbols-outlined text-lg">mail</span>
+</button>
+<button class="p-2 text-error hover:bg-white rounded-md border border-transparent hover:border-outline-variant/30" title="Suspend">
+<span class="material-symbols-outlined text-lg">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Member" class="w-full h-full object-cover" data-alt="Confident Nigerian woman with short hair in a bright yellow blazer, against a clean cream-colored background with professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW-UNSaGJpw_C0K_SG13EYcEtxZwDmaGqHh5LZhqH_5jzlOvX4f56Pl9-YXa0GggCiViTHVrhiVIQAzZKvPTtcutJuN8O2dAZDl8yJfixSxb9UX3c0JrYSI_BcyCfPL6szOV-bv0GdpRRd4UJ2JaURzf6El6XuR5fSw1A5Q4yM5PN6WBVQpCW9rtn70me0OV6dDFO4DjPiqoOVUljGl-2ADeuheKTRdZTp1jPWVc4PQPUz3DPuNZnPyBaQTNDwvsK17cp79TMCTzE"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-primary">Fatima Yusuf</h4>
+<p class="font-label text-xs text-outline">f.yusuf@energy-core.com</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-primary">Operations Lead</span>
+<span class="text-xs text-outline font-body">Energy &amp; Sustainability</span>
+</div>
+</td>
+<td class="px-8 py-6 text-center">
+<span class="bg-primary-container/10 text-primary px-3 py-1 rounded-full text-xs font-bold">2005</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="text-xs font-bold uppercase tracking-wider text-outline">Inactive</span>
+</div>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-primary hover:bg-white rounded-md border border-transparent hover:border-outline-variant/30" title="View Profile">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 text-secondary hover:bg-white rounded-md border border-transparent hover:border-outline-variant/30" title="Message">
+<span class="material-symbols-outlined text-lg">mail</span>
+</button>
+<button class="p-2 text-error hover:bg-white rounded-md border border-transparent hover:border-outline-variant/30" title="Suspend">
+<span class="material-symbols-outlined text-lg">block</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Table Footer -->
+<div class="bg-surface-container-low/30 px-8 py-4 flex justify-between items-center border-t border-outline-variant/10">
+<p class="font-label text-xs text-outline">Showing 4 of 2,482 alumni members</p>
+<div class="flex gap-2">
+<button class="p-2 rounded hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="px-3 py-1 bg-primary text-white text-xs font-bold rounded">1</button>
+<button class="px-3 py-1 text-xs font-bold rounded hover:bg-surface-container-high">2</button>
+<button class="px-3 py-1 text-xs font-bold rounded hover:bg-surface-container-high">3</button>
+<button class="p-2 rounded hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-slate-200/50 dark:border-slate-800/50 bg-[#fafaf5]">
+<div class="max-w-7xl mx-auto px-12 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-col gap-2">
+<span class="font-headline italic text-lg text-primary">The Sovereign Archive</span>
+<p class="font-body text-xs uppercase tracking-widest text-slate-400">© 2024 Lagos Heritage Alumni Association. Preserving the Sovereign Legacy.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-body text-xs uppercase tracking-widest text-slate-400 hover:text-primary transition-colors hover:underline decoration-secondary underline-offset-4" href="#">Privacy Policy</a>
+<a class="font-body text-xs uppercase tracking-widest text-slate-400 hover:text-primary transition-colors hover:underline decoration-secondary underline-offset-4" href="#">Terms of Excellence</a>
+<a class="font-body text-xs uppercase tracking-widest text-slate-400 hover:text-primary transition-colors hover:underline decoration-secondary underline-offset-4" href="#">Constitution</a>
+<a class="font-body text-xs uppercase tracking-widest text-slate-400 hover:text-primary transition-colors hover:underline decoration-secondary underline-offset-4" href="#">Contact Archive</a>
+</div>
+</div>
+</footer>
+</main>
+</body></html>

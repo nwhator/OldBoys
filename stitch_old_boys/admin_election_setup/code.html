@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Election Management | The Sovereign Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;800&amp;family=Manrope:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-container": "#745c00",
+                        "surface-dim": "#dadad5",
+                        "surface": "#fafaf5",
+                        "on-primary-fixed-variant": "#2a4386",
+                        "on-background": "#1a1c19",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#00174a",
+                        "secondary-fixed": "#ffe088",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "on-tertiary-container": "#ab8b41",
+                        "surface-variant": "#e3e3de",
+                        "on-tertiary-fixed-variant": "#5a4300",
+                        "on-secondary-fixed": "#241a00",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#002366",
+                        "on-tertiary-fixed": "#251a00",
+                        "tertiary": "#1c1200",
+                        "secondary": "#735c00",
+                        "inverse-primary": "#b3c5ff",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c5c6d2",
+                        "outline": "#757682",
+                        "on-primary-container": "#758dd5",
+                        "on-surface-variant": "#444650",
+                        "primary": "#00113a",
+                        "surface-container": "#eeeee9",
+                        "secondary-fixed-dim": "#e9c349",
+                        "surface-tint": "#435b9f",
+                        "surface-container-high": "#e8e8e3",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#e6c272",
+                        "on-surface": "#1a1c19",
+                        "inverse-on-surface": "#f1f1ec",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#dbe1ff",
+                        "tertiary-container": "#352600",
+                        "surface-container-low": "#f4f4ef",
+                        "surface-container-highest": "#e3e3de",
+                        "on-secondary-fixed-variant": "#574500",
+                        "inverse-surface": "#2f312e",
+                        "background": "#fafaf5",
+                        "tertiary-fixed": "#ffdf9a",
+                        "secondary-container": "#fed65b",
+                        "surface-bright": "#fafaf5",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Manrope"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-header {
+            background: rgba(250, 250, 245, 0.7);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- Sidebar (Shared Component side_nav_bar) -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-[#fafaf5] dark:bg-slate-900 flex flex-col py-6 px-4 z-50 overflow-y-auto">
+<div class="mb-10 px-2">
+<h1 class="font-['Noto_Serif'] text-lg font-bold text-[#002366]">Alumni Admin</h1>
+<p class="text-[10px] uppercase tracking-widest text-outline">Elite Governance Portal</p>
+</div>
+<nav class="flex-grow space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-200/50 transition-all rounded-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Manrope'] font-medium text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-200/50 transition-all rounded-md" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-['Manrope'] font-medium text-sm">Member Registry</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#002366] font-bold bg-[#002366]/5 rounded-md transition-all translate-x-1" href="#">
+<span class="material-symbols-outlined">how_to_vote</span>
+<span class="font-['Manrope'] font-medium text-sm">Elections</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-200/50 transition-all rounded-md" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-['Manrope'] font-medium text-sm">Financials</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-200/50 transition-all rounded-md" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-['Manrope'] font-medium text-sm">Archives</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant/20 space-y-1">
+<button class="w-full mb-4 py-2 bg-primary text-on-primary text-xs font-bold rounded shadow-sm">
+                Invite New Member
+            </button>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-200/50 transition-all rounded-md" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-['Manrope'] font-medium text-sm">Help Center</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-200/50 transition-all rounded-md" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-['Manrope'] font-medium text-sm">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Top App Bar (Shared Component top_app_bar) -->
+<header class="fixed top-0 right-0 left-64 z-40 bg-[#fafaf5]/70 backdrop-blur-md flex justify-between items-center px-8 py-4 shadow-[0px_20px_40px_rgba(0,17,58,0.06)]">
+<div class="flex items-center gap-4">
+<span class="text-xl font-bold tracking-tight text-[#002366] font-['Noto_Serif']">The Sovereign Archive</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="material-symbols-outlined text-outline">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-secondary rounded-full"></span>
+</div>
+<span class="material-symbols-outlined text-outline">settings</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/30">
+<img alt="Administrator Profile" data-alt="professional portrait of an elderly nigerian statesman with clean-shaven face and wise expression wearing a formal suit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiPw57LNa84XM8hJeKZ26QBVtutctv98AKq2qZkLYRnkODqgqaoOIIAUyYtkCB1nFcE8zrQ8C9D7Vub1dgd1mVXBA8VFBHYp2-5yHJWNwT8HiVgqTl5pddPPR6U6T-CZoWvuKcSAZErgK-Yk3fYIgHU9-wM150DOLfN5-zTqUTHdyLStC8-jwoFoKUaAioTGTWAHjOUxKe_AQLsnZ5LmHlmacpzos9irldLFgUMmzV3c1TpyN1w2RgojDh94CKFJFHdea4EYd3deM"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 pb-20 px-12 min-h-screen">
+<!-- Header Section -->
+<section class="mb-12">
+<span class="text-secondary font-label text-xs font-semibold tracking-widest uppercase mb-2 block">Governance Module</span>
+<h2 class="font-headline text-4xl font-bold text-primary mb-4">Election Creation</h2>
+<p class="font-body text-outline max-w-2xl">Establish a new democratic cycle. Define roles, timelines, and manage prospective leaders for the 2024 Alumni Executive Council.</p>
+</section>
+<!-- Form Layout: Two Column Bento Style -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Election Parameters -->
+<div class="col-span-12 lg:col-span-5 space-y-8">
+<div class="bg-surface-container-low p-8 rounded-xl">
+<h3 class="font-headline text-xl font-bold text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">ballot</span>
+                        Core Parameters
+                    </h3>
+<div class="space-y-6">
+<div class="relative">
+<label class="text-[10px] font-bold text-primary uppercase tracking-wider mb-1 block">Election Title</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 text-on-surface placeholder:text-outline-variant/50 font-medium" placeholder="e.g. 2024 National Executive Council" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="relative">
+<label class="text-[10px] font-bold text-primary uppercase tracking-wider mb-1 block">Start Date</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 text-on-surface font-medium" type="date"/>
+</div>
+<div class="relative">
+<label class="text-[10px] font-bold text-primary uppercase tracking-wider mb-1 block">End Date</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 text-on-surface font-medium" type="date"/>
+</div>
+</div>
+<div class="relative">
+<label class="text-[10px] font-bold text-primary uppercase tracking-wider mb-1 block">Target Positions</label>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="bg-primary text-on-primary px-3 py-1 text-xs rounded-full flex items-center gap-1">President <span class="material-symbols-outlined text-[14px]">close</span></span>
+<span class="bg-primary text-on-primary px-3 py-1 text-xs rounded-full flex items-center gap-1">Secretary <span class="material-symbols-outlined text-[14px]">close</span></span>
+<span class="bg-surface-container-highest text-outline px-3 py-1 text-xs rounded-full border border-outline-variant/20">+ Add Position</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Nigerian Legacy Decorative Element -->
+<div class="relative h-48 rounded-xl overflow-hidden group">
+<img alt="Nigerian Art" class="w-full h-full object-cover grayscale opacity-30 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" data-alt="architectural detail of modern nigerian government building with clean lines and warm sunlight casting geometric shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCls-JnRLdlwWpZBAoflU9I_C1rlWZ_DeGKxlkNj231xNXho-n-BNQyyrOA5J1UzPmS4pUdzKHNKe7C4ILcWo0X9eVINrmDF8UpFtuZg4KIK-XmoITENPrhjV1vQ-QA6iqt4LRrMM_IREYr8Z5Fb4rOyLTnlNutzy5a4_6nXe_5u2C8xXsSJuDHzMcE3VxYtcK2MWRsmWP6orVDWGwgVUwIPsNZ3gEE19f88YF1SB7GskzbRsfBZUmIakCrd91-7vql4oXzmaR4nhU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent flex flex-col justify-end p-6">
+<p class="text-secondary-fixed text-xs font-bold uppercase tracking-widest mb-1">Tradition of Excellence</p>
+<p class="text-on-primary text-sm italic">"Democracy is the ultimate expression of our shared heritage."</p>
+</div>
+</div>
+</div>
+<!-- Candidate Management Section -->
+<div class="col-span-12 lg:col-span-7 space-y-8">
+<!-- Add Candidate Form -->
+<div class="bg-surface-container-highest p-8 rounded-xl border border-outline-variant/10 shadow-sm">
+<h3 class="font-headline text-xl font-bold text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">person_add</span>
+                        Candidate Induction
+                    </h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="md:col-span-1">
+<div class="aspect-square bg-surface-container-low rounded-lg border-2 border-dashed border-outline-variant/50 flex flex-col items-center justify-center text-center p-4 hover:border-secondary transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-outline group-hover:text-secondary mb-2 text-3xl">upload_file</span>
+<p class="text-[10px] font-bold text-outline uppercase">Portrait Upload</p>
+<p class="text-[8px] text-outline-variant mt-1">High-res PNG or JPG preferred</p>
+</div>
+</div>
+<div class="md:col-span-2 space-y-6">
+<div class="relative">
+<label class="text-[10px] font-bold text-primary uppercase tracking-wider mb-1 block">Full Legal Name</label>
+<input class="w-full bg-white border border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary/20 rounded-md px-4 py-2 text-sm font-medium" placeholder="e.g. Dr. Olumide Akindele" type="text"/>
+</div>
+<div class="relative">
+<label class="text-[10px] font-bold text-primary uppercase tracking-wider mb-1 block">Running Position</label>
+<select class="w-full bg-white border border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary/20 rounded-md px-4 py-2 text-sm font-medium appearance-none">
+<option>Select Role</option>
+<option>President</option>
+<option>Secretary</option>
+<option>Financial Controller</option>
+</select>
+</div>
+</div>
+<div class="md:col-span-3">
+<label class="text-[10px] font-bold text-primary uppercase tracking-wider mb-1 block">Manifesto Summary</label>
+<textarea class="w-full bg-white border border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary/20 rounded-md px-4 py-3 text-sm placeholder:italic" placeholder="Outline the candidate's vision for the association's future..." rows="4"></textarea>
+</div>
+<div class="md:col-span-3 flex justify-end">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-md font-bold text-sm hover:shadow-lg transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                                Add to Registry
+                            </button>
+</div>
+</div>
+</div>
+<!-- Candidate Preview Grid -->
+<div>
+<div class="flex justify-between items-end mb-6">
+<h3 class="font-headline text-xl font-bold text-primary">Live Preview</h3>
+<p class="text-xs text-outline font-medium">3 Candidates Added</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Candidate Card 1 -->
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center gap-4 hover:bg-surface-container-high transition-colors group">
+<div class="w-16 h-16 rounded-lg overflow-hidden border-2 border-secondary/20">
+<img alt="Dr. Amara Okoro" class="w-full h-full object-cover" data-alt="professional portrait of a nigerian woman in her 40s wearing a sophisticated business blazer and traditional gold earrings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqvAF2ltwJ-pHlY_dpvb110x_w0qumBbtDbhht1LT6EUBfhV-e2iR5ZiSbTVAD_n4qyRpJuTOJocE8r7Kz2oEVqiiIq9_Xy9dCAZ3u2r0v0tZb1f7musfW6yjbm_g4G48Ay2AHTH0HJc7IHPszPl8Koz3sqKgkn3D1DGMR7MWrt20CpC5cb93XOC_sLCXdMIcDglJ4ahgvFGONGtfkLqAUcb0IBHpm13pZl7ViGAlrpfULqo33XiHH7Hd2iY4QsH5TPP1fwiri-jU"/>
+</div>
+<div class="flex-grow">
+<p class="text-xs font-bold text-secondary uppercase tracking-tight">Presidential Candidate</p>
+<h4 class="font-headline text-md font-bold text-primary">Dr. Amara Okoro</h4>
+<p class="text-[10px] text-outline line-clamp-1 italic">"Advancing our legacy through digital integration..."</p>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-error">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<!-- Candidate Card 2 -->
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center gap-4 hover:bg-surface-container-high transition-colors group">
+<div class="w-16 h-16 rounded-lg overflow-hidden border-2 border-secondary/20">
+<img alt="Barr. Segun Odegbami" class="w-full h-full object-cover" data-alt="portrait of a nigerian man in a dark suit with a focused and professional demeanor against a soft-lit background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD12ISGVzX3WIO_8cWZQ5aoLmJOhvz7KBvLKa2nj9O4GHVz6n-It4Lh0QCU1ldId1dz_HC2jt3hhGXcvAdlJXivOOAzd-VC_2TZK6TYmhXRkXVKnaG8r_G8s698JSoCMEDmdQl1yvHtzbjrhNNX1UJl5A3UihoKLWdQ5ESs6mvsWpf4PGy5__Lq1LBMcUGAHvfuZEyyq-rzaGSJy_ekDYTmx2MrNGvQ1YSBssMkUfB2fgYIYRr37R_u7RdnXpChVR_pHvnMfHRlOvI"/>
+</div>
+<div class="flex-grow">
+<p class="text-xs font-bold text-secondary uppercase tracking-tight">Secretary Candidate</p>
+<h4 class="font-headline text-md font-bold text-primary">Barr. Segun Odegbami</h4>
+<p class="text-[10px] text-outline line-clamp-1 italic">"Legal transparency and constitutional reform..."</p>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-error">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="mt-16 pt-8 border-t border-outline-variant/10 flex justify-between items-center">
+<button class="text-outline hover:text-primary font-bold text-sm flex items-center gap-2">
+<span class="material-symbols-outlined">arrow_back</span>
+                Save as Draft
+            </button>
+<button class="bg-[#002366] text-white px-12 py-4 rounded-md font-['Noto_Serif'] font-bold text-lg shadow-[0px_10px_20px_rgba(0,17,58,0.2)] hover:scale-105 transition-transform">
+                Launch Election Cycle
+            </button>
+</div>
+</main>
+<!-- Contextual FAB (Hidden on this admin detail page as per rules) -->
+</body></html>

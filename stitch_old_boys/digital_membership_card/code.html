@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Membership Credentials | The Sovereign Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&amp;family=Manrope:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-surface": "#2f312e",
+                        "outline-variant": "#c5c6d2",
+                        "error": "#ba1a1a",
+                        "tertiary": "#1c1200",
+                        "surface-variant": "#e3e3de",
+                        "on-tertiary-container": "#ab8b41",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#758dd5",
+                        "surface-container-high": "#e8e8e3",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#e9c349",
+                        "on-tertiary-fixed": "#251a00",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e3e3de",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "surface-tint": "#435b9f",
+                        "on-secondary-fixed": "#241a00",
+                        "primary-container": "#002366",
+                        "inverse-on-surface": "#f1f1ec",
+                        "surface": "#fafaf5",
+                        "secondary-container": "#fed65b",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#b3c5ff",
+                        "secondary": "#735c00",
+                        "on-primary-fixed": "#00174a",
+                        "surface-dim": "#dadad5",
+                        "on-primary-fixed-variant": "#2a4386",
+                        "on-surface": "#1a1c19",
+                        "secondary-fixed": "#ffe088",
+                        "on-background": "#1a1c19",
+                        "background": "#fafaf5",
+                        "on-secondary-container": "#745c00",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#352600",
+                        "tertiary-fixed-dim": "#e6c272",
+                        "on-tertiary-fixed-variant": "#5a4300",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-bright": "#fafaf5",
+                        "surface-container-low": "#f4f4ef",
+                        "on-secondary-fixed-variant": "#574500",
+                        "primary": "#00113a",
+                        "on-surface-variant": "#444650",
+                        "surface-container": "#eeeee9",
+                        "tertiary-fixed": "#ffdf9a",
+                        "outline": "#757682"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Manrope"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .card-texture {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 86c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm76-52c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm-3-11c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zM10 52c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm58 48c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zM46 2c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zM88 62c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zM26 42c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z' fill='%23d4af37' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#fafaf5]/70 dark:bg-slate-950/70 backdrop-blur-md shadow-[0px_20px_40px_rgba(0,35,102,0.06)]">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
+<span class="text-2xl font-black text-[#002366] dark:text-[#d4af37] font-headline">The Sovereign Archive</span>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#002366]/60 dark:text-slate-400 font-medium hover:text-[#d4af37] transition-colors duration-300" href="#">Heritage</a>
+<a class="text-[#002366]/60 dark:text-slate-400 font-medium hover:text-[#d4af37] transition-colors duration-300" href="#">Directory</a>
+<a class="text-[#002366]/60 dark:text-slate-400 font-medium hover:text-[#d4af37] transition-colors duration-300" href="#">Events</a>
+<a class="text-[#002366]/60 dark:text-slate-400 font-medium hover:text-[#d4af37] transition-colors duration-300" href="#">Archive</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#002366] hover:scale-95 duration-200 transition-all"><span class="material-symbols-outlined">notifications</span></button>
+<button class="p-2 text-[#002366] hover:scale-95 duration-200 transition-all"><span class="material-symbols-outlined">account_circle</span></button>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Desktop) -->
+<aside class="hidden lg:flex flex-col h-screen fixed left-0 top-0 pt-20 w-64 bg-[#fafaf5] dark:bg-slate-950 z-40">
+<div class="px-6 py-8 flex flex-col items-center gap-2">
+<div class="w-16 h-16 rounded-full overflow-hidden ring-2 ring-[#002366]/10">
+<img alt="Alumni Member Portrait" class="w-full h-full object-cover" data-alt="Close-up professional portrait of a distinguished Nigerian man with a warm smile, wearing a sharp navy blue suit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDst8jiAXuiNlS1-GWFS2Y8n-x7IOYc7GVT774hY-mKfVZ95hH47axmEFoGYfinYzEnYGYKphrR1r5pVyA2HFIzGBz0paUXcTF5RnpxhnBPg1WYSqTfPqjSzv3PS6hxDv3snTXGXeDWeI20yhy0zCIo_PMuGpHJflvKdKyIy6elyN_LvVAIOCSKMLIeNCJuwL0HwxM3s-z8tehkVRM9HyQ9QcU1gkUCo6vAf-CcNCAo2JusI8IX0bwJeAPz18pI7InJTJCjTHtICUs"/>
+</div>
+<h3 class="font-headline font-bold text-[#002366]">Imperial Member</h3>
+<p class="text-xs font-medium text-[#002366]/60">Class of 1984</p>
+<button class="mt-4 px-4 py-2 bg-[#002366] text-white text-xs font-bold rounded-full hover:translate-x-1 transition-transform duration-300">Verify Credentials</button>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 text-[#002366]/70 py-3 px-6 hover:bg-[#002366]/5 transition-all font-semibold text-sm" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 bg-[#002366] text-white rounded-r-full py-3 px-6 shadow-lg shadow-[#002366]/20 transition-all font-semibold text-sm" href="#">
+<span class="material-symbols-outlined">contact_emergency</span> Membership Card
+            </a>
+<a class="flex items-center gap-3 text-[#002366]/70 py-3 px-6 hover:bg-[#002366]/5 transition-all font-semibold text-sm" href="#">
+<span class="material-symbols-outlined">history_edu</span> Audit Logs
+            </a>
+<a class="flex items-center gap-3 text-[#002366]/70 py-3 px-6 hover:bg-[#002366]/5 transition-all font-semibold text-sm" href="#">
+<span class="material-symbols-outlined">event_seat</span> Events
+            </a>
+<a class="flex items-center gap-3 text-[#002366]/70 py-3 px-6 hover:bg-[#002366]/5 transition-all font-semibold text-sm" href="#">
+<span class="material-symbols-outlined">auto_stories</span> Legacy Archive
+            </a>
+<a class="flex items-center gap-3 text-[#002366]/70 py-3 px-6 hover:bg-[#002366]/5 transition-all font-semibold text-sm" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+            </a>
+</nav>
+<div class="p-6 border-t border-[#002366]/5">
+<a class="flex items-center gap-3 text-[#002366]/70 py-2 hover:translate-x-1 transition-all text-xs font-semibold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined text-sm">help</span> Support
+            </a>
+<a class="flex items-center gap-3 text-[#002366]/70 py-2 hover:translate-x-1 transition-all text-xs font-semibold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined text-sm">logout</span> Sign Out
+            </a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="lg:pl-64 pt-24 pb-12 min-h-screen">
+<div class="max-w-5xl mx-auto px-6">
+<!-- Hero Header -->
+<header class="mb-12">
+<h1 class="text-4xl lg:text-5xl font-headline font-black text-[#00113a] mb-2 tracking-tight">Membership Credentials</h1>
+<p class="text-[#00113a]/60 max-w-2xl font-medium">Your verified digital signature within the Lagos Heritage Alumni ecosystem. A mark of distinction and lifelong commitment.</p>
+</header>
+<!-- Digital ID Card Container -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- The Card & Quick Actions -->
+<div class="lg:col-span-7 space-y-8">
+<!-- Premium ID Card -->
+<div class="relative group">
+<!-- Card Reflection/Glow -->
+<div class="absolute -inset-1 bg-gradient-to-r from-[#d4af37] via-[#002366] to-[#d4af37] rounded-xl blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
+<div class="relative bg-primary-container card-texture rounded-xl overflow-hidden shadow-2xl aspect-[1.586/1] border border-[#d4af37]/20 flex flex-col p-8 text-white">
+<!-- Top Bar: Logo & Tier -->
+<div class="flex justify-between items-start mb-8">
+<div class="flex flex-col">
+<span class="font-headline font-black text-xl text-secondary-fixed leading-none">LAGOS HERITAGE</span>
+<span class="text-[10px] tracking-[0.3em] uppercase opacity-60 font-semibold">Alumni Association</span>
+</div>
+<div class="px-3 py-1 bg-secondary-fixed/10 border border-secondary-fixed/30 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed text-sm" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-secondary-fixed">Imperial Member</span>
+</div>
+</div>
+<!-- Middle Section: Photo & Info -->
+<div class="flex-1 flex gap-8 items-center">
+<div class="w-32 h-32 rounded-lg overflow-hidden border-2 border-secondary-fixed/50 p-1 bg-primary">
+<img alt="Member Portrait" class="w-full h-full object-cover rounded-md grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Clean and professional studio headshot of a Nigerian man, soft lighting, neutral background, centered composition" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlFa5Xm6nVU0ylDTnL7y-DQDDpXZB4JyD2yVxxsqhHjLm3-WAaKUjjWF3_DbuZIvDURR0d8aSljCUb76t5GHtCNf9FIFDSktIbZrHgZzwrII5qeYeLq93k8HyRYkQkGsb8zfkjr9sDXS4gY7fQ2NLVfcp4Z1LcW-vZFCtcldDICQbkJiHPw83RVWHHp_FNWnzlykTtQ4WOn0gSyhgLZQKsqw6Sl82d4BXwYlF2sNDE6VRun-lG0AduGGV4gpnxqopVJ9O1OiCszO8"/>
+</div>
+<div class="space-y-4">
+<div>
+<label class="text-[9px] uppercase tracking-widest opacity-50 block mb-1">Member Name</label>
+<h2 class="text-2xl font-headline font-bold">Oluwatobiloba Adeyemi</h2>
+</div>
+<div class="flex gap-8">
+<div>
+<label class="text-[9px] uppercase tracking-widest opacity-50 block mb-1">Class Of</label>
+<span class="font-bold text-lg">1984</span>
+</div>
+<div>
+<label class="text-[9px] uppercase tracking-widest opacity-50 block mb-1">ID Number</label>
+<span class="font-mono text-lg tracking-tighter">LH-84-0922</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Bar: QR & Valid Thru -->
+<div class="mt-auto flex justify-between items-end border-t border-white/10 pt-6">
+<div class="flex flex-col">
+<label class="text-[9px] uppercase tracking-widest opacity-50 block mb-1">Valid Thru</label>
+<span class="font-bold text-sm">Lifetime Benefactor</span>
+</div>
+<div class="p-2 bg-white rounded-lg shadow-inner">
+<!-- QR Placeholder -->
+<div class="w-16 h-16 bg-white relative">
+<div class="absolute inset-0 flex flex-wrap gap-1 p-0.5">
+<!-- Simple QR-like representation -->
+<div class="w-2 h-2 bg-primary"></div><div class="w-2 h-2 bg-white"></div><div class="w-2 h-2 bg-primary"></div><div class="w-2 h-2 bg-primary"></div>
+<div class="w-2 h-2 bg-white"></div><div class="w-2 h-2 bg-primary"></div><div class="w-2 h-2 bg-white"></div><div class="w-2 h-2 bg-white"></div>
+<div class="w-2 h-2 bg-primary"></div><div class="w-2 h-2 bg-white"></div><div class="w-2 h-2 bg-primary"></div><div class="w-2 h-2 bg-white"></div>
+<div class="w-2 h-2 bg-primary"></div><div class="w-2 h-2 bg-primary"></div><div class="w-2 h-2 bg-white"></div><div class="w-2 h-2 bg-primary"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="flex-1 min-w-[180px] bg-primary text-white py-4 px-6 rounded-md flex items-center justify-center gap-3 font-bold hover:shadow-lg transition-all group">
+<span class="material-symbols-outlined">wallet</span>
+                            Download for Wallet
+                        </button>
+<button class="flex-1 min-w-[180px] bg-surface-container-highest text-primary py-4 px-6 rounded-md flex items-center justify-center gap-3 font-bold hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined">share</span>
+                            Share Profile
+                        </button>
+<button class="w-full lg:w-auto bg-transparent border-b border-primary/20 hover:border-primary text-primary py-2 px-4 flex items-center justify-center gap-3 font-semibold transition-all">
+<span class="material-symbols-outlined text-lg">card_membership</span>
+                            Request Physical Card
+                        </button>
+</div>
+</div>
+<!-- Legacy Honors Side Section -->
+<div class="lg:col-span-5 space-y-10">
+<div>
+<h3 class="text-sm font-label uppercase tracking-[0.2em] text-[#00113a]/50 mb-6 flex items-center gap-3">
+                            Legacy Honors
+                            <span class="h-px flex-1 bg-[#00113a]/10"></span>
+</h3>
+<div class="grid grid-cols-1 gap-4">
+<!-- Badge 1 -->
+<div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-lg group hover:bg-surface-container-high transition-colors">
+<div class="w-14 h-14 rounded-full bg-secondary-fixed/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div>
+<h4 class="font-bold text-primary">Founding Donor</h4>
+<p class="text-xs text-primary/60">Contributed to the 2010 Heritage Wing</p>
+</div>
+</div>
+<!-- Badge 2 -->
+<div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-lg group hover:bg-surface-container-high transition-colors">
+<div class="w-14 h-14 rounded-full bg-secondary-fixed/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">supervisor_account</span>
+</div>
+<div>
+<h4 class="font-bold text-primary">Master Mentor</h4>
+<p class="text-xs text-primary/60">15+ years of career guidance provided</p>
+</div>
+</div>
+<!-- Badge 3 -->
+<div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-lg group hover:bg-surface-container-high transition-colors">
+<div class="w-14 h-14 rounded-full bg-secondary-fixed/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+<div>
+<h4 class="font-bold text-primary">Decade of Service</h4>
+<p class="text-xs text-primary/60">Active member since induction</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Exclusive Benefits Box -->
+<div class="bg-[#002366] text-white p-8 rounded-xl relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary-fixed/10 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+<h4 class="font-headline font-bold text-xl mb-4 text-secondary-fixed">Imperial Perks</h4>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary-fixed text-sm mt-1">check_circle</span>
+<span class="text-sm font-medium opacity-90">Priority access to Heritage Foundation events</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary-fixed text-sm mt-1">check_circle</span>
+<span class="text-sm font-medium opacity-90">Exclusive use of the Sovereign Lounge in Lagos</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary-fixed text-sm mt-1">check_circle</span>
+<span class="text-sm font-medium opacity-90">Direct line to the Archive Board of Trustees</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Legacy Timeline Preview -->
+<section class="mt-20">
+<div class="flex items-end justify-between mb-8">
+<div>
+<span class="text-secondary font-bold text-sm uppercase tracking-widest mb-2 block">Journey</span>
+<h2 class="text-3xl font-headline font-bold text-primary">Membership Milestones</h2>
+</div>
+</div>
+<div class="relative py-12">
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-0.5 bg-outline-variant/20"></div>
+<div class="relative flex justify-between">
+<div class="flex flex-col items-center gap-4 bg-surface px-4 z-10">
+<div class="w-4 h-4 rounded-full bg-secondary shadow-lg shadow-secondary/50"></div>
+<div class="text-center">
+<span class="block font-bold text-primary">1984</span>
+<span class="text-[10px] uppercase font-semibold text-primary/40">Induction</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-4 bg-surface px-4 z-10">
+<div class="w-4 h-4 rounded-full bg-secondary/40 border-2 border-secondary"></div>
+<div class="text-center">
+<span class="block font-bold text-primary">1995</span>
+<span class="text-[10px] uppercase font-semibold text-primary/40">Silver Tier</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-4 bg-surface px-4 z-10">
+<div class="w-4 h-4 rounded-full bg-secondary shadow-lg shadow-secondary/50"></div>
+<div class="text-center">
+<span class="block font-bold text-primary">2010</span>
+<span class="text-[10px] uppercase font-semibold text-primary/40">Imperial Elev.</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-4 bg-surface px-4 z-10">
+<div class="w-4 h-4 rounded-full bg-outline-variant/30"></div>
+<div class="text-center">
+<span class="block font-bold text-primary/30">2024</span>
+<span class="text-[10px] uppercase font-semibold text-primary/20">40yr Jubilee</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#002366] dark:bg-slate-950 w-full py-12 mt-auto flex flex-col items-center gap-6 border-t border-[#d4af37]/10">
+<div class="flex gap-8">
+<a class="text-white/60 font-label text-xs uppercase tracking-widest hover:text-white underline underline-offset-4 transition-all" href="#">Privacy Policy</a>
+<a class="text-white/60 font-label text-xs uppercase tracking-widest hover:text-white underline underline-offset-4 transition-all" href="#">Terms of Service</a>
+<a class="text-white/60 font-label text-xs uppercase tracking-widest hover:text-white underline underline-offset-4 transition-all" href="#">Heritage Foundation</a>
+</div>
+<p class="text-white/40 font-label text-[10px] uppercase tracking-widest text-center px-6">
+            © 2024 The Sovereign Archive. Preserving the Lagosian Academic Legacy.
+        </p>
+</footer>
+<!-- Mobile Navigation (Bottom) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-[#fafaf5]/95 backdrop-blur-md border-t border-[#002366]/5 z-50 flex justify-around py-3 px-4">
+<button class="flex flex-col items-center gap-1 text-[#002366]/60">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#002366]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">contact_emergency</span>
+<span class="text-[10px] font-bold">Card</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#002366]/60">
+<span class="material-symbols-outlined">event</span>
+<span class="text-[10px] font-bold">Events</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#002366]/60">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px] font-bold">Account</span>
+</button>
+</nav>
+</body></html>

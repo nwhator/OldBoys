@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Living Archive | Lagos Heritage Alumni</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Manrope:wght@400;500;700&amp;family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-high": "#e8e8e3",
+              "on-error": "#ffffff",
+              "surface-container-highest": "#e3e3de",
+              "on-tertiary": "#ffffff",
+              "error-container": "#ffdad6",
+              "surface-container-lowest": "#ffffff",
+              "error": "#ba1a1a",
+              "primary": "#00113a",
+              "surface-bright": "#fafaf5",
+              "outline": "#757682",
+              "on-primary-fixed": "#00174a",
+              "surface-variant": "#e3e3de",
+              "on-surface-variant": "#444650",
+              "secondary-fixed": "#ffe088",
+              "on-primary-container": "#758dd5",
+              "on-secondary-container": "#745c00",
+              "primary-fixed": "#dbe1ff",
+              "on-background": "#1a1c19",
+              "on-secondary-fixed-variant": "#574500",
+              "inverse-on-surface": "#f1f1ec",
+              "on-surface": "#1a1c19",
+              "on-error-container": "#93000a",
+              "on-tertiary-fixed-variant": "#5a4300",
+              "on-tertiary-fixed": "#251a00",
+              "surface-tint": "#435b9f",
+              "on-primary": "#ffffff",
+              "outline-variant": "#c5c6d2",
+              "inverse-primary": "#b3c5ff",
+              "surface-container-low": "#f4f4ef",
+              "on-tertiary-container": "#ab8b41",
+              "on-secondary-fixed": "#241a00",
+              "secondary-container": "#fed65b",
+              "on-secondary": "#ffffff",
+              "primary-fixed-dim": "#b3c5ff",
+              "surface": "#fafaf5",
+              "tertiary": "#1c1200",
+              "tertiary-fixed": "#ffdf9a",
+              "surface-dim": "#dadad5",
+              "on-primary-fixed-variant": "#2a4386",
+              "primary-container": "#002366",
+              "inverse-surface": "#2f312e",
+              "background": "#fafaf5",
+              "tertiary-container": "#352600",
+              "surface-container": "#eeeee9",
+              "secondary-fixed-dim": "#e9c349",
+              "secondary": "#735c00",
+              "tertiary-fixed-dim": "#e6c272"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Manrope"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .archive-gradient {
+            background: linear-gradient(to bottom, rgba(250,250,245,0) 0%, rgba(250,250,245,0.9) 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- TopNavBar -->
+<nav class="bg-[#fafaf5]/70 dark:bg-[#00113a]/70 backdrop-blur-md text-[#002366] dark:text-[#fafaf5] fixed top-0 z-50 w-full tonal-transition bg-surface-variant/10">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-bold font-['Noto_Serif'] text-[#002366] dark:text-[#fafaf5]">
+                Lagos Heritage
+            </div>
+<div class="hidden md:flex items-center space-y-0 space-x-8 font-['Noto_Serif'] font-bold tracking-tight">
+<a class="text-slate-600 dark:text-slate-400 hover:text-[#002366] transition-colors" href="#">Home</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-[#002366] transition-colors" href="#">About</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-[#002366] transition-colors" href="#">Leadership</a>
+<a class="text-[#002366] border-b-2 border-[#b8860b] dark:text-[#fafaf5] pb-1" href="#">Gallery</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-[#002366] transition-colors" href="#">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded font-medium hover:bg-primary-container transition-all scale-95 duration-200 ease-in-out">
+                Join Now
+            </button>
+</div>
+</nav>
+<main class="pt-32 pb-20">
+<!-- Header Section -->
+<header class="max-w-7xl mx-auto px-8 mb-16 text-center">
+<span class="font-label text-xs uppercase tracking-[0.3em] text-secondary mb-4 block">Our Visual History</span>
+<h1 class="font-headline text-5xl md:text-7xl font-bold text-primary mb-6 tracking-tight">The Living Archive</h1>
+<p class="max-w-2xl mx-auto text-on-surface-variant font-body text-lg leading-relaxed">
+                A curated journey through the decades, documenting the prestige, the people, and the enduring legacy of the Lagos Heritage Alumni Association.
+            </p>
+</header>
+<!-- Year-based Tabs/Filters -->
+<section class="max-w-7xl mx-auto px-8 mb-12">
+<div class="flex flex-wrap justify-center gap-4 border-b border-outline-variant/20 pb-6">
+<button class="px-8 py-2 font-label text-sm font-bold tracking-widest text-primary border-b-2 border-secondary">ALL ERAS</button>
+<button class="px-8 py-2 font-label text-sm tracking-widest text-on-surface-variant hover:text-primary transition-colors">1970S</button>
+<button class="px-8 py-2 font-label text-sm tracking-widest text-on-surface-variant hover:text-primary transition-colors">1980S</button>
+<button class="px-8 py-2 font-label text-sm tracking-widest text-on-surface-variant hover:text-primary transition-colors">1990S</button>
+<button class="px-8 py-2 font-label text-sm tracking-widest text-on-surface-variant hover:text-primary transition-colors">2000S</button>
+<button class="px-8 py-2 font-label text-sm tracking-widest text-on-surface-variant hover:text-primary transition-colors">RECENT</button>
+</div>
+</section>
+<!-- Photo Grid (Bento Style) -->
+<section class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Main Feature (2000s) -->
+<div class="md:col-span-8 relative group overflow-hidden bg-surface-container-low cursor-pointer">
+<img class="w-full h-[600px] object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Dignified group of Nigerian graduates in formal academic gowns standing before a historic colonial-style building with high windows and warm sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-aXzJpv1IA4PXSb-4WEPOmLNLiMUUo20A-6XBcg0rjPhhUi9UJP069oQEaBV7qRr_1NoDfwRw4vzJ68FGJ7LLvPFBBheVHfyFh77izW9BhCgEM9HucTLLxlDS4HSBgKH4BywsdWOtGR2ivYGOvvsC7zOBa7vaeog-PlbxcSeTNQpyRz3vCjRITrE7o8j5E78AntwFd2ToKUBGE3XCCVS4xIBLWopEeJIcU5tSv4vo3st0neMdYFkTIie_GBGBDBRbECNk2xI1ss8"/>
+<div class="absolute inset-0 archive-gradient flex flex-col justify-end p-8">
+<span class="font-label text-xs font-bold text-secondary mb-2">CLASS OF 2005</span>
+<h3 class="font-headline text-3xl font-bold text-primary">Golden Jubilee Celebration</h3>
+<p class="text-on-surface-variant text-sm mt-2 max-w-md">Members gather at the Great Hall to commemorate 50 years of academic excellence and heritage.</p>
+</div>
+</div>
+<!-- Vertical Detail (1970s) -->
+<div class="md:col-span-4 relative group overflow-hidden bg-surface-container-low cursor-pointer">
+<img class="w-full h-[600px] object-cover transition-transform duration-700 group-hover:scale-105 grayscale hover:grayscale-0" data-alt="Vintage black and white photograph of students in 1970s attire walking across a lush university campus with vibrant tropical palm trees" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNqEe7Whuy9k5hlLroVBAIQXfxC3vHcHlQfgmVuArh_9OU8D2yXZjdes8g6VTkmquxQZjhaiLW3FJ35IPzUX6rjA1pf9Waz7jh4KFrEFXTkmRuF8tmFPc6MWLY0DCHR8BCuKfi882mgF3V1oBYUjLNOLjR41ZmExVQe1ZpZJCQKki76RTvDOrVVrZ82iiD8jLpN-85sIx1g3iVYhTxl3KUBiU5aUk6KHSRiwHdhH74eJ8_lBkuiByXj9F3qpJgEw4mSBjd3h3Cvbw"/>
+<div class="absolute inset-0 archive-gradient flex flex-col justify-end p-8">
+<span class="font-label text-xs font-bold text-secondary mb-2">1974 ARCHIVE</span>
+<h3 class="font-headline text-2xl font-bold text-primary">Founding Footsteps</h3>
+</div>
+</div>
+<!-- Square Grid Item (1980s) -->
+<div class="md:col-span-4 relative group overflow-hidden bg-surface-container-low cursor-pointer">
+<img class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Interior of a library with warm wooden shelves and students in 1980s fashion studying together around a heavy oak table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMz9Lz1I4yfer0ZFm_znPD85ZonNCfSa-L4jh5VPbsGavNOziJCQHqdchH0ce6PNGwEe-uWi_VZnibXN5JQHmgRNIRTMRVXG2V9CbmT5-BpI5ALSGZIHOuvJ4gir3_0hlcEni0Wq95PK5D4Oo786empkXLXIothez0da1U5DBofBuYFKW-RU-Wjop0mYiKTnY5ao5SyX88fmEZUsEcrRlgg9xTPb6fuAdLfaLt_ugQ3kNyscH_-zCWaaHGGT7_IVm_KhLLINZCykk"/>
+<div class="absolute inset-0 archive-gradient flex flex-col justify-end p-8">
+<span class="font-label text-xs font-bold text-secondary mb-2">1982 STUDY CIRCLE</span>
+<h3 class="font-headline text-xl font-bold text-primary">The Reading Room Legacy</h3>
+</div>
+</div>
+<!-- Wide Detail (Recent) -->
+<div class="md:col-span-4 relative group overflow-hidden bg-surface-container-low cursor-pointer">
+<img class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Candid shot of smiling Nigerian professionals in traditional attire laughing together at an evening alumni dinner event with warm bokeh lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6MSs_YhO8kEVbPzuiG2pblF0M89QyDzW833M-3ifaEW4YRsNRgL4YzyDDh05cuC9RTTdsoD6rzqMkpFAnu-nKIp-EKKiun0ITHWTB58b3x0WeQ1vpeuiqYDYjKnEWuhPejttLbNHOCQGFY1Ba3Kzqwq5ZsaP-4ueUzP0r2luy_miQfCDEGnIZ-hy-px6yAl0goncdz4Zs2sgrKywddRAwgUDOIYsrahMCEzPfvpP8538wAHLoejfSVLBUEqfE2IZkL-NSJMZ_f70"/>
+<div class="absolute inset-0 archive-gradient flex flex-col justify-end p-8">
+<span class="font-label text-xs font-bold text-secondary mb-2">ANNUAL REUNION 2023</span>
+<h3 class="font-headline text-xl font-bold text-primary">Modern Traditions</h3>
+</div>
+</div>
+<!-- Small Focus (1990s) -->
+<div class="md:col-span-4 relative group overflow-hidden bg-surface-container-low cursor-pointer">
+<img class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close up of a classic university sports medal with the Lagos Heritage crest resting on an old leather-bound ledger book" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdYwnEYWSPNz6hIShAmcJRM5kF1RDZK4xxJilWee7o7O0DPWWddi3NYYbDCmAE3JNdUSVpqiFwf7wg5fDcnp9pKvPv--oTtnnRoia_pK-hjVbWVGUm5PrUeox-0s1BHVMn_89j4_a38LEVFjoWMpXhhBl-Md4Lxxou8fFC1dJCed14_XL4KoLUoi8UnRBQpxKZOqI-XA69O5iVjQR7tC6sgI9STOZfYgQriYQOyQBe5lsZ-vCAJpdBnW1M0D2wgEj9_7nB29HqEWI"/>
+<div class="absolute inset-0 archive-gradient flex flex-col justify-end p-8">
+<span class="font-label text-xs font-bold text-secondary mb-2">MEMORABILIA</span>
+<h3 class="font-headline text-xl font-bold text-primary">Championship Honors 1991</h3>
+</div>
+</div>
+<!-- Artistic Overlap/Asymmetry (2000s) -->
+<div class="md:col-span-12 mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="relative">
+<div class="absolute -top-4 -left-4 w-24 h-24 bg-secondary/10 z-0"></div>
+<img class="relative z-10 w-full h-[500px] object-cover" data-alt="Wide shot of a modern Lagos architectural landmark at sunset with long shadows and a group of people standing on a terrace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCg1y-f_vkAMuV6WYcB1e3-EdbXQs8r1upH5mBu3AStfSVt9QA7nZlpy58B8wUnnnGgiQ82zeIcMwt3goYxrIlLb_HLstQf9o1Yyri3HMHR5TWIwYZvnwTvwbxr1j4woEyAaXk21NdIeXTQB0ZcliPCcN8XOABK7UixxSliFrEjHTE7k2j3yOIUWEIrf5Oxf0ICxDpSBJc1EWP7Zz2DuIqxisnc4cP9BhFL84La9Lwee8gqL-yo5EMH4bf-6emsxv9gVH-RyDE1scw"/>
+<div class="absolute -bottom-6 -right-6 p-6 bg-primary text-on-primary max-w-xs z-20">
+<h4 class="font-headline text-xl mb-2">The New Horizon</h4>
+<p class="font-body text-xs opacity-80 leading-relaxed">A look at the recently commissioned Heritage Plaza, a gift from the class of 2000 to their alma mater.</p>
+</div>
+</div>
+<div class="space-y-6">
+<h2 class="font-headline text-4xl font-bold text-primary">Capturing the Spirit of Lagos Excellence</h2>
+<p class="text-on-surface-variant font-body text-lg">
+                            Every image in this archive serves as a testament to the growth and impact of our members. From the early days of independence-era scholarship to today’s global leadership.
+                        </p>
+<div class="flex items-center gap-4 py-4 border-y border-outline-variant/20">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-surface bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">JD</div>
+<div class="w-10 h-10 rounded-full border-2 border-surface bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">AK</div>
+<div class="w-10 h-10 rounded-full border-2 border-surface bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">SM</div>
+</div>
+<span class="font-label text-xs text-on-surface-variant">Over 5,000 archived photographs curated by the Heritage Board.</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#fafaf5] dark:bg-[#00113a] text-[#002366] dark:text-slate-300 font-['Inter'] text-xs uppercase tracking-widest py-12 border-t-0 tonal-shift from surface to surface-container-low">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-8 max-w-7xl mx-auto space-y-4 md:space-y-0">
+<div class="opacity-80">
+                © 2024 Lagos Heritage Alumni Association. All Rights Reserved.
+            </div>
+<div class="flex space-x-8">
+<a class="text-slate-500 hover:text-[#002366] dark:hover:text-white underline decoration-[#b8860b] decoration-2 underline-offset-4 transition-opacity" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-[#002366] dark:hover:text-white underline decoration-[#b8860b] decoration-2 underline-offset-4 transition-opacity" href="#">Terms of Service</a>
+<a class="text-slate-500 hover:text-[#002366] dark:hover:text-white underline decoration-[#b8860b] decoration-2 underline-offset-4 transition-opacity" href="#">FAQ</a>
+</div>
+</div>
+</footer>
+<!-- Simplified Lightbox UI (Fixed Overlay Mockup) -->
+<div class="fixed inset-0 bg-primary/95 backdrop-blur-xl z-[100] hidden items-center justify-center px-12">
+<button class="absolute top-8 right-8 text-white hover:text-secondary-fixed transition-colors">
+<span class="material-symbols-outlined text-4xl" data-icon="close">close</span>
+</button>
+<div class="max-w-5xl w-full flex flex-col md:flex-row gap-8 items-center">
+<div class="flex-1">
+<img class="w-full shadow-2xl" data-alt="High resolution detailed view of the alumni graduation photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgi4xP719KC_2_gaCEQKZZSyRG7QqD544X8o4OeUuFWVAYtdsMyEharsXsrSg3LBOgr-TBm9x46stzOb_i8Vd6W-8VUWdFgOu5jOFlN0I277vDxj_ILsajAlohIME9luXBvepG3r0BQzzOddWk5QGykcdDg5Md8GHO0Pnfo8Q03OITh0vo2nVzG2xPKgjToVemZ_luvoLVt-P7a1NqS1fXbWWhcdg0vWYLCZRwUZ-rbFcNU5gtioZ080fvnwkh3L2phvm2dmdNU94"/>
+</div>
+<div class="w-full md:w-80 text-white space-y-6">
+<div>
+<span class="font-label text-xs tracking-widest text-secondary-fixed">MEMBER SUBMISSION</span>
+<h2 class="font-headline text-3xl font-bold mt-2">Golden Jubilee Celebration</h2>
+</div>
+<p class="font-body text-sm opacity-80 leading-relaxed">Taken on November 15th, 2005. This moment captures the unification of the North and South chapters at the Main Auditorium.</p>
+<div class="pt-6 border-t border-white/10 flex justify-between items-center">
+<button class="flex items-center gap-2 font-label text-xs hover:text-secondary-fixed">
+<span class="material-symbols-outlined" data-icon="share">share</span> SHARE
+                    </button>
+<button class="flex items-center gap-2 font-label text-xs hover:text-secondary-fixed">
+<span class="material-symbols-outlined" data-icon="download">download</span> DOWNLOAD
+                    </button>
+</div>
+</div>
+</div>
+<button class="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white">
+<span class="material-symbols-outlined text-5xl" data-icon="arrow_back_ios">arrow_back_ios</span>
+</button>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white">
+<span class="material-symbols-outlined text-5xl" data-icon="arrow_forward_ios">arrow_forward_ios</span>
+</button>
+</div>
+</body></html>

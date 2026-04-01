@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Member Profile | The Sovereign Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@400;500;600&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary": "#735c00",
+                        "tertiary-fixed": "#ffdf9a",
+                        "surface-container-highest": "#e3e3de",
+                        "inverse-surface": "#2f312e",
+                        "on-secondary-fixed": "#241a00",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#002366",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "tertiary-container": "#352600",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#b3c5ff",
+                        "surface-container": "#eeeee9",
+                        "on-surface": "#1a1c19",
+                        "on-tertiary-fixed-variant": "#5a4300",
+                        "on-tertiary-container": "#ab8b41",
+                        "on-primary-fixed": "#00174a",
+                        "surface-bright": "#fafaf5",
+                        "tertiary-fixed-dim": "#e6c272",
+                        "surface": "#fafaf5",
+                        "primary-fixed": "#dbe1ff",
+                        "secondary-container": "#fed65b",
+                        "primary": "#00113a",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-primary-fixed-variant": "#2a4386",
+                        "outline-variant": "#c5c6d2",
+                        "on-surface-variant": "#444650",
+                        "surface-variant": "#e3e3de",
+                        "surface-tint": "#435b9f",
+                        "outline": "#757682",
+                        "background": "#fafaf5",
+                        "inverse-on-surface": "#f1f1ec",
+                        "on-primary-container": "#758dd5",
+                        "secondary-fixed-dim": "#e9c349",
+                        "surface-container-high": "#e8e8e3",
+                        "on-secondary-container": "#745c00",
+                        "tertiary": "#1c1200",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#dadad5",
+                        "on-tertiary-fixed": "#251a00",
+                        "on-background": "#1a1c19",
+                        "surface-container-low": "#f4f4ef",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#ffe088",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Manrope"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-shift {
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 h-20 bg-[#fafaf5]/70 dark:bg-slate-950/70 backdrop-blur-xl shadow-[0px_20px_40px_rgba(0,35,102,0.06)] flex justify-between items-center px-12">
+<div class="text-xl font-serif italic text-blue-950 dark:text-white">The Sovereign Archive</div>
+<nav class="hidden md:flex items-center space-x-10 text-blue-900/60 dark:text-slate-400 font-serif tracking-tight">
+<a class="hover:text-yellow-600 transition-colors duration-300" href="#">Archive</a>
+<a class="hover:text-yellow-600 transition-colors duration-300" href="#">Directory</a>
+<a class="text-yellow-600 font-bold" href="#">Profile</a>
+<a class="hover:text-yellow-600 transition-colors duration-300" href="#">Legacy</a>
+</nav>
+<div class="flex items-center space-x-6">
+<button class="material-symbols-outlined text-blue-900 dark:text-blue-100 scale-95 active:scale-100 transition-transform">notifications</button>
+<button class="material-symbols-outlined text-blue-900 dark:text-blue-100 scale-95 active:scale-100 transition-transform">settings</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant/20">
+<img alt="Premium portrait of alumni member" class="w-full h-full object-cover" data-alt="Close-up professional portrait of a distinguished Nigerian man in his late 30s with a warm and confident expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtYOf8moPnV7XINy9PxgnOHO-ryLxuE09dIG95YWPv0heenJw_p7ghoIzY86diLEQ4P6Cca_VE0htsbTKwgT2aVQb5qYySag7oH3l6wW5aBha0kvTmx8z6diNp13VUsodUoCQgcsqPeRKSHQNFzxzJq3yrPdmBO97KxlTC3c9d-NY812ZHUrl9Ub860v7wpFBB2rovxtS67RKNu8sQviC7Mlrz-s9YBeJqFFu1yyKgQkvkfXWMQQ7We-z9XU3hZsyuwxSoCvj7GMY"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Suppressed for focused Profile view as per Shell Visibility Rules, using TopBar only for editorial feel) -->
+<main class="pt-20 pb-20">
+<!-- Hero Section: Editorial Header -->
+<section class="relative w-full h-[614px] overflow-hidden flex items-end">
+<div class="absolute inset-0 z-0">
+<img alt="Cover Image" class="w-full h-full object-cover" data-alt="Sophisticated black and white architectural detail of a modern high-rise in Lagos at sunset with golden light reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCU6jFw2Kohlm6ZOSCwNYLpMFSuMzDGlMRDB3pTb4cEgeRYKhNxd9UHXOsvI4M-5iU5JHR5EwhzsyNezuWus9pvKjj07qYSYxhvGvVKDej27W0BO6p4Bm8r5QIq_7AA9ONY57fykxkt2ZonW6FKGifTnQbX1z2au5jhmxtfB1V79EscJ7JvrJaLjTGctT1dLspkezfQJQDrYPOM-twqDiZSIK6JFXsfZJkR-nm9EzS01KUECqyz7hTMKoqkWa_FckeJ0x2eT4TKBmc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent"></div>
+</div>
+<div class="relative z-10 w-full max-w-7xl mx-auto px-12 pb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="flex flex-col md:flex-row items-center md:items-end gap-8">
+<div class="w-48 h-48 md:w-64 md:h-64 rounded-lg overflow-hidden border-4 border-surface shadow-2xl -mb-8 md:-mb-12 relative">
+<img alt="Member Portrait" class="w-full h-full object-cover" data-alt="Professional portrait of Adebayo O. Williams in a sharp navy blue tailored suit with a crisp white shirt against a neutral studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvlddFQuOWTYhLaMg4e_rYoaPdz28g6y0P3AAujAOkFECphV_xbdRc0wGWDLjJpr46AaB8VVgI7K1GaPOG8I5hs5J26E-q47WKxlSd07RO3V3EM1itQ_jbXY99puFXhYlJwu36SAFhUoCKy-4eOcg9L00rt0Y6E0RVsmVb4JbvrS0N0AGUssSFjQGkWKnDwzBXgxSeA1Y77QLk0hDMrNaKvy0t75RD1ZLPDc0mzzj7TFJcXGu6E_k0I7ewgNyt7QYnwDPZCvn7CeE"/>
+</div>
+<div class="text-center md:text-left text-white pb-4">
+<h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tight mb-2">Adebayo O. Williams</h1>
+<p class="font-body text-xl md:text-2xl text-secondary-fixed flex items-center justify-center md:justify-start gap-2">
+                            Class of 2005 <span class="w-1.5 h-1.5 bg-secondary-fixed rounded-full"></span> Lagos House
+                        </p>
+</div>
+</div>
+<div class="flex gap-4 mb-4">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-md font-body font-semibold text-sm tracking-wide hover:shadow-[0_4px_12px_rgba(115,92,0,0.3)] transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">edit</span>
+                        Edit Profile
+                    </button>
+<button class="bg-surface-container-highest text-primary px-8 py-3 rounded-md font-body font-semibold text-sm tracking-wide hover:bg-white transition-all">
+                        Update Contact
+                    </button>
+</div>
+</div>
+</section>
+<!-- Profile Content: Bento Layout -->
+<section class="max-w-7xl mx-auto px-12 mt-24">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Main Info Column -->
+<div class="md:col-span-8 space-y-12">
+<!-- Professional Bio -->
+<div class="bg-surface-container-low p-10 rounded-xl relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[8rem]" style="font-variation-settings: 'FILL' 1;">architecture</span>
+</div>
+<h2 class="font-headline text-3xl text-primary mb-6">Professional Career</h2>
+<div class="flex flex-col gap-8">
+<div class="flex gap-6 items-start">
+<div class="bg-primary-container p-4 rounded-lg text-secondary">
+<span class="material-symbols-outlined text-3xl">corporate_fare</span>
+</div>
+<div>
+<h3 class="font-body text-xl font-bold text-on-surface">Senior Project Architect</h3>
+<p class="text-on-surface-variant text-lg">Top-Tier Architecture &amp; Urban Planning Firm</p>
+<p class="text-outline text-sm font-label mt-2 uppercase tracking-widest">2015 — Present</p>
+<p class="mt-4 text-on-surface/80 leading-relaxed max-w-2xl">
+                                        Leading the design and execution of landmark commercial developments across the Lagos metropolis, specializing in sustainable urban heritage revitalization.
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Education Timeline (Custom Legacy Component) -->
+<div class="p-10 border-l-2 border-outline-variant/20 ml-4 relative">
+<h2 class="font-headline text-3xl text-primary mb-12 -ml-14 bg-background pl-4 inline-block">Education History</h2>
+<div class="space-y-16">
+<!-- High School -->
+<div class="relative pl-12">
+<div class="absolute -left-[3.1rem] top-0 w-6 h-6 bg-secondary rounded-full border-4 border-background ring-4 ring-secondary/10"></div>
+<div class="bg-surface-container-lowest p-8 shadow-[0px_10px_30px_rgba(0,0,0,0.02)] rounded-lg">
+<h4 class="font-headline text-2xl mb-1">The Sovereign Academy</h4>
+<p class="text-primary font-bold text-lg mb-2">School House: Lagos House</p>
+<p class="text-on-surface-variant font-label tracking-wide uppercase text-xs">Class of 2005</p>
+<p class="mt-4 text-on-surface/70 leading-relaxed">
+                                        Prefect of Arts &amp; Culture. Recipient of the prestigious Sovereign Legacy Award for Excellence in Design.
+                                    </p>
+</div>
+</div>
+<!-- University -->
+<div class="relative pl-12">
+<div class="absolute -left-[3.1rem] top-0 w-6 h-6 bg-outline-variant rounded-full border-4 border-background"></div>
+<div class="bg-surface-container-lowest p-8 shadow-[0px_10px_30px_rgba(0,0,0,0.02)] rounded-lg opacity-80">
+<h4 class="font-headline text-2xl mb-1">University of Lagos</h4>
+<p class="text-primary font-bold text-lg mb-2">B.Arch, Environmental Design</p>
+<p class="text-on-surface-variant font-label tracking-wide uppercase text-xs">Class of 2011</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Metadata -->
+<div class="md:col-span-4 space-y-8">
+<!-- Contact Details Card -->
+<div class="bg-primary text-on-primary p-10 rounded-xl shadow-xl">
+<h3 class="font-headline text-2xl mb-8 border-b border-on-primary/10 pb-4">Personal Details</h3>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary-fixed">mail</span>
+<div>
+<p class="text-xs font-label uppercase tracking-tighter text-on-primary-container">Email Address</p>
+<p class="font-body text-sm font-medium">a.williams@sovereign-arch.com</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary-fixed">location_on</span>
+<div>
+<p class="text-xs font-label uppercase tracking-tighter text-on-primary-container">Current Residence</p>
+<p class="font-body text-sm font-medium">Ikoyi, Lagos, Nigeria</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary-fixed">verified_user</span>
+<div>
+<p class="text-xs font-label uppercase tracking-tighter text-on-primary-container">Member Status</p>
+<p class="font-body text-sm font-medium">Gold Alumni Member</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Achievements/Badges Grid -->
+<div class="bg-surface-container-highest p-8 rounded-xl">
+<h3 class="font-headline text-xl text-primary mb-6">Legacy Honors</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col items-center p-4 bg-background rounded-lg text-center">
+<span class="material-symbols-outlined text-secondary text-4xl mb-2" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+<p class="text-[10px] font-label font-bold uppercase tracking-widest text-on-surface-variant">20 Year Donor</p>
+</div>
+<div class="flex flex-col items-center p-4 bg-background rounded-lg text-center">
+<span class="material-symbols-outlined text-secondary text-4xl mb-2" style="font-variation-settings: 'FILL' 1;">school</span>
+<p class="text-[10px] font-label font-bold uppercase tracking-widest text-on-surface-variant">Legacy Mentor</p>
+</div>
+</div>
+</div>
+<!-- Quote Block -->
+<div class="p-8 border-t-4 border-secondary italic font-serif text-primary-container text-lg leading-relaxed bg-surface-container-low">
+                        "Architecture is the silent record of our evolution. As alumni, we are the stewards of the structures—physical and social—that define our excellence."
+                    </div>
+</div>
+</div>
+</section>
+<!-- Gallery / Projects Overlap -->
+<section class="max-w-7xl mx-auto px-12 mt-32 relative">
+<h2 class="font-headline text-4xl text-primary mb-12 text-center md:text-left">Project Portfolio</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-0">
+<div class="relative aspect-square md:translate-y-8 z-10 group overflow-hidden">
+<img alt="Project 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Stunning low angle shot of a modern glass skyscraper reflecting a bright blue sky with sharp geometric lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG8-8xth88Lqs_nvWz4DZqzeIlZYS_Sx4DcMJA7lYonkp17yqp1NsM1hL8w23pggc4nR-RNNhnl8q-klMe64LcAH43B_z0d3WbYmMoX5VRGOkCmizM4vt0RkkiOpiRF5KvW59VFO4QT2hJ9pPqGmX_edooubICqObIt_3sVWmTswHjTNGPvN5MV1tfM993ao2BiEWXua6g4nlR0sk5cb8EoVxag7EwecDNmlIkG8vESsj0cX2B6LiyWWAgqD2r7AIOZB3xqTNCAvM"/>
+<div class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<p class="text-white font-headline text-xl">The Lagos Heights</p>
+</div>
+</div>
+<div class="relative aspect-[4/5] z-0 group overflow-hidden">
+<img alt="Project 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Luxury residential villa with minimalist white walls and a turquoise swimming pool under tropical palms" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeilhEu3ory4beBA8hyGa6n940pkKQ5pXia22hOVabPp74c9YyGJcoQsN5EMeNMgJY32dUDcbpFEZ1P9qvhTYm81RshHq4hNalX-gIMRJQmCfSEaafQWz5qd4JxDJ3W3zwnjtRN4wfAL2KnBOFEnDgY5VQFe151I3d72o5P1ENsmWQYj02alNZYOOQTvNZyq4acIUpQe1ZeRe3Z3lVhMenaMXJiJ_F7gqD1TpttOayOuYha_bBi_n_yhN-w6hLoNr2lRHbFk_iW9Y"/>
+<div class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<p class="text-white font-headline text-xl">Victoria Island Residence</p>
+</div>
+</div>
+<div class="relative aspect-square md:translate-y-16 z-20 group overflow-hidden">
+<img alt="Project 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Interior view of a modern library with warm wood finishes, large windows, and contemporary furniture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJPFPEHKdrj8EKjoMY2mwGLLz5188wuK4jlsBIBjohlBcc-SKwaPKcgPnhqJaa4fT6Yhz5htcJ7emOs-9Iyg6G9HOMuepPWWdW8uTPSYDKdeWAfWFemRq2_nHinlaE3AOQWEkkAzrfyjWpreNyHNn4YVqDaw-c1S-RDnKmzxwih8GYDHe2jp1bMTXZQjoyRFdIt52JmfnFNy6BZMDDyNsg5Aop7vktoTTWCSb4Em58JSSs2G9AKKOUwQEnCNKX-zBD_YgOEh3u82Y"/>
+<div class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<p class="text-white font-headline text-xl">Sovereign Library Redesign</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="mt-48 py-12 px-12 bg-surface-container-lowest text-center border-t border-outline-variant/10">
+<p class="font-serif text-blue-950 italic text-lg mb-4">The Sovereign Archive</p>
+<p class="font-label text-xs uppercase tracking-widest text-on-surface-variant opacity-60">Legacy &amp; Excellence • Nigerian Alumni Association • 2024</p>
+</footer>
+</body></html>

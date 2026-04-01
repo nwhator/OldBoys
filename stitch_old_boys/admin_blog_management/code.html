@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Sovereign Archive | Admin Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Manrope:wght@400;500;600;700&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "background": "#fafaf5",
+                        "on-primary-fixed-variant": "#2a4386",
+                        "surface": "#fafaf5",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e3e3de",
+                        "on-tertiary-container": "#ab8b41",
+                        "secondary-fixed-dim": "#e9c349",
+                        "outline-variant": "#c5c6d2",
+                        "surface-dim": "#dadad5",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f4f4ef",
+                        "on-surface-variant": "#444650",
+                        "surface-container-high": "#e8e8e3",
+                        "surface-container": "#eeeee9",
+                        "surface-tint": "#435b9f",
+                        "on-secondary-fixed": "#241a00",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#1c1200",
+                        "primary": "#00113a",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#00174a",
+                        "on-secondary-container": "#745c00",
+                        "on-tertiary-fixed-variant": "#5a4300",
+                        "on-tertiary-fixed": "#251a00",
+                        "inverse-surface": "#2f312e",
+                        "secondary-container": "#fed65b",
+                        "on-background": "#1a1c19",
+                        "tertiary-fixed-dim": "#e6c272",
+                        "secondary": "#735c00",
+                        "on-primary-container": "#758dd5",
+                        "tertiary-container": "#352600",
+                        "surface-bright": "#fafaf5",
+                        "surface-container-highest": "#e3e3de",
+                        "inverse-primary": "#b3c5ff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "on-surface": "#1a1c19",
+                        "tertiary-fixed": "#ffdf9a",
+                        "primary-fixed": "#dbe1ff",
+                        "secondary-fixed": "#ffe088",
+                        "primary-container": "#002366",
+                        "on-secondary-fixed-variant": "#574500",
+                        "outline": "#757682",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f1f1ec"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Manrope"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ease-editorial {
+            transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-container">
+<!-- Sidebar Navigation Shell -->
+<aside class="h-screen w-72 fixed left-0 top-0 bg-[#fafaf5] dark:bg-slate-950 flex flex-col py-8 gap-6 z-50">
+<div class="px-8 flex flex-col gap-1">
+<h1 class="font-headline text-2xl uppercase tracking-widest text-[#002366]">The Archive</h1>
+<p class="font-headline tracking-wide text-xs text-slate-500 uppercase">Administrative Portal</p>
+</div>
+<nav class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-4 px-8 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-r-full mr-4 hover:pl-10 transition-all duration-300 ease-editorial" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-headline tracking-wide text-sm">Overview</span>
+</a>
+<a class="flex items-center gap-4 px-8 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-r-full mr-4 hover:pl-10 transition-all duration-300 ease-editorial" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="font-headline tracking-wide text-sm">Member Directory</span>
+</a>
+<a class="flex items-center gap-4 px-8 py-3 bg-white dark:bg-slate-900 text-[#002366] font-bold shadow-sm rounded-r-full mr-4 hover:pl-10 transition-all duration-300 ease-editorial" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span class="font-headline tracking-wide text-sm">Legacy Blog</span>
+</a>
+<a class="flex items-center gap-4 px-8 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-r-full mr-4 hover:pl-10 transition-all duration-300 ease-editorial" href="#">
+<span class="material-symbols-outlined" data-icon="event_seat">event_seat</span>
+<span class="font-headline tracking-wide text-sm">Archive Events</span>
+</a>
+<a class="flex items-center gap-4 px-8 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-r-full mr-4 hover:pl-10 transition-all duration-300 ease-editorial" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-headline tracking-wide text-sm">Institutional Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-8">
+<button class="w-full bg-primary text-on-primary py-4 px-6 rounded shadow-[0px_4px_12px_rgba(0,17,58,0.1)] hover:shadow-[0px_4px_20px_rgba(115,92,0,0.2)] transition-all flex items-center justify-center gap-2 group">
+<span class="material-symbols-outlined text-secondary-fixed-dim" data-icon="edit_note">edit_note</span>
+<span class="font-headline text-sm tracking-wide">Compose Legacy</span>
+</button>
+</div>
+<div class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-4 px-8 py-3 text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="font-headline text-xs uppercase tracking-widest">Support</span>
+</a>
+<a class="flex items-center gap-4 px-8 py-3 text-slate-500 hover:text-error transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-headline text-xs uppercase tracking-widest">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Top App Bar Shell -->
+<header class="fixed top-0 right-0 left-72 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md z-40 flex justify-between items-center px-8 py-4 shadow-[0px_20px_40px_rgba(0,35,102,0.06)]">
+<div class="flex items-center gap-8">
+<div class="relative w-96">
+<input class="w-full bg-surface-container-low border-none rounded-full px-6 py-2 text-sm focus:ring-1 focus:ring-secondary" placeholder="Search archive records..." type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-2 text-slate-400" data-icon="search">search</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-secondary rounded-full border-2 border-white"></span>
+</button>
+<button class="text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-outline-variant/30">
+<div class="text-right">
+<p class="text-sm font-bold text-primary">Dr. Chidi Okoro</p>
+<p class="text-[10px] uppercase tracking-widest text-slate-500">Alumni Admin</p>
+</div>
+<img alt="Admin Profile" class="w-10 h-10 rounded-full object-cover border border-secondary/20" data-alt="professional portrait of a middle-aged Nigerian man in a charcoal suit, academic setting background, dignified and prestigious lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkYJ8IRGXvQRnpwCOpmGs-tGZ6cHZt-caLHMLMdzCunDcUzXceCEHPxYi_a-_nUGjyFc-5r_sBZISTJy2Y5XRoAJkajV-P0JyPXWthgytwu8B09pVAVJwyioo9tXzdrP4P2xD5Si4RZCVfcEfQHUim1DeGt1K7apbROCtWY7XEHFrdAgDHtUV1pWlWUXPKvD-cQSHlZcNRCmvR83gGO6n7chq82YuM13ZYzUGgxqpI7OVEprzaj9MLdVwMfPPKBKT2xTnpm3aNRHE"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-72 pt-32 pb-20 px-12 max-w-7xl mx-auto">
+<!-- Header Section -->
+<section class="mb-12 flex justify-between items-end">
+<div class="max-w-2xl">
+<h2 class="font-headline text-5xl text-primary tracking-tight mb-4">Lagos Heritage News</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed max-w-lg">
+                    Curating the digital legacy of the Sovereign Association. Manage institutional announcements, alumni stories, and historical records.
+                </p>
+</div>
+<button class="px-8 py-4 bg-primary text-on-primary rounded flex items-center gap-3 hover:bg-primary-container transition-all shadow-lg">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-headline tracking-wide">Create New Article</span>
+</button>
+</section>
+<!-- Pinned / Highlight Section (Bento Grid) -->
+<section class="mb-16">
+<div class="grid grid-cols-12 gap-6">
+<!-- Main Pinned Article -->
+<div class="col-span-8 group relative overflow-hidden rounded-xl bg-surface-container-low h-[450px]">
+<img alt="Main Archive Story" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90" data-alt="majestic traditional architecture of a prestigious colonial-era school in Lagos, warm afternoon sunlight, lush tropical trees, editorial style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4u69-hp4bWWJOpOzr0zjwMNHmW8vHzXf4aOIg8dq6Dr4tUrSygovZs-Z3huAugOV7NTu1HL1F8UOYK0ot7PY8MMaEPpW-BaHQ_z681PwgtfbL1vNYh5V3UTo4aynLhWkrZ_tdZl-osn5CDn4QJLmvrfjP6IaP4n-PFyiwUgoFVaP6NpjhlDfo3kgsruHiR_kew1uVXnmFH3xJHy7knnUMADBCihfLMJxO5F1YRBVklHMR2p1G-RXw94I3C8-N3IwvsFRHxyKLhEM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-10 w-full">
+<span class="inline-block px-3 py-1 bg-secondary text-on-secondary-fixed text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Association News</span>
+<h3 class="font-headline text-3xl text-white mb-4 leading-tight">Preserving the 1964 Centennial: A Digital Restoration Journey</h3>
+<div class="flex items-center gap-4 text-white/80 text-sm">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-xs" data-icon="person">person</span> Prof. Ibrahim Bello</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-xs" data-icon="calendar_today">calendar_today</span> Oct 12, 2023</span>
+<span class="px-2 py-0.5 border border-white/30 rounded text-[10px] uppercase">Published</span>
+</div>
+</div>
+</div>
+<!-- Media Library Teaser -->
+<div class="col-span-4 flex flex-col gap-6">
+<div class="bg-surface-container-high rounded-xl p-8 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-6">
+<h4 class="font-headline text-xl text-primary">Media Library</h4>
+<span class="material-symbols-outlined text-secondary" data-icon="collections">collections</span>
+</div>
+<div class="grid grid-cols-2 gap-3 mb-6">
+<img alt="Media Item 1" class="rounded h-24 w-full object-cover" data-alt="candid group shot of distinguished Nigerian alumni at a gala dinner, elegant attire, warm ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCpSZVlh-2_kNZ5_r-1E2Hhk9zye-mrpQXfOsGkcWkMUsBl1u0iDySsDct3pJM0-A_Qjki8h2JnGPNA8vG5xx5-75etM83kspvBYFD2Mmlvd-q6VFvJZC4gHK3W8Z9aYV9kfm3W63CzkhtLsPY49vhUtLwGIfezDezkLGYoIMIOadg_H3777oNT7EtdJOLTkribyuRvdElzOW5nB1l3rTVFXG7y822kMpWMsyNpz9sB_uJd1kDWYB80rdmGPm3iL_VTGAaRpz0gio"/>
+<img alt="Media Item 2" class="rounded h-24 w-full object-cover" data-alt="close-up of a vintage brass crest on a leather-bound archive book, shallow depth of field, prestigious academic aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbWsBQbN1I25VF_XcEeJ-YWbiO96QmoGWUIkN9QEaTx5qgLvX-D5qK5Xm-wobsfyXOOyaabDfYvPrvJnrmhNLG20ZoMlGwyJ84Esxo5C1yCQC3dvZDWAjszMEbRa8jU9bjBSajhW3evSrOOqIlF9BUi5hmCrXejRLf4EdACm7XC1DHM84ipeUvTfpA2DcHZ40Fl4YAp3xXzQSmjUTzsQonBNm_Fl3guMqPZ1_uWD4iVZYYl6kFDpOkUAh0gzsVuK-HaToxmoJtFXY"/>
+</div>
+<p class="text-sm text-on-surface-variant mb-6 flex-1 italic">"The visuals must reflect the dignity of our shared history."</p>
+<button class="w-full py-3 border border-primary/20 text-primary text-sm font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-all">Manage Assets</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Article Management Table -->
+<section class="bg-surface-container-lowest rounded-2xl shadow-[0px_40px_80px_rgba(0,17,58,0.03)] overflow-hidden">
+<div class="p-8 border-b border-surface-variant/30 flex justify-between items-center">
+<h3 class="font-headline text-2xl text-primary">Article Directory</h3>
+<div class="flex gap-4">
+<select class="bg-surface border-none text-xs font-bold uppercase tracking-widest text-slate-500 rounded-full px-6 focus:ring-1 focus:ring-secondary">
+<option>All Categories</option>
+<option>Association News</option>
+<option>Alumni Spotlight</option>
+</select>
+<button class="bg-surface p-2 rounded-full text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-8 py-5 text-left font-headline text-xs uppercase tracking-[0.2em] text-slate-500 font-bold">Title</th>
+<th class="px-8 py-5 text-left font-headline text-xs uppercase tracking-[0.2em] text-slate-500 font-bold">Category</th>
+<th class="px-8 py-5 text-left font-headline text-xs uppercase tracking-[0.2em] text-slate-500 font-bold">Status</th>
+<th class="px-8 py-5 text-left font-headline text-xs uppercase tracking-[0.2em] text-slate-500 font-bold">Author</th>
+<th class="px-8 py-5 text-left font-headline text-xs uppercase tracking-[0.2em] text-slate-500 font-bold">Date</th>
+<th class="px-8 py-5 text-right font-headline text-xs uppercase tracking-[0.2em] text-slate-500 font-bold">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant/20">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-primary-container/10 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="article">article</span>
+</div>
+<p class="font-bold text-primary group-hover:underline cursor-pointer">Inaugural Lagos Alumni Summit 2024</p>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs font-medium text-on-surface-variant">Association News</span>
+</td>
+<td class="px-8 py-6">
+<span class="px-3 py-1 bg-green-50 text-green-700 text-[10px] font-bold uppercase tracking-wider rounded-full">Published</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<img alt="Author" class="w-6 h-6 rounded-full object-cover" data-alt="portrait of a professional African woman, glasses, warm indoor lighting, blurred office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuyN5mNEi_zBdSy9MHVSO5SjmdbQmXO_PIkG1SIlQoyVtMb2K0JvwbS4pI36Wi0-p0hK8jh0lPTiv07pooB3ZH8pW8c7rpCjSmt2lXpT99POh_2nrjGxzILQh8_1_l4N2qhmBuDzl7-gNNtM82lMKEGwu_q7QMHSdVjySQV1kDzmrYUH3rPKEygBjLz5vFlwY3-4-tdV6i5-KKNXsFbIRUa9qktvQh_IHV7bTndqYh6-H4NXNzk6B5L8NqoE6WzGGevlx3AG5Avuk"/>
+<span class="text-xs">Bolanle Ade</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs text-slate-400">Nov 04, 2023</span>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:text-primary"><span class="material-symbols-outlined text-lg" data-icon="edit">edit</span></button>
+<button class="p-2 hover:text-on-tertiary-container"><span class="material-symbols-outlined text-lg" data-icon="archive">archive</span></button>
+<button class="p-2 hover:text-error"><span class="material-symbols-outlined text-lg" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-primary-container/10 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="star">star</span>
+</div>
+<p class="font-bold text-primary group-hover:underline cursor-pointer">Spotlight: Dr. Ifeoma Nwachukwu's Nobel Nomination</p>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs font-medium text-on-surface-variant">Alumni Spotlight</span>
+</td>
+<td class="px-8 py-6">
+<span class="px-3 py-1 bg-amber-50 text-amber-700 text-[10px] font-bold uppercase tracking-wider rounded-full">Draft</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<img alt="Author" class="w-6 h-6 rounded-full object-cover" data-alt="portrait of a young African man in a creative studio, soft window light, modern professional style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUoZ7l1eN9W_s3r00Vh_jRQd-8OJO23KjyLn2RDCeb6RTccDsM751q5nSZ0koaw0OdTNOHde6Z1TXcrFbBFIGm1enf1hCo27ODasx2dqKXBkdS9wIVJiMFQx4zg_xnQwtM7M8o3MbzCtx1c_abVCwzOO1UiRutJeAP4ZgI_SrUsPR2tNwYHg876f427L5J_trWA06Lr7RtzLcW0LcPYCpgo5qIrW2VaVYh6i6iU5DllXeICGBh6KOjHTvf9jtzU17zgTVtS87fRrg"/>
+<span class="text-xs">Segun Peters</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs text-slate-400">Oct 28, 2023</span>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:text-primary"><span class="material-symbols-outlined text-lg" data-icon="edit">edit</span></button>
+<button class="p-2 hover:text-on-tertiary-container"><span class="material-symbols-outlined text-lg" data-icon="archive">archive</span></button>
+<button class="p-2 hover:text-error"><span class="material-symbols-outlined text-lg" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-primary-container/10 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="history">history</span>
+</div>
+<p class="font-bold text-primary group-hover:underline cursor-pointer">From Marina to the World: The Class of 1952</p>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs font-medium text-on-surface-variant">Legacy Blog</span>
+</td>
+<td class="px-8 py-6">
+<span class="px-3 py-1 bg-green-50 text-green-700 text-[10px] font-bold uppercase tracking-wider rounded-full">Published</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-[10px] text-on-secondary font-bold">OA</div>
+<span class="text-xs">Archive Office</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs text-slate-400">Oct 15, 2023</span>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:text-primary"><span class="material-symbols-outlined text-lg" data-icon="edit">edit</span></button>
+<button class="p-2 hover:text-on-tertiary-container"><span class="material-symbols-outlined text-lg" data-icon="archive">archive</span></button>
+<button class="p-2 hover:text-error"><span class="material-symbols-outlined text-lg" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-8 py-6 border-t border-surface-variant/30 flex items-center justify-between">
+<p class="text-xs text-slate-500 font-medium">Showing 1 to 10 of 42 records</p>
+<div class="flex gap-2">
+<button class="px-4 py-2 border border-surface-variant text-xs font-bold rounded hover:bg-surface-container-low transition-all">Previous</button>
+<button class="px-4 py-2 bg-primary text-on-primary text-xs font-bold rounded shadow-md">1</button>
+<button class="px-4 py-2 border border-surface-variant text-xs font-bold rounded hover:bg-surface-container-low transition-all">2</button>
+<button class="px-4 py-2 border border-surface-variant text-xs font-bold rounded hover:bg-surface-container-low transition-all">3</button>
+<button class="px-4 py-2 border border-surface-variant text-xs font-bold rounded hover:bg-surface-container-low transition-all">Next</button>
+</div>
+</div>
+</section>
+<!-- Legacy Timeline Teaser -->
+<section class="mt-20 py-12 border-t border-outline-variant/15">
+<h4 class="font-headline text-2xl text-primary mb-8 text-center">Institutional Milestones</h4>
+<div class="relative py-10">
+<div class="absolute top-1/2 left-0 w-full h-[1px] bg-outline-variant/20"></div>
+<div class="flex justify-between items-center relative z-10">
+<div class="flex flex-col items-center gap-4 group">
+<div class="w-4 h-4 rounded-full bg-secondary group-hover:scale-150 transition-transform cursor-help"></div>
+<div class="text-center">
+<p class="text-[10px] font-bold text-secondary mb-1">1921</p>
+<p class="text-xs font-bold text-primary">Foundation</p>
+</div>
+</div>
+<div class="flex flex-col items-center gap-4 group">
+<div class="w-4 h-4 rounded-full bg-secondary group-hover:scale-150 transition-transform cursor-help"></div>
+<div class="text-center">
+<p class="text-[10px] font-bold text-secondary mb-1">1946</p>
+<p class="text-xs font-bold text-primary">First Charter</p>
+</div>
+</div>
+<div class="flex flex-col items-center gap-4 group">
+<div class="w-4 h-4 rounded-full bg-secondary group-hover:scale-150 transition-transform cursor-help"></div>
+<div class="text-center">
+<p class="text-[10px] font-bold text-secondary mb-1">1982</p>
+<p class="text-xs font-bold text-primary">Regional Expansion</p>
+</div>
+</div>
+<div class="flex flex-col items-center gap-4 group">
+<div class="w-4 h-4 rounded-full bg-secondary group-hover:scale-150 transition-transform cursor-help"></div>
+<div class="text-center">
+<p class="text-[10px] font-bold text-secondary mb-1">2010</p>
+<p class="text-xs font-bold text-primary">Golden Jubilee</p>
+</div>
+</div>
+<div class="flex flex-col items-center gap-4 group">
+<div class="w-4 h-4 rounded-full bg-secondary group-hover:scale-150 transition-transform cursor-help"></div>
+<div class="text-center">
+<p class="text-[10px] font-bold text-secondary mb-1">2024</p>
+<p class="text-xs font-bold text-primary">Digital Archive Launch</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Success Feedback Notification (Subtle) -->
+<div class="fixed bottom-8 right-8 bg-primary-container text-on-primary-container px-6 py-4 rounded shadow-2xl flex items-center gap-4 border-l-4 border-secondary translate-y-20 opacity-0 transition-all pointer-events-none">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<p class="text-sm font-bold">Draft saved successfully.</p>
+</div>
+</body></html>

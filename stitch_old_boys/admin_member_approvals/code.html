@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Member Approval | The Sovereign Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&amp;family=Manrope:wght@400;500;600;700&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-container": "#745c00",
+              "surface-dim": "#dadad5",
+              "surface": "#fafaf5",
+              "on-primary-fixed-variant": "#2a4386",
+              "on-background": "#1a1c19",
+              "on-tertiary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed": "#00174a",
+              "secondary-fixed": "#ffe088",
+              "primary-fixed-dim": "#b3c5ff",
+              "on-tertiary-container": "#ab8b41",
+              "surface-variant": "#e3e3de",
+              "on-tertiary-fixed-variant": "#5a4300",
+              "on-secondary-fixed": "#241a00",
+              "on-primary": "#ffffff",
+              "primary-container": "#002366",
+              "on-tertiary-fixed": "#251a00",
+              "tertiary": "#1c1200",
+              "secondary": "#735c00",
+              "inverse-primary": "#b3c5ff",
+              "on-error": "#ffffff",
+              "outline-variant": "#c5c6d2",
+              "outline": "#757682",
+              "on-primary-container": "#758dd5",
+              "on-surface-variant": "#444650",
+              "primary": "#00113a",
+              "surface-container": "#eeeee9",
+              "secondary-fixed-dim": "#e9c349",
+              "surface-tint": "#435b9f",
+              "surface-container-high": "#e8e8e3",
+              "error": "#ba1a1a",
+              "tertiary-fixed-dim": "#e6c272",
+              "on-surface": "#1a1c19",
+              "inverse-on-surface": "#f1f1ec",
+              "on-error-container": "#93000a",
+              "primary-fixed": "#dbe1ff",
+              "tertiary-container": "#352600",
+              "surface-container-low": "#f4f4ef",
+              "surface-container-highest": "#e3e3de",
+              "on-secondary-fixed-variant": "#574500",
+              "inverse-surface": "#2f312e",
+              "background": "#fafaf5",
+              "tertiary-fixed": "#ffdf9a",
+              "secondary-container": "#fed65b",
+              "surface-bright": "#fafaf5",
+              "on-secondary": "#ffffff",
+              "error-container": "#ffdad6"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Manrope"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-nav {
+        background: rgba(250, 250, 245, 0.7);
+        backdrop-filter: blur(20px);
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- Side Navigation Bar -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-[#fafaf5] dark:bg-slate-900 flex flex-col py-6 px-4 z-50 overflow-y-auto">
+<div class="mb-10 flex flex-col gap-1">
+<h1 class="font-headline text-lg font-bold text-[#002366]">The Sovereign Archive</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] text-outline font-label">Elite Governance Portal</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-all font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#002366] dark:text-blue-300 font-bold bg-[#002366]/5 rounded-md translate-x-1 duration-150 text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Member Registry</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-all font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span>Financials</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-all font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span>Legacy Events</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-all font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span>Archives</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant/15 flex flex-col gap-2">
+<button class="bg-primary text-on-primary px-4 py-2.5 rounded-md text-sm font-semibold flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors mb-4">
+<span class="material-symbols-outlined text-sm" data-icon="person_add">person_add</span>
+                Invite New Member
+            </button>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 transition-all text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+                Help Center
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 transition-all text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 left-64 bg-[#fafaf5]/70 backdrop-blur-md z-40 flex justify-between items-center px-8 py-4 shadow-[0px_20px_40px_rgba(0,17,58,0.06)]">
+<div class="flex items-center gap-4">
+<h2 class="font-headline font-bold text-lg text-[#002366]">Member Registry</h2>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded text-[10px] font-bold tracking-wider">APPROVALS</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="material-symbols-outlined text-outline group-hover:text-primary cursor-pointer transition-colors" data-icon="notifications">notifications</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-error rounded-full"></span>
+</div>
+<span class="material-symbols-outlined text-outline hover:text-primary cursor-pointer transition-colors" data-icon="settings">settings</span>
+<div class="flex items-center gap-3 border-l border-outline-variant/30 pl-6">
+<div class="text-right">
+<p class="text-xs font-bold text-primary">Admin Panel</p>
+<p class="text-[10px] text-outline">Super User</p>
+</div>
+<img alt="Administrator Profile" class="w-10 h-10 rounded-full object-cover ring-2 ring-primary/5" data-alt="Close-up portrait of a professional Nigerian administrator woman in business attire with elegant lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBONjc4RZ0aTJHno_c-YAC2BSXPd3nfq5RMuA7BcR1MXaBLH5z58z1k5T9qulEDAuzbL5__q7a3rRkGKHehcWM7jOTk_OnVterOlU0Z1kBj06jFksADaH7b9b8SEH9sdEw5VS5F0QeppDckFuMCMmiUrzjE_qzVnCt0Ut151Y9M9U8P1tFuN_LE-WWuGs-ZSmX7lpQ78WHh02wbpYiGvxyGL9l1fIQhPtu1IGxni0h-Z00RNHm0PntQD7hYozr1HJiKzMS1aFaSK-w"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 min-h-screen">
+<div class="px-12 py-10">
+<!-- Breadcrumbs & Stats Header -->
+<div class="flex justify-between items-end mb-12">
+<div>
+<div class="flex items-center gap-2 text-[10px] font-label text-outline uppercase tracking-widest mb-2">
+<span>Registry</span>
+<span class="material-symbols-outlined text-[12px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-bold">Pending Applications</span>
+</div>
+<h1 class="font-headline text-4xl text-primary leading-tight">Verification <br/>Queue</h1>
+</div>
+<div class="flex gap-8 items-center bg-surface-container-low px-8 py-6 rounded-xl border border-outline-variant/10">
+<div class="text-center">
+<p class="text-[10px] font-label text-outline uppercase tracking-wider mb-1">Pending</p>
+<p class="text-2xl font-headline font-bold text-primary">14</p>
+</div>
+<div class="w-px h-8 bg-outline-variant/20"></div>
+<div class="text-center">
+<p class="text-[10px] font-label text-outline uppercase tracking-wider mb-1">Approved Today</p>
+<p class="text-2xl font-headline font-bold text-secondary">08</p>
+</div>
+</div>
+</div>
+<!-- Bento-Style Application List -->
+<div class="grid grid-cols-1 gap-6">
+<!-- Applicant Card 1 -->
+<div class="group relative overflow-hidden bg-surface-container-lowest hover:bg-white transition-all duration-300 p-8 flex items-center gap-8 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.03)] border border-transparent hover:border-outline-variant/20 rounded-lg">
+<div class="relative">
+<img alt="Applicant Portrait" class="w-20 h-20 rounded-full object-cover filter saturate-[0.8] group-hover:saturate-100 transition-all" data-alt="Portrait of a professional Nigerian man in his late 20s wearing a crisp white dress shirt with natural daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiV0qteETRjSqeRGxgukm6zqv3Hx0ajfcTbIPvGIaDWi5YAil1RYRgkoBzeF_7el57GxDjXgz0ocw2oo9O_dAAXrPAmMH-zqS8-qeF13oRiEr5Q6D4OgDkRogHae6Ynx0Fby-OQwljMZ273zZzl8IInSsOZAMCFVdPM1penH9pCDyCFTuEPxm18umv7fFYIHRjHhfaC6J25yr5_Ua4aw25c3Ommf1r0yWLeJeyKBgU7zm84GBJI4De6zAOPw3ChUyY1I4BSgf8OTA"/>
+<div class="absolute -bottom-1 -right-1 bg-primary text-on-primary text-[8px] font-bold px-1.5 py-0.5 rounded uppercase">Verified</div>
+</div>
+<div class="flex-1 grid grid-cols-4 gap-8 items-center">
+<div>
+<p class="font-headline text-lg text-primary mb-0.5">Olamide Adeyemi</p>
+<p class="text-xs text-outline font-label">Class of 2018</p>
+</div>
+<div>
+<p class="text-[10px] font-label text-outline uppercase tracking-widest mb-1">Institutional Email</p>
+<p class="text-sm font-medium text-primary-container">o.adeyemi@alumni.edu.ng</p>
+</div>
+<div class="col-span-2">
+<p class="text-[10px] font-label text-outline uppercase tracking-widest mb-1">Professional Background</p>
+<p class="text-sm text-on-surface line-clamp-1">Senior Legal Counsel at Sterling Heights Partners, Lagos. Specializing in Maritime Law.</p>
+</div>
+</div>
+<div class="flex items-center gap-4 border-l border-outline-variant/15 pl-8">
+<a class="text-xs font-bold text-primary-container underline underline-offset-4 decoration-outline-variant/40 hover:decoration-secondary transition-all" href="#">View Documents</a>
+<div class="flex gap-2">
+<button class="bg-error/5 text-error hover:bg-error hover:text-white px-4 py-2 text-xs font-bold rounded transition-all">Decline</button>
+<button class="bg-primary text-on-primary px-6 py-2 text-xs font-bold rounded shadow-sm hover:shadow-lg hover:shadow-secondary/20 transition-all">Approve</button>
+</div>
+</div>
+</div>
+<!-- Applicant Card 2 -->
+<div class="group relative overflow-hidden bg-surface-container-lowest hover:bg-white transition-all duration-300 p-8 flex items-center gap-8 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.03)] border border-transparent hover:border-outline-variant/20 rounded-lg">
+<div class="relative">
+<img alt="Applicant Portrait" class="w-20 h-20 rounded-full object-cover filter saturate-[0.8] group-hover:saturate-100 transition-all" data-alt="Modern professional portrait of a Nigerian woman in her early 30s with a soft grey background and elegant lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKlD-H97wt6Q61ejNLbCTJQt8jgLXfEUtfL4wi_lUyIjKCjICshIIj_0gAvi-0GY2zjRzB8TQ1N-rwSFUSOlNGc7FW_JZYTYIPmDtkOh2DsxlefvaO1cMKm1kZG8voGZgLdDWAlsBp97RdmI-66xx9hbljkXyytPoZIRc1giFaIlvdNuMR3OsruV0s6seevGZj53BRWdr6FrcThQz5C5QSeHo_8aIOJvgMPsMloZLmIBDhRRuIdMjMN-K_S2C56gtSC-YSBGJwTH8"/>
+<div class="absolute -bottom-1 -right-1 bg-secondary text-on-secondary-container text-[8px] font-bold px-1.5 py-0.5 rounded uppercase">Legacy</div>
+</div>
+<div class="flex-1 grid grid-cols-4 gap-8 items-center">
+<div>
+<p class="font-headline text-lg text-primary mb-0.5">Chiamaka Okafor</p>
+<p class="text-xs text-outline font-label">Class of 2015</p>
+</div>
+<div>
+<p class="text-[10px] font-label text-outline uppercase tracking-widest mb-1">Institutional Email</p>
+<p class="text-sm font-medium text-primary-container">c.okafor@alumni.edu.ng</p>
+</div>
+<div class="col-span-2">
+<p class="text-[10px] font-label text-outline uppercase tracking-widest mb-1">Professional Background</p>
+<p class="text-sm text-on-surface line-clamp-1">Lead Software Architect at Fintech Solutions, Abuja. Founder of TechQueens Initiative.</p>
+</div>
+</div>
+<div class="flex items-center gap-4 border-l border-outline-variant/15 pl-8">
+<a class="text-xs font-bold text-primary-container underline underline-offset-4 decoration-outline-variant/40 hover:decoration-secondary transition-all" href="#">View Documents</a>
+<div class="flex gap-2">
+<button class="bg-error/5 text-error hover:bg-error hover:text-white px-4 py-2 text-xs font-bold rounded transition-all">Decline</button>
+<button class="bg-primary text-on-primary px-6 py-2 text-xs font-bold rounded shadow-sm hover:shadow-lg hover:shadow-secondary/20 transition-all">Approve</button>
+</div>
+</div>
+</div>
+<!-- Applicant Card 3 -->
+<div class="group relative overflow-hidden bg-surface-container-lowest hover:bg-white transition-all duration-300 p-8 flex items-center gap-8 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.03)] border border-transparent hover:border-outline-variant/20 rounded-lg">
+<div class="relative">
+<img alt="Applicant Portrait" class="w-20 h-20 rounded-full object-cover filter saturate-[0.8] group-hover:saturate-100 transition-all" data-alt="Portrait of a young Nigerian male professional in a sharp navy suit with warm evening sunlight reflecting off skyscraper windows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyQif9MNn-C6Z83Ai5xeNqAxtKDV4UKI2Lh8wzu29-K8VHxUiEnl_tK9-wdHal-Twd8Q7hrcVWfIy8GKHJ6nU1kStNZjvX3FASgBv8X12qC5oIEfI4-ybkuc8gQo5pNdFTxt8JSl5SdsTKZ5-tRdLkTqQfgL1lWMjbmn4csFSbz8J3ji4n8TuZWv3yavp4pzfFtKFzZFCbtbPq2DAqxRflcODlcdyq1uEf83lIYC1r8Yf-wHNN9rPZeMVthNr-TyOvxU5qGLiRAl0"/>
+</div>
+<div class="flex-1 grid grid-cols-4 gap-8 items-center">
+<div>
+<p class="font-headline text-lg text-primary mb-0.5">Ibrahim Danjuma</p>
+<p class="text-xs text-outline font-label">Class of 2021</p>
+</div>
+<div>
+<p class="text-[10px] font-label text-outline uppercase tracking-widest mb-1">Institutional Email</p>
+<p class="text-sm font-medium text-primary-container">i.danjuma@alumni.edu.ng</p>
+</div>
+<div class="col-span-2">
+<p class="text-[10px] font-label text-outline uppercase tracking-widest mb-1">Professional Background</p>
+<p class="text-sm text-on-surface line-clamp-1">Investment Associate at Central Wealth Management. MSc. Global Finance, LSE.</p>
+</div>
+</div>
+<div class="flex items-center gap-4 border-l border-outline-variant/15 pl-8">
+<a class="text-xs font-bold text-primary-container underline underline-offset-4 decoration-outline-variant/40 hover:decoration-secondary transition-all" href="#">View Documents</a>
+<div class="flex gap-2">
+<button class="bg-error/5 text-error hover:bg-error hover:text-white px-4 py-2 text-xs font-bold rounded transition-all">Decline</button>
+<button class="bg-primary text-on-primary px-6 py-2 text-xs font-bold rounded shadow-sm hover:shadow-lg hover:shadow-secondary/20 transition-all">Approve</button>
+</div>
+</div>
+</div>
+<!-- Applicant Card 4 (Tonal Variation) -->
+<div class="group relative overflow-hidden bg-surface-container-low hover:bg-white transition-all duration-300 p-8 flex items-center gap-8 border border-transparent hover:border-outline-variant/20 rounded-lg">
+<div class="relative">
+<div class="w-20 h-20 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-headline text-2xl font-bold">EK</div>
+<div class="absolute -bottom-1 -right-1 bg-outline-variant text-white text-[8px] font-bold px-1.5 py-0.5 rounded uppercase">Pending</div>
+</div>
+<div class="flex-1 grid grid-cols-4 gap-8 items-center">
+<div>
+<p class="font-headline text-lg text-primary mb-0.5">Ebele Kwentua</p>
+<p class="text-xs text-outline font-label">Class of 1998</p>
+</div>
+<div>
+<p class="text-[10px] font-label text-outline uppercase tracking-widest mb-1">Institutional Email</p>
+<p class="text-sm font-medium text-primary-container">e.kwentua@alumni.edu.ng</p>
+</div>
+<div class="col-span-2">
+<p class="text-[10px] font-label text-outline uppercase tracking-widest mb-1">Professional Background</p>
+<p class="text-sm text-on-surface line-clamp-1">Executive Director, Heritage Trust Bank. Board Member of multiple NGOs in West Africa.</p>
+</div>
+</div>
+<div class="flex items-center gap-4 border-l border-outline-variant/15 pl-8">
+<a class="text-xs font-bold text-primary-container underline underline-offset-4 decoration-outline-variant/40 hover:decoration-secondary transition-all" href="#">View Documents</a>
+<div class="flex gap-2">
+<button class="bg-error/5 text-error hover:bg-error hover:text-white px-4 py-2 text-xs font-bold rounded transition-all">Decline</button>
+<button class="bg-primary text-on-primary px-6 py-2 text-xs font-bold rounded shadow-sm hover:shadow-lg hover:shadow-secondary/20 transition-all">Approve</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination/Footer Actions -->
+<div class="mt-12 flex justify-between items-center border-t border-outline-variant/15 pt-8">
+<p class="text-xs text-outline font-label">Showing 4 of 14 pending applications</p>
+<div class="flex gap-4">
+<button class="px-4 py-2 border border-outline-variant text-outline hover:text-primary hover:border-primary transition-all text-xs font-bold rounded">Previous</button>
+<button class="px-4 py-2 bg-primary-container text-white text-xs font-bold rounded hover:bg-primary transition-all">Next Page</button>
+</div>
+</div>
+</div>
+<!-- Sidebar Inset / Quick Stats (Asymmetric Layout) -->
+<aside class="fixed right-0 top-24 w-80 h-[calc(100vh-6rem)] px-8 border-l border-outline-variant/10 overflow-y-auto bg-surface-bright/50">
+<div class="py-10">
+<h3 class="font-headline text-xl text-primary mb-6">Action Logs</h3>
+<div class="space-y-8">
+<div class="relative pl-6 border-l border-outline-variant/20">
+<div class="absolute -left-1 top-0 w-2 h-2 rounded-full bg-secondary"></div>
+<p class="text-[10px] font-label text-outline uppercase mb-1">10:45 AM Today</p>
+<p class="text-xs font-bold text-primary">Dr. Segun approved 4 members</p>
+<p class="text-[10px] text-outline mt-1 italic">Verification batch #402</p>
+</div>
+<div class="relative pl-6 border-l border-outline-variant/20">
+<div class="absolute -left-1 top-0 w-2 h-2 rounded-full bg-error"></div>
+<p class="text-[10px] font-label text-outline uppercase mb-1">09:12 AM Today</p>
+<p class="text-xs font-bold text-primary">1 Application Declined</p>
+<p class="text-[10px] text-outline mt-1 italic">Reason: Incomplete transcripts</p>
+</div>
+<div class="relative pl-6 border-l border-outline-variant/20">
+<div class="absolute -left-1 top-0 w-2 h-2 rounded-full bg-primary-container"></div>
+<p class="text-[10px] font-label text-outline uppercase mb-1">Yesterday</p>
+<p class="text-xs font-bold text-primary">System: 22 New applications received</p>
+</div>
+</div>
+<div class="mt-16 p-6 rounded-xl bg-primary text-on-primary">
+<span class="material-symbols-outlined text-4xl mb-4" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<h4 class="font-headline text-lg mb-2">Policy Reminder</h4>
+<p class="text-xs opacity-70 leading-relaxed mb-6">All legacy applications must be cross-referenced with the physical 1960-1990 registrar archives before final approval.</p>
+<button class="w-full py-3 bg-secondary text-on-secondary-container text-xs font-bold rounded hover:brightness-110 transition-all">Review Integrity Policy</button>
+</div>
+</div>
+</aside>
+</main>
+</body></html>
