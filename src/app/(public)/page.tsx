@@ -44,7 +44,7 @@ export default async function HomePage() {
     <main className="overflow-x-hidden">
       <section className="relative isolate min-h-[72vh] overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1"
+          src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=2200&q=80"
           alt="Alumni gathering"
           fill
           priority
@@ -56,13 +56,13 @@ export default async function HomePage() {
         <div className="relative mx-auto flex min-h-[72vh] max-w-7xl items-center px-4 py-16 md:px-8">
           <div className="fade-in max-w-3xl text-white">
             <p className="mb-3 text-xs font-bold uppercase tracking-[0.4em] text-amber-300">Holy Ghost College Owerri</p>
-            <h1 className="text-4xl font-black leading-tight md:text-7xl">Old Boys' Association</h1>
+            <h1 className="text-4xl font-black leading-tight md:text-7xl">Welcome to the Old Boys Alumni Community</h1>
             <p className="mt-5 max-w-2xl text-white/85 md:text-lg">
-              A secure alumni platform to manage membership, vote in elections, pay dues, and preserve our shared legacy.
+              Holy Ghost College Owerri Old Boys' Association connects alumni through mentorship, reunions, scholarships, and meaningful community impact across Nigeria and beyond.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/about" className="rounded-md bg-white px-5 py-2 text-xs font-bold uppercase tracking-wider text-(--primary)">About the Association</Link>
-              <Link href="/signup" className="rounded-md border border-white/40 px-5 py-2 text-xs font-bold uppercase tracking-wider text-white">Join the Registry</Link>
+              <Link href="/about" className="rounded-md bg-white px-5 py-2 text-xs font-bold uppercase tracking-wider text-(--primary)">Explore Our Story</Link>
+              <Link href="/login" className="rounded-md border border-white/40 px-5 py-2 text-xs font-bold uppercase tracking-wider text-white">Member Login</Link>
             </div>
           </div>
         </div>

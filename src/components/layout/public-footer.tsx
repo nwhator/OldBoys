@@ -5,7 +5,7 @@ export function PublicFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="fade-in mt-20 bg-(--primary) px-4 py-12 text-slate-100 md:px-8">
+    <footer className="fade-in tone-blue mt-20 px-4 py-12 text-slate-100 md:px-8">
       <div className="mx-auto flex max-w-7xl flex-col justify-between gap-4 md:flex-row md:items-center">
         <div className="footer-brand-wrap">
           <BrandMark subtitle="Holy Ghost College Owerri" />
