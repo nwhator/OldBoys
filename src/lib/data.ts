@@ -163,25 +163,25 @@ export async function getContactMessages() {
 
 export async function getLeadershipProfiles(isPublic = false) {
   const supabase = await createSupabaseServerClient();
-  let query = supabase.from("leadership_profiles").select("*").order("sort_order", { ascending: true }).returns<LeadershipProfile[]>();
+  let query = supabase.from("leadership_profiles").select("*");
 
   if (isPublic) {
     query = query.eq("is_active", true);
   }
 
-  const { data } = await query;
+  const { data } = await query.order("sort_order", { ascending: true }).returns<LeadershipProfile[]>();
   return data ?? [];
 }
 
 export async function getGalleryItems(isPublic = false) {
   const supabase = await createSupabaseServerClient();
-  let query = supabase.from("gallery_items").select("*").order("sort_order", { ascending: true }).returns<GalleryItem[]>();
+  let query = supabase.from("gallery_items").select("*");
 
   if (isPublic) {
     query = query.eq("is_published", true);
   }
 
-  const { data } = await query;
+  const { data } = await query.o  rder("sort_order", { ascending: true }).returns<GalleryItem[]>();
   return data ?? [];
 }
 
