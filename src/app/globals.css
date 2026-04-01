@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root {
+  --surface: #fafaf5;
+  --surface-low: #f4f4ef;
+  --primary: #00113a;
+  --primary-container: #002366;
+  --secondary: #b8860b;
+  --ink: #1a1c19;
+}
+
+body {
+  background: radial-gradient(circle at 20% 20%, #fff7de 0%, var(--surface) 45%),
+    linear-gradient(135deg, #f6f6ef 0%, #fafaf5 50%, #eff1f8 100%);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+.hero-overlay {
+  background: linear-gradient(100deg, rgba(0, 17, 58, 0.92), rgba(0, 35, 102, 0.52), rgba(0, 17, 58, 0.05));
+}
+
+.editorial-card {
+  background: color-mix(in srgb, var(--surface-low) 84%, #ffffff);
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.editorial-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(0, 17, 58, 0.08);
+}
+
+.logo-shell {
+  background: radial-gradient(circle at 28% 28%, #fffbe5 0%, #f7efd5 64%, #ecdfbf 100%);
+  border: 1px solid rgba(0, 17, 58, 0.15);
+  box-shadow: 0 8px 16px rgba(0, 17, 58, 0.14);
+}
+
+.footer-brand-wrap .logo-shell {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+}
+
+.fade-in {
+  animation: fade-in-up 520ms ease both;
+}
+
+.stagger-grid > * {
+  animation: fade-in-up 600ms ease both;
+}
+
+.stagger-grid > *:nth-child(1) { animation-delay: 80ms; }
+.stagger-grid > *:nth-child(2) { animation-delay: 150ms; }
+.stagger-grid > *:nth-child(3) { animation-delay: 220ms; }
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .stagger-grid > * {
+    animation: none;
+  }
+}
