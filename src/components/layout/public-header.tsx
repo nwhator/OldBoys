@@ -17,6 +17,7 @@ export async function PublicHeader() {
           <Link href="/about">About</Link>
           <Link href="/blog">Blog</Link>
           <Link href="/leadership">Leadership</Link>
+          <Link href="/community">Community</Link>
           <Link href="/contact">Contact</Link>
         </nav>
         {profile ? (
