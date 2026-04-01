@@ -68,7 +68,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section-cobalt py-14">
+      <section className="py-14">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="grid gap-6 md:grid-cols-12">
           <article className="editorial-card reveal-up tone-cream rounded-xl p-8 md:col-span-4">
@@ -106,7 +106,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section-honey py-14">
+      <section className="py-14">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {highlights.map((item) => (
@@ -120,7 +120,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section-lilac py-14">
+      <section className="py-14">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -142,7 +142,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section-cobalt py-14">
+      <section className="py-14">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="grid gap-6 lg:grid-cols-3">
           {timeline.map((item) => (
@@ -156,7 +156,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section-honey py-14">
+      <section className="py-14">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="mb-6 flex items-center justify-between gap-4">
           <h2 className="text-3xl font-black text-(--primary)">Dispatch from the Heritage</h2>
@@ -200,7 +200,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section-lilac py-14">
+      <section className="py-14">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="mb-6 flex items-center justify-between gap-4">
           <h2 className="text-3xl font-black text-(--primary)">Community Members</h2>

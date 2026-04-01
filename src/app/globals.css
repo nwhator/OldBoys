@@ -8,7 +8,6 @@
   --secondary: #e0ad1f;
   --accent-blue: #1f4fb2;
   --accent-warm: #f2c84b;
-  --accent-lilac: #b89cff;
   --ink: #1a1c19;
 }
 
@@ -20,7 +19,7 @@ body {
 }
 
 .hero-overlay {
-  background: rgba(0, 17, 58, 0.7);
+  background: rgba(10, 35, 95, 0.78);
 }
 
 .editorial-card {
@@ -78,10 +77,6 @@ body {
 
 .section-honey {
   background: #f9dd82;
-}
-
-.section-lilac {
-  background: #c683ea;
 }
 
 @keyframes fade-in-up {
