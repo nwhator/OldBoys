@@ -1,7 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 import { QuickLinkCard } from "@/components/cards/quick-link-card";
+import { getLatestPublishedBlogPosts } from "@/lib/data";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const latestPosts = await getLatestPublishedBlogPosts(3);
+
   return (
     <main className="overflow-x-hidden">
       <section className="relative isolate min-h-[72vh] overflow-hidden">
@@ -22,6 +26,10 @@ export default function HomePage() {
             <p className="mt-5 max-w-2xl text-white/85 md:text-lg">
               A secure alumni platform to manage membership, vote in elections, pay dues, and preserve our shared legacy.
             </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/about" className="rounded-md bg-white px-5 py-2 text-xs font-bold uppercase tracking-wider text-(--primary)">About the Association</Link>
+              <Link href="/signup" className="rounded-md border border-white/40 px-5 py-2 text-xs font-bold uppercase tracking-wider text-white">Join the Registry</Link>
+            </div>
           </div>
         </div>
       </section>
@@ -30,6 +38,28 @@ export default function HomePage() {
         <QuickLinkCard title="Membership" description="Track your status and profile details." href="/dashboard" />
         <QuickLinkCard title="Elections" description="Review active elections and cast your secure vote." href="/voting" />
         <QuickLinkCard title="Dues Payments" description="Pay association dues and view your transaction history." href="/payments" />
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pb-14 md:px-8">
+        <div className="mb-6 flex items-center justify-between gap-4">
+          <h2 className="text-3xl font-black text-(--primary)">Latest Updates</h2>
+          <Link href="/blog" className="text-sm font-bold text-(--primary-container)">View all</Link>
+        </div>
+        <div className="grid gap-5 md:grid-cols-3">
+          {latestPosts.map((post) => (
+            <article key={post.id} className="editorial-card rounded-xl p-5">
+              <p className="text-xs uppercase tracking-widest text-slate-500">{new Date(post.created_at).toLocaleDateString()}</p>
+              <h3 className="mt-2 text-xl font-bold text-(--primary)">{post.title}</h3>
+              <p className="mt-2 line-clamp-3 text-sm text-slate-600">{post.content}</p>
+              <Link href={`/blog/${post.slug}`} className="mt-3 inline-block text-sm font-bold text-(--primary-container)">Read more</Link>
+            </article>
+          ))}
+          {latestPosts.length === 0 && (
+            <article className="editorial-card rounded-xl p-5 md:col-span-3">
+              <p className="text-sm text-slate-600">No posts published yet.</p>
+            </article>
+          )}
+        </div>
       </section>
     </main>
   );

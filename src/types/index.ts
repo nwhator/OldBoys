@@ -62,3 +62,51 @@ export type BlogPost = {
   created_at: string;
   updated_at: string;
 };
+
+export type ContactMessage = {
+  id: string;
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  status: "new" | "read" | "archived";
+  created_at: string;
+};
+
+export type LeadershipProfile = {
+  id: string;
+  name: string;
+  title: string;
+  bio: string | null;
+  image_url: string | null;
+  sort_order: number;
+  is_active: boolean;
+  created_at: string;
+};
+
+export type GalleryItem = {
+  id: string;
+  title: string;
+  image_url: string;
+  caption: string | null;
+  event_date: string | null;
+  sort_order: number;
+  is_published: boolean;
+  created_at: string;
+};
+
+export type AuditSetting = {
+  key: string;
+  value: string;
+  updated_at: string;
+};
+
+export type EmailTemplate = {
+  id: string;
+  name: string;
+  subject: string;
+  body: string;
+  is_active: boolean;
+  updated_at: string;
+  created_at: string;
+};

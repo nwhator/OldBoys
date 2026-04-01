@@ -14,7 +14,12 @@ export async function PublicHeader() {
         </Link>
         <nav className="hidden items-center gap-6 text-sm font-semibold md:flex">
           <Link href="/">Home</Link>
+          <Link href="/about">About</Link>
+          <Link href="/leadership">Leadership</Link>
+          <Link href="/gallery">Gallery</Link>
+          <Link href="/membership-card">Card</Link>
           <Link href="/blog">Blog</Link>
+          <Link href="/contact">Contact</Link>
           <Link href="/login">Login</Link>
         </nav>
         {profile ? (
