@@ -9,6 +9,12 @@ export const metadata: Metadata = {
 
 export default async function LeadershipPage() {
   const leaders = await getLeadershipProfiles(true);
+  const advisors = [
+    { name: "Prof. B. Lawal", role: "Founding Patron" },
+    { name: "Justice M. Abdullahi", role: "Legal Advisor" },
+    { name: "Dr. E. Williams", role: "Strategic Advisor" },
+    { name: "HRH K. Sanusi", role: "Royal Patron" }
+  ];
 
   return (
     <main className="mx-auto max-w-7xl px-4 py-14 md:px-8">
@@ -34,6 +40,19 @@ export default async function LeadershipPage() {
           </article>
         ))}
         {leaders.length === 0 ? <p className="text-sm text-slate-500">No leadership profiles published yet.</p> : null}
+      </section>
+
+      <section className="mt-12 rounded-2xl border border-slate-200 bg-white p-6 md:p-8">
+        <h2 className="text-3xl font-black text-(--primary)">Advisory Council</h2>
+        <p className="mt-2 text-sm text-slate-600">Distinguished elders offering strategic guidance to the association.</p>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {advisors.map((advisor) => (
+            <article key={advisor.name} className="rounded-lg bg-slate-50 p-4">
+              <h3 className="text-lg font-black text-(--primary)">{advisor.name}</h3>
+              <p className="text-sm text-slate-600">{advisor.role}</p>
+            </article>
+          ))}
+        </div>
       </section>
     </main>
   );

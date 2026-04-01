@@ -9,6 +9,11 @@ export const metadata: Metadata = {
 
 export default async function AboutPage() {
   const posts = await getPublishedBlogPosts();
+  const values = [
+    { name: "Unity", text: "A brotherhood that transcends decades and borders." },
+    { name: "Integrity", text: "Maintaining high moral standards in service and leadership." },
+    { name: "Excellence", text: "Continuous pursuit of distinction across generations." }
+  ];
 
   return (
     <main className="mx-auto max-w-7xl px-4 py-14 md:px-8">
@@ -34,6 +39,34 @@ export default async function AboutPage() {
           <p className="text-xs uppercase tracking-widest text-slate-500">Take Action</p>
           <Link href="/signup" className="mt-2 inline-block text-sm font-bold text-(--primary-container)">Join the registry</Link>
         </article>
+      </section>
+
+      <section className="mt-10 grid gap-6 md:grid-cols-2">
+        <article className="editorial-card rounded-xl p-6">
+          <h2 className="text-2xl font-black text-(--primary)">Our Mission</h2>
+          <p className="mt-3 text-sm leading-relaxed text-slate-700">
+            To build a trusted global network of alumni who strengthen the institution and empower members through mentorship,
+            service, and accountable leadership.
+          </p>
+        </article>
+        <article className="editorial-card rounded-xl p-6">
+          <h2 className="text-2xl font-black text-(--primary)">Our Vision</h2>
+          <p className="mt-3 text-sm leading-relaxed text-slate-700">
+            To remain a premier alumni association recognized for preserving heritage while shaping the next generation of leaders.
+          </p>
+        </article>
+      </section>
+
+      <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-6 md:p-8">
+        <h2 className="text-3xl font-black text-(--primary)">Core Values</h2>
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {values.map((value) => (
+            <article key={value.name} className="rounded-lg bg-slate-50 p-5">
+              <h3 className="text-xl font-black text-(--primary)">{value.name}</h3>
+              <p className="mt-2 text-sm text-slate-600">{value.text}</p>
+            </article>
+          ))}
+        </div>
       </section>
     </main>
   );
