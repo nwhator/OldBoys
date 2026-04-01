@@ -22,17 +22,17 @@ export async function PublicHeader() {
         </nav>
         {profile ? (
           <div className="flex items-center gap-2">
-            <Link href="/dashboard" className="rounded-md border border-slate-300 px-3 py-2 text-xs font-bold uppercase tracking-wider text-slate-700">
+            <Link href="/dashboard" className="btn-outline rounded-md border border-slate-300 px-3 py-2 text-xs font-bold uppercase tracking-wider text-slate-700">
               Dashboard
             </Link>
             <form action={signOut}>
-              <button className="rounded-md bg-(--primary) px-3 py-2 text-xs font-bold uppercase tracking-wider text-white" type="submit">
+              <button className="btn-primary rounded-md px-3 py-2 text-xs font-bold uppercase tracking-wider" type="submit">
                 Sign out
               </button>
             </form>
           </div>
         ) : (
-          <Link href="/login" className="rounded-md bg-(--primary) px-4 py-2 text-xs font-bold uppercase tracking-wider text-white">
+          <Link href="/login" className="btn-primary rounded-md px-4 py-2 text-xs font-bold uppercase tracking-wider">
             Login
           </Link>
         )}
