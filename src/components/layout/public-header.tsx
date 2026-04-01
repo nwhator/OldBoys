@@ -15,12 +15,9 @@ export async function PublicHeader() {
         <nav className="hidden items-center gap-6 text-sm font-semibold md:flex">
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>
-          <Link href="/leadership">Leadership</Link>
-          <Link href="/gallery">Gallery</Link>
-          <Link href="/membership-card">Card</Link>
           <Link href="/blog">Blog</Link>
+          <Link href="/leadership">Leadership</Link>
           <Link href="/contact">Contact</Link>
-          <Link href="/login">Login</Link>
         </nav>
         {profile ? (
           <div className="flex items-center gap-2">
@@ -34,8 +31,8 @@ export async function PublicHeader() {
             </form>
           </div>
         ) : (
-          <Link href="/signup" className="rounded-md bg-(--primary) px-4 py-2 text-xs font-bold uppercase tracking-wider text-white">
-            Join Now
+          <Link href="/login" className="rounded-md bg-(--primary) px-4 py-2 text-xs font-bold uppercase tracking-wider text-white">
+            Login
           </Link>
         )}
       </div>
