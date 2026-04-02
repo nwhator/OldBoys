@@ -199,15 +199,18 @@ export async function getEmailTemplates() {
   return data ?? [];
 }
 
-export async function getPublicCommunityMembers(limit = 24) {
+export async function getPublicCommunityMembers(limit = 24, includeAdmins = true) {
   const admin = createSupabaseAdminClient();
-  const { data } = await admin
+  let query = admin
     .from("users")
-    .select("id,full_name,avatar_url,role,membership_status,created_at")
-    .eq("membership_status", "approved")
-    .order("created_at", { ascending: false })
-    .limit(limit)
-    .returns<Profile[]>();
+    .select("id,full_name,avatar_url,role,membership_status,graduation_set,created_at")
+    .eq("membership_status", "approved");
+
+  if (!includeAdmins) {
+    query = query.neq("role", "admin");
+  }
+
+  const { data } = await query.order("created_at", { ascending: false }).limit(limit).returns<Profile[]>();
 
   return (data ?? []).map(
     (member): CommunityMember => ({
@@ -216,8 +219,9 @@ export async function getPublicCommunityMembers(limit = 24) {
       avatar_url: member.avatar_url,
       role: member.role,
       membership_status: member.membership_status,
+      graduation_set: member.graduation_set,
       created_at: member.created_at,
-      set_label: `Set ${new Date(member.created_at).getFullYear()}`,
+      set_label: member.graduation_set ? `Set ${member.graduation_set}` : `Set ${new Date(member.created_at).getFullYear()}`,
       chapter: member.role === "admin" ? "Executive Chapter" : "General Chapter"
     })
   );

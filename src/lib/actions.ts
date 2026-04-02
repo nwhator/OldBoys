@@ -342,6 +342,77 @@ export async function createPaymentRecord(formData: FormData) {
   revalidatePath("/admin/payments");
 }
 
+export async function updateOwnProfile(formData: FormData) {
+  const profile = await requireApprovedMember();
+  const graduationSetInput = String(formData.get("graduation_set") ?? "").trim();
+  const graduationSet = graduationSetInput ? graduationSetInput.slice(0, 32) : null;
+  const avatarFile = formData.get("avatar");
+  let avatarUrl = profile.avatar_url;
+
+  if (avatarFile instanceof File && avatarFile.size > 0) {
+    if (!avatarFile.type.startsWith("image/")) {
+      redirect("/profile?error=avatar_type");
+    }
+
+    if (avatarFile.size > 5 * 1024 * 1024) {
+      redirect("/profile?error=avatar_size");
+    }
+
+    const admin = createSupabaseAdminClient();
+    const arrayBuffer = await avatarFile.arrayBuffer();
+    const safeName = avatarFile.name.replace(/[^a-zA-Z0-9.-]/g, "-");
+    const storagePath = `avatars/${profile.id}/${Date.now()}-${safeName}`;
+
+    const { data, error } = await admin.storage.from("media").upload(storagePath, arrayBuffer, {
+      contentType: avatarFile.type || "application/octet-stream",
+      upsert: false
+    });
+
+    if (error || !data) {
+      redirect("/profile?error=avatar_upload");
+    }
+
+    avatarUrl = admin.storage.from("media").getPublicUrl(data.path).data.publicUrl;
+  }
+
+  const admin = createSupabaseAdminClient();
+  await admin
+    .from("users")
+    .update({
+      avatar_url: avatarUrl,
+      graduation_set: graduationSet
+    })
+    .eq("id", profile.id);
+
+  revalidatePath("/profile");
+  revalidatePath("/");
+  revalidatePath("/community");
+  redirect("/profile?updated=profile");
+}
+
+export async function changeOwnPassword(formData: FormData) {
+  await requireApprovedMember();
+  const password = String(formData.get("new_password") ?? "");
+  const confirmPassword = String(formData.get("confirm_password") ?? "");
+
+  if (password.length < 8) {
+    redirect("/profile?error=password_length");
+  }
+
+  if (password !== confirmPassword) {
+    redirect("/profile?error=password_mismatch");
+  }
+
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.auth.updateUser({ password });
+
+  if (error) {
+    redirect("/profile?error=password_update");
+  }
+
+  redirect("/profile?updated=password");
+}
+
 export async function createBlogPost(formData: FormData) {
   await requireAdmin();
   const title = String(formData.get("title") ?? "").trim();

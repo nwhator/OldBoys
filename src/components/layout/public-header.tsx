@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getCurrentProfile } from "@/lib/auth";
 import { signOut } from "@/lib/actions";
 import { BrandMark } from "@/components/layout/brand-mark";
+import { PublicHeaderMobileMenu } from "@/components/layout/public-header-mobile-menu";
 
 export async function PublicHeader() {
   const profile = await getCurrentProfile();
@@ -20,8 +21,9 @@ export async function PublicHeader() {
           <Link href="/community">Community</Link>
           <Link href="/contact">Contact</Link>
         </nav>
+        <PublicHeaderMobileMenu isAuthenticated={Boolean(profile)} />
         {profile ? (
-          <div className="flex items-center gap-2">
+          <div className="hidden items-center gap-2 md:flex">
             <Link href="/dashboard" className="btn-outline rounded-md border border-slate-300 px-3 py-2 text-xs font-bold uppercase tracking-wider text-slate-700">
               Dashboard
             </Link>
@@ -32,7 +34,7 @@ export async function PublicHeader() {
             </form>
           </div>
         ) : (
-          <Link href="/login" className="btn-primary rounded-md px-4 py-2 text-xs font-bold uppercase tracking-wider">
+          <Link href="/login" className="btn-primary hidden rounded-md px-4 py-2 text-xs font-bold uppercase tracking-wider md:inline-flex">
             Login
           </Link>
         )}
