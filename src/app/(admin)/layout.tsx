@@ -14,7 +14,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
       <AdminSidebar />
       <div className="min-w-0 flex-1">
         <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 px-4 py-3 backdrop-blur md:px-6">
-          <div className="relative flex items-center justify-between gap-3">
+          <div className="flex items-center justify-between gap-3">
             <div className="min-w-0">
               <BrandMark size={30} compact />
               <p className="text-xs font-bold uppercase tracking-widest text-slate-500">Admin</p>
