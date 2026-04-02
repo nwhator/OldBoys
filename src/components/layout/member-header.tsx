@@ -3,6 +3,7 @@ import { signOut } from "@/lib/actions";
 import { requireApprovedMember } from "@/lib/auth";
 import { BrandMark } from "@/components/layout/brand-mark";
 import { MemberMobileMenu } from "@/components/layout/member-mobile-menu";
+import { MemberNavLinks } from "@/components/layout/member-nav-links";
 
 export async function MemberHeader() {
   const profile = await requireApprovedMember();
@@ -15,12 +16,7 @@ export async function MemberHeader() {
           <p className="text-xs font-bold uppercase tracking-widest text-slate-500">Member Portal</p>
           <p className="truncate text-lg font-bold text-(--primary)">{profile.full_name}</p>
         </div>
-        <nav className="hidden items-center gap-4 text-sm font-semibold md:flex">
-          <Link href="/dashboard">Dashboard</Link>
-          <Link href="/profile">Profile</Link>
-          <Link href="/voting">Voting</Link>
-          <Link href="/payments">Payments</Link>
-        </nav>
+        <MemberNavLinks />
         <div className="md:hidden">
           <MemberMobileMenu fullName={profile.full_name} />
         </div>
