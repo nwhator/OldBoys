@@ -36,14 +36,24 @@ export default async function AdminDashboardPage() {
         </article>
       </section>
 
+      <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="text-xl font-black text-(--primary)">Quick Actions</h2>
+        <p className="mt-1 text-sm text-slate-600">Use these shortcuts to publish blog posts and add people members can vote for.</p>
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          <Link href="/admin/blog" className="rounded-lg bg-(--primary) px-4 py-3 text-center text-sm font-bold text-white">Add Blog Post</Link>
+          <Link href="/admin/candidates" className="rounded-lg border border-slate-300 px-4 py-3 text-center text-sm font-bold text-(--primary)">Add Candidates (People to Vote)</Link>
+          <Link href="/admin/approvals" className="rounded-lg border border-slate-300 px-4 py-3 text-center text-sm font-bold text-(--primary)">Approve Voters</Link>
+        </div>
+      </section>
+
       <section className="mt-8 grid gap-4 md:grid-cols-2">
-        <Link href="/admin/approvals" className="rounded-xl border border-slate-200 bg-white p-5 font-semibold text-(--primary)">Manage User Approvals</Link>
+        <Link href="/admin/approvals" className="rounded-xl border border-slate-200 bg-white p-5 font-semibold text-(--primary)">Approve Voters</Link>
         <Link href="/admin/member-management" className="rounded-xl border border-slate-200 bg-white p-5 font-semibold text-(--primary)">Manage Members</Link>
         <Link href="/admin/elections" className="rounded-xl border border-slate-200 bg-white p-5 font-semibold text-(--primary)">Manage Elections</Link>
         <Link href="/admin/elections/setup" className="rounded-xl border border-slate-200 bg-white p-5 font-semibold text-(--primary)">Election Setup</Link>
         <Link href="/admin/elections/center" className="rounded-xl border border-slate-200 bg-white p-5 font-semibold text-(--primary)">Election Center</Link>
-        <Link href="/admin/candidates" className="rounded-xl border border-slate-200 bg-white p-5 font-semibold text-(--primary)">Manage Candidates</Link>
-        <Link href="/admin/blog" className="rounded-xl border border-slate-200 bg-white p-5 font-semibold text-(--primary)">Manage Blog</Link>
+        <Link href="/admin/candidates" className="rounded-xl border border-slate-200 bg-white p-5 font-semibold text-(--primary)">Add Candidates (People to Vote)</Link>
+        <Link href="/admin/blog" className="rounded-xl border border-slate-200 bg-white p-5 font-semibold text-(--primary)">Add Blog Post</Link>
         <Link href="/admin/leadership" className="rounded-xl border border-slate-200 bg-white p-5 font-semibold text-(--primary)">Manage Leadership</Link>
         <Link href="/admin/gallery" className="rounded-xl border border-slate-200 bg-white p-5 font-semibold text-(--primary)">Manage Gallery</Link>
         <Link href="/admin/email-templates" className="rounded-xl border border-slate-200 bg-white p-5 font-semibold text-(--primary)">Manage Email Templates</Link>
