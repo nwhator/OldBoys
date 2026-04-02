@@ -3,6 +3,31 @@
 
 create extension if not exists "pgcrypto";
 
+-- Reset app-owned objects so this script can rebuild from a clean slate.
+drop trigger if exists on_auth_user_created on auth.users;
+drop function if exists public.handle_new_auth_user() cascade;
+drop function if exists public.touch_blog_post_updated_at() cascade;
+drop function if exists public.is_admin(uuid) cascade;
+drop function if exists public.is_approved_member(uuid) cascade;
+
+drop table if exists public.votes cascade;
+drop table if exists public.candidates cascade;
+drop table if exists public.positions cascade;
+drop table if exists public.elections cascade;
+drop table if exists public.payments cascade;
+drop table if exists public.blog_posts cascade;
+drop table if exists public.registration_access_codes cascade;
+drop table if exists public.contact_messages cascade;
+drop table if exists public.leadership_profiles cascade;
+drop table if exists public.gallery_items cascade;
+drop table if exists public.audit_settings cascade;
+drop table if exists public.email_templates cascade;
+drop table if exists public.users cascade;
+
+drop type if exists payment_status cascade;
+drop type if exists membership_status cascade;
+drop type if exists user_role cascade;
+
 create type user_role as enum ('admin', 'member');
 create type membership_status as enum ('pending', 'approved', 'rejected');
 create type payment_status as enum ('pending', 'success', 'failed');
@@ -13,6 +38,7 @@ create table if not exists public.users (
   role user_role not null default 'member',
   membership_status membership_status not null default 'pending',
   avatar_url text,
+  graduation_set text,
   created_at timestamptz not null default now()
 );
 
@@ -435,82 +461,16 @@ values
   )
 on conflict (name) do nothing;
 
--- Development seed: hardcoded admin login
--- Email/login: admin@oldboys.local
--- Password: OldBoys'Alumini
-do $$
-declare
-  admin_uid uuid := '11111111-1111-4111-8111-111111111111';
-  admin_email text := 'admin@oldboys.local';
-  admin_password text := 'OldBoys''Alumini';
-begin
-  insert into auth.users (
-    id,
-    instance_id,
-    aud,
-    role,
-    email,
-    encrypted_password,
-    email_confirmed_at,
-    confirmation_sent_at,
-    recovery_sent_at,
-    email_change_sent_at,
-    last_sign_in_at,
-    raw_app_meta_data,
-    raw_user_meta_data,
-    created_at,
-    updated_at,
-    is_sso_user,
-    is_anonymous
-  )
-  values (
-    admin_uid,
-    '00000000-0000-0000-0000-000000000000',
-    'authenticated',
-    'authenticated',
-    admin_email,
-    crypt(admin_password, gen_salt('bf')),
-    now(),
-    now(),
-    now(),
-    now(),
-    now(),
-    '{"provider":"email","providers":["email"]}',
-    jsonb_build_object('full_name', 'Admin'),
-    now(),
-    now(),
-    false,
-    false
-  )
-  on conflict (id) do nothing;
-
-  insert into auth.identities (
-    id,
-    user_id,
-    identity_data,
-    provider,
-    provider_id,
-    last_sign_in_at,
-    created_at,
-    updated_at
-  )
-  values (
-    gen_random_uuid(),
-    admin_uid,
-    jsonb_build_object('sub', admin_uid::text, 'email', admin_email),
-    'email',
-    admin_email,
-    now(),
-    now(),
-    now()
-  )
-  on conflict (provider, provider_id) do nothing;
-
-  insert into public.users (id, full_name, role, membership_status)
-  values (admin_uid, 'Admin', 'admin', 'approved')
-  on conflict (id) do update
-    set full_name = excluded.full_name,
-        role = 'admin',
-        membership_status = 'approved';
-end
-$$;
+-- IMPORTANT:
+-- Do NOT insert/update auth.users or auth.identities directly from this schema.
+-- Supabase Auth manages these records; direct SQL writes can cause /auth/v1/token 500 errors.
+--
+-- Safe admin bootstrap flow:
+-- 1) Create the user in Supabase Dashboard > Authentication > Users
+--    email: admin@oldboys.local
+--    password: $@geReal98
+-- 2) Then run this SQL to promote/approve that account:
+--
+-- update public.users
+-- set role = 'admin', membership_status = 'approved', full_name = 'Admin'
+-- where id = (select id from auth.users where email = 'admin@oldboys.local');

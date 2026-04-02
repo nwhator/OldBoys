@@ -7,6 +7,7 @@ export type Profile = {
   role: UserRole;
   membership_status: MembershipStatus;
   avatar_url: string | null;
+  graduation_set: string | null;
   created_at: string;
 };
 
@@ -117,6 +118,7 @@ export type CommunityMember = {
   avatar_url: string | null;
   role: UserRole;
   membership_status: MembershipStatus;
+  graduation_set: string | null;
   created_at: string;
   set_label: string;
   chapter: string;

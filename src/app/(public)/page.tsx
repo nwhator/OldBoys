@@ -4,7 +4,7 @@ import { getLatestPublishedBlogPosts, getPublicCommunityMembers } from "@/lib/da
 
 export default async function HomePage() {
   const latestPosts = await getLatestPublishedBlogPosts(3);
-  const communityPreview = await getPublicCommunityMembers(6);
+  const communityPreview = await getPublicCommunityMembers(6, false);
   const highlights = [
     { label: "Scholarships Supported", value: "160", note: "Students funded through alumni initiatives" },
     { label: "Active Chapters", value: "24", note: "Coordinated chapter leadership structure" },
