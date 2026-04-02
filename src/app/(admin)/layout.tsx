@@ -23,7 +23,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
             <div className="sm:hidden">
               <AdminMobileMenu fullName={profile.full_name} links={adminLinks} />
             </div>
-            <form action={signOut} className="hidden md:block">
+            <form action={signOut} className="hidden sm:block">
               <button className="rounded-md bg-(--primary) px-3 py-2 text-xs font-bold uppercase tracking-wider text-white" type="submit">
                 Sign out
               </button>

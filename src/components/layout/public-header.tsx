@@ -3,6 +3,7 @@ import { getCurrentProfile } from "@/lib/auth";
 import { signOut } from "@/lib/actions";
 import { BrandMark } from "@/components/layout/brand-mark";
 import { PublicHeaderMobileMenu } from "@/components/layout/public-header-mobile-menu";
+import { PublicNavLinks } from "@/components/layout/public-nav-links";
 
 export async function PublicHeader() {
   const profile = await getCurrentProfile();
@@ -13,14 +14,7 @@ export async function PublicHeader() {
         <Link href="/" className="min-w-0">
           <BrandMark compact subtitle="Holy Ghost College Owerri" />
         </Link>
-        <nav className="hidden items-center gap-6 text-sm font-semibold md:flex">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/blog">Blog</Link>
-          <Link href="/leadership">Leadership</Link>
-          <Link href="/community">Community</Link>
-          <Link href="/contact">Contact</Link>
-        </nav>
+        <PublicNavLinks />
         <PublicHeaderMobileMenu isAuthenticated={Boolean(profile)} />
         {profile ? (
           <div className="hidden items-center gap-2 md:flex">
