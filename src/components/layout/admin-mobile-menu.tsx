@@ -27,8 +27,14 @@ export function AdminMobileMenu({ fullName, links }: AdminMobileMenuProps) {
     setOpen(false);
   }
 
+  const quickActions = [
+    { href: "/admin/blog", label: "Add Blog Post" },
+    { href: "/admin/candidates", label: "Add Candidates" },
+    { href: "/admin/approvals", label: "Approve Voters" }
+  ];
+
   return (
-    <div className="md:hidden">
+    <div className="sm:hidden">
       <button
         type="button"
         aria-expanded={open}
@@ -59,6 +65,21 @@ export function AdminMobileMenu({ fullName, links }: AdminMobileMenuProps) {
             }`}
           >
             <p className="truncate text-sm font-bold text-(--primary)">{fullName}</p>
+            <div className="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-3">
+              <p className="text-xs font-bold uppercase tracking-widest text-slate-500">Quick Actions</p>
+              <div className="mt-2 grid grid-cols-1 gap-2">
+                {quickActions.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={closeMenu}
+                    className="rounded-md bg-(--primary) px-3 py-2 text-center text-xs font-bold uppercase tracking-wide text-white"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
             <nav className="mt-4 grid grid-cols-1 gap-2 text-sm font-semibold text-slate-800 sm:grid-cols-2">
               {links.map((link) => (
                 <Link key={link.href} href={link.href} onClick={closeMenu} className="rounded-md border border-slate-200 px-3 py-2 text-center">

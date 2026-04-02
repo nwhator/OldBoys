@@ -10,7 +10,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
   const profile = await requireAdmin();
 
   return (
-    <div className="min-h-screen overflow-x-hidden md:flex">
+    <div className="min-h-screen overflow-x-hidden sm:flex">
       <AdminSidebar />
       <div className="min-w-0 flex-1">
         <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 px-4 py-3 backdrop-blur md:px-6">
@@ -20,7 +20,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
               <p className="text-xs font-bold uppercase tracking-widest text-slate-500">Admin</p>
               <p className="truncate font-semibold text-(--primary)">{profile.full_name}</p>
             </div>
-            <div className="md:hidden">
+            <div className="sm:hidden">
               <AdminMobileMenu fullName={profile.full_name} links={adminLinks} />
             </div>
             <form action={signOut} className="hidden md:block">
