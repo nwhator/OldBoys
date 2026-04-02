@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { BrandMark } from "@/components/layout/brand-mark";
 
-const links = [
+export const adminLinks = [
   { href: "/admin", label: "Overview" },
   { href: "/admin/approvals", label: "Approvals" },
   { href: "/admin/member-management", label: "Members" },
@@ -26,7 +26,7 @@ export function AdminSidebar() {
         <BrandMark subtitle="Holy Ghost College Owerri" />
       </div>
       <nav className="mt-6 space-y-2">
-        {links.map((link) => (
+        {adminLinks.map((link) => (
           <Link key={link.href} href={link.href} className="block rounded-md px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-200/60">
             {link.label}
           </Link>
