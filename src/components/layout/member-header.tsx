@@ -21,7 +21,7 @@ export async function MemberHeader() {
           <Link href="/voting">Voting</Link>
           <Link href="/payments">Payments</Link>
         </nav>
-        <div className="relative md:hidden">
+        <div className="md:hidden">
           <MemberMobileMenu fullName={profile.full_name} />
         </div>
         <form action={signOut} className="hidden md:block">
