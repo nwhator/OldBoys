@@ -4,10 +4,10 @@ import { MemberFooter } from "@/components/layout/member-footer";
 
 export default function MemberLayout({ children }: { children: ReactNode }) {
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <MemberHeader />
-      {children}
+      <main className="flex-1">{children}</main>
       <MemberFooter />
-    </>
+    </div>
   );
 }
