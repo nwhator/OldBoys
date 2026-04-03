@@ -349,6 +349,13 @@ export async function updateOwnProfile(formData: FormData) {
   const avatarFile = formData.get("avatar");
   let avatarUrl = profile.avatar_url;
 
+  let admin;
+  try {
+    admin = createSupabaseAdminClient();
+  } catch {
+    redirect("/profile?error=profile_update");
+  }
+
   if (avatarFile instanceof File && avatarFile.size > 0) {
     if (!avatarFile.type.startsWith("image/")) {
       redirect("/profile?error=avatar_type");
@@ -358,7 +365,6 @@ export async function updateOwnProfile(formData: FormData) {
       redirect("/profile?error=avatar_size");
     }
 
-    const admin = createSupabaseAdminClient();
     const arrayBuffer = await avatarFile.arrayBuffer();
     const safeName = avatarFile.name.replace(/[^a-zA-Z0-9.-]/g, "-");
     const storagePath = `avatars/${profile.id}/${Date.now()}-${safeName}`;
@@ -375,14 +381,17 @@ export async function updateOwnProfile(formData: FormData) {
     avatarUrl = admin.storage.from("media").getPublicUrl(data.path).data.publicUrl;
   }
 
-  const admin = createSupabaseAdminClient();
-  await admin
+  const { error } = await admin
     .from("users")
     .update({
       avatar_url: avatarUrl,
       graduation_set: graduationSet
     })
     .eq("id", profile.id);
+
+  if (error) {
+    redirect("/profile?error=profile_update");
+  }
 
   revalidatePath("/profile");
   revalidatePath("/");

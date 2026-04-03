@@ -270,6 +270,12 @@ create policy "admins can update users"
 on public.users for update
 using (public.is_admin(auth.uid()));
 
+drop policy if exists "users can update self" on public.users;
+create policy "users can update self"
+on public.users for update
+using (auth.uid() = id)
+with check (auth.uid() = id);
+
 -- elections, positions, candidates are readable by authenticated users
 drop policy if exists "read elections" on public.elections;
 create policy "read elections"

@@ -27,6 +27,9 @@ function getMessage(params: Record<string, string | string[] | undefined>) {
   if (error === "avatar_upload") {
     return { type: "error", text: "Avatar upload failed. Please try again." };
   }
+  if (error === "profile_update") {
+    return { type: "error", text: "Unable to save profile right now. Please try again, and confirm setup is complete." };
+  }
   if (error === "password_length") {
     return { type: "error", text: "New password must be at least 8 characters." };
   }
