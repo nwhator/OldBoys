@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type BrandMarkProps = {
   size?: number;
@@ -8,7 +9,7 @@ type BrandMarkProps = {
 
 export function BrandMark({ size = 40, compact = false, subtitle }: BrandMarkProps) {
   return (
-    <div className="flex min-w-0 items-center gap-3">
+    <Link href="/" className="flex min-w-0 items-center gap-3" aria-label="Go to homepage">
       <span
         className="logo-shell inline-flex shrink-0 items-center justify-center rounded-xl"
         style={{ width: size, height: size }}
@@ -27,6 +28,6 @@ export function BrandMark({ size = 40, compact = false, subtitle }: BrandMarkPro
         <p className="truncate text-sm font-black tracking-tight text-(--primary) md:text-base">Old Boys' Association</p>
         {subtitle ? <p className="truncate text-[10px] uppercase tracking-[0.2em] text-slate-500">{subtitle}</p> : null}
       </div>
-    </div>
+    </Link>
   );
 }
