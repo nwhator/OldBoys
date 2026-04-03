@@ -15,12 +15,12 @@ export default async function HomePage() {
     {
       title: "Membership & Welfare",
       description:
-        "Keep your profile current, verify member status, access your digital membership card, and connect with chapter welfare officers."
+        "Stay connected with your set, receive welfare support updates, and keep your association records current."
     },
     {
-      title: "Civic Leadership",
+      title: "Leadership & Service",
       description:
-        "Participate in transparent elections, monitor candidate manifestos, and contribute to accountable governance of the association."
+        "Support chapter initiatives, mentor younger alumni, and contribute to responsible leadership across the association."
     },
     {
       title: "Mentorship & Scholarships",
@@ -36,8 +36,7 @@ export default async function HomePage() {
 
   const timeline = [
     { period: "Q2", title: "Member Verification Drive", detail: "Digital profile cleanup and chapter-level records reconciliation." },
-    { period: "Q3", title: "Election Cycle", detail: "Nomination, manifesto publishing, debates, and secure online voting." },
-    { period: "Q4", title: "Founders Week", detail: "Commemorative events, mentorship roundtables, and alumni recognition." }
+    { period: "Q3", title: "Annual Reunion Planning", detail: "Set coordination, travel updates, and event planning for the yearly homecoming." },
   ];
 
   return (
@@ -82,12 +81,12 @@ export default async function HomePage() {
           </article>
 
           <article className="reveal-up rounded-xl tone-blue p-8 text-white md:col-span-4">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-amber-300">Elections</p>
-            <h3 className="mt-3 text-3xl font-black">Upcoming Elections</h3>
-            <p className="mt-3 text-sm text-white/80">Review candidates, manifestos, and timelines for transparent alumni leadership transitions.</p>
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-amber-300">Events</p>
+            <h3 className="mt-3 text-3xl font-black">Upcoming Reunion</h3>
+            <p className="mt-3 text-sm text-white/80">Get updates on reunion plans, chapter activities, and important dates for this year.</p>
             <div className="mt-6 flex items-center justify-between rounded-lg bg-(--primary) px-4 py-3">
-              <span className="text-xs font-bold uppercase tracking-widest text-white/80">Election Center</span>
-              <Link href="/voting" className="btn-outline rounded-md border border-amber-300 px-3 py-1 text-sm font-bold text-amber-300">Details</Link>
+              <span className="text-xs font-bold uppercase tracking-widest text-white/80">Reunion & Events</span>
+              <Link href="/gallery" className="btn-outline rounded-md border border-amber-300 px-3 py-1 text-sm font-bold text-amber-300">View</Link>
             </div>
           </article>
 
@@ -120,6 +119,33 @@ export default async function HomePage() {
             </article>
           ))}
         </div>
+        </div>
+      </section>
+
+      <section className="py-14">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
+          <div className="grid items-stretch gap-6 rounded-2xl border border-slate-200 bg-white p-5 md:grid-cols-2 md:p-8">
+            <article>
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-amber-700">Upcoming Event - 2026</p>
+              <h2 className="mt-3 text-3xl font-black text-(--primary) md:text-4xl">Annual Reunion Flyer</h2>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600 md:text-base">
+                Mark your calendar for the 2026 Old Boys Annual Reunion. View the official flyer design and share with your set and chapter networks.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link href="/gallery" className="btn-primary rounded-md px-5 py-2 text-xs font-bold uppercase tracking-wider">Open Gallery</Link>
+                <Link href="/contact" className="btn-outline rounded-md border border-slate-300 px-5 py-2 text-xs font-bold uppercase tracking-wider text-slate-800">Contact Secretariat</Link>
+              </div>
+            </article>
+            <article className="relative min-h-80 overflow-hidden rounded-xl border border-slate-200">
+              <Image
+                src="/images/renuion.jpg"
+                alt="2026 annual reunion flyer"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </article>
+          </div>
         </div>
       </section>
 
@@ -251,7 +277,7 @@ export default async function HomePage() {
           <p className="text-xs font-bold uppercase tracking-[0.35em] text-[#f2c84b]">Join The Network</p>
           <h2 className="mt-3 text-3xl font-black md:text-5xl">Reconnect, Contribute, and Build Legacy</h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm text-white/85 md:text-base">
-            Become part of a trusted Old Boys platform for engagement, service, and intergenerational impact. Membership onboarding is controlled and approval-based.
+            Stay connected with fellow alumni, support shared projects, and help grow a lasting legacy for current and future generations.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link href="/signup" className="btn-primary rounded-md px-5 py-2 text-xs font-bold uppercase tracking-wider">

@@ -7,6 +7,7 @@ const publicLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/leadership", label: "Leadership" },
   { href: "/community", label: "Community" },
   { href: "/contact", label: "Contact" }

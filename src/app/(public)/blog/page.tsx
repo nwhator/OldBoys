@@ -52,7 +52,7 @@ export default async function BlogPage() {
           <h2 className="text-xl font-black">Latest Announcements</h2>
           <ul className="mt-4 space-y-4 text-sm text-white/85">
             <li>Membership verification window opens this quarter.</li>
-            <li>Election nomination timelines will be published soon.</li>
+            <li>Annual reunion details will be published soon.</li>
             <li>Chapter leaders forum scheduled for next month.</li>
           </ul>
         </aside>
