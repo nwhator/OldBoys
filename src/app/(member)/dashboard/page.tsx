@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { requireApprovedMember } from "@/lib/auth";
 import { getActiveElectionBundle, getMemberPayments } from "@/lib/data";
 
@@ -9,8 +10,15 @@ export default async function MemberDashboardPage() {
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 md:px-8">
-      <h1 className="text-4xl font-black text-(--primary)">Member Dashboard</h1>
-      <p className="mt-2 text-slate-600">Welcome back, {profile.full_name}.</p>
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h1 className="text-4xl font-black text-(--primary)">Member Dashboard</h1>
+          <p className="mt-2 text-slate-600">Welcome back, {profile.full_name}.</p>
+        </div>
+        <Link href="/" className="btn-outline rounded-md border border-slate-300 px-4 py-2 text-xs font-bold uppercase tracking-wider text-slate-700">
+          Back to Home
+        </Link>
+      </div>
 
       <section className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <article className="editorial-card rounded-xl p-5">

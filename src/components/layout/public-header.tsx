@@ -11,9 +11,7 @@ export async function PublicHeader() {
   return (
     <header className="fade-in sticky top-0 z-50 border-b border-slate-200/60 bg-[#fafaf5]/90 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 md:px-8">
-        <Link href="/" className="min-w-0">
-          <BrandMark compact subtitle="Holy Ghost College Owerri" />
-        </Link>
+        <BrandMark compact subtitle="Holy Ghost College Owerri" />
         <PublicNavLinks />
         <PublicHeaderMobileMenu isAuthenticated={Boolean(profile)} />
         {profile ? (
