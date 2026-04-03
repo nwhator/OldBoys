@@ -12,17 +12,17 @@ export const metadata: Metadata = {
     default: "Old Boys' Association",
     template: "%s | Old Boys' Association"
   },
-  description: "Official portal for Old Boys' Association, Holy Ghost College Owerri alumni.",
+  description: "Official website of the Holy Ghost College Owerri Old Boys' Association.",
   openGraph: {
     title: "Old Boys' Association",
-    description: "Holy Ghost College Owerri alumni membership, elections, payments, and blog.",
+    description: "News, events, community stories, and updates from the Holy Ghost College Owerri Old Boys' Association.",
     type: "website",
     images: ["/logo.jpg"]
   },
   twitter: {
     card: "summary_large_image",
     title: "Old Boys' Association",
-    description: "Holy Ghost College Owerri alumni portal.",
+    description: "Official website of the Holy Ghost College Owerri Old Boys' Association.",
     images: ["/logo.jpg"]
   },
   icons: {
