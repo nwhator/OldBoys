@@ -8,11 +8,10 @@ export const metadata: Metadata = {
   description: "Photo gallery of Old Boys' Association events, reunions, and shared memories."
 };
 
-export default async function GalleryPage() {
-  const imagesDir = path.join(process.cwd(), "public", "images");
-  const files = await readdir(imagesDir);
-  const imageFiles = files.filter((file) => /\.(jpg|jpeg|png|webp|gif)$/i.test(file));
 
+  // Images
+  const imagesDir = path.join(process.cwd(), "public", "images");
+  const imageFiles = (await readdir(imagesDir)).filter((file) => /\.(jpg|jpeg|png|webp|gif)$/i.test(file));
   const galleryImages = imageFiles
     .sort((a, b) => a.localeCompare(b))
     .map((file) => ({
@@ -20,8 +19,28 @@ export default async function GalleryPage() {
       title: file
         .replace(/\.[^.]+$/, "")
         .replace(/[_-]+/g, " ")
-        .replace(/\b\w/g, (part) => part.toUpperCase())
+        .replace(/\b\w/g, (part) => part.toUpperCase()),
+      type: "image"
     }));
+
+  // Videos
+  const videosDir = path.join(process.cwd(), "public", "videos");
+  let videoFiles: string[] = [];
+  try {
+    videoFiles = (await readdir(videosDir)).filter((file) => /\.(mp4)$/i.test(file));
+  } catch {}
+  const galleryVideos = videoFiles
+    .sort((a, b) => a.localeCompare(b))
+    .map((file) => ({
+      src: `/videos/${file}`,
+      title: file
+        .replace(/\.[^.]+$/, "")
+        .replace(/[_-]+/g, " ")
+        .replace(/\b\w/g, (part) => part.toUpperCase()),
+      type: "video"
+    }));
+
+  const galleryItems = [...galleryImages, ...galleryVideos];
 
   return (
     <main className="mx-auto max-w-7xl px-4 py-14 md:px-8">
@@ -32,8 +51,8 @@ export default async function GalleryPage() {
           A collection of reunion highlights, school memories, and community events from the association.
         </p>
       </header>
-      <MasonryGallery images={galleryImages} />
-      {galleryImages.length === 0 ? <p className="mt-8 text-sm text-slate-500">No images found in public/images yet.</p> : null}
+      <MasonryGallery images={galleryItems} />
+      {galleryItems.length === 0 ? <p className="mt-8 text-sm text-slate-500">No images or videos found in public/images or public/videos yet.</p> : null}
     </main>
   );
 }
