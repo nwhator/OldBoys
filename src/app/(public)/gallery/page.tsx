@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 };
 
 
+export default async function GalleryPage() {
   // Images
   const imagesDir = path.join(process.cwd(), "public", "images");
   const imageFiles = (await readdir(imagesDir)).filter((file) => /\.(jpg|jpeg|png|webp|gif)$/i.test(file));
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
         .replace(/\.[^.]+$/, "")
         .replace(/[_-]+/g, " ")
         .replace(/\b\w/g, (part) => part.toUpperCase()),
-      type: "image"
+      type: "image" as const
     }));
 
   // Videos
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
         .replace(/\.[^.]+$/, "")
         .replace(/[_-]+/g, " ")
         .replace(/\b\w/g, (part) => part.toUpperCase()),
-      type: "video"
+      type: "video" as const
     }));
 
   const galleryItems = [...galleryImages, ...galleryVideos];
