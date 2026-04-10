@@ -93,24 +93,26 @@ export function MasonryGallery({ images, grid = false }: MasonryGalleryProps) {
             key={image.src}
             type="button"
             onClick={() => openAt(index)}
-            className="group mb-4 block w-full break-inside-avoid overflow-hidden rounded-xl border border-slate-200 bg-white text-left transition-transform duration-300 hover:scale-95"
+            className="group mb-6 block w-full break-inside-avoid overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-md transition-all duration-300 hover:scale-97 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-(--primary)"
           >
-            <div className="relative min-h-44 w-full">
+            <div className="relative min-h-48 w-full bg-slate-100 flex items-center justify-center">
               {image.type === "video" ? (
                 <video
                   src={image.src}
                   controls
-                  className="h-auto w-full object-cover transition duration-500 rounded"
+                  className="h-auto w-full object-cover transition duration-500 rounded-t-2xl"
                   poster="/images/video-placeholder.png"
                 />
               ) : (
-                <Image src={image.src} alt={image.title} width={900} height={1200} className="h-auto w-full object-cover transition duration-500" />
+                <Image src={image.src} alt={image.title} width={900} height={1200} className="h-auto w-full object-cover transition duration-500 rounded-t-2xl" />
               )}
             </div>
-            <div className="px-3 py-2">
-              <p className="text-sm font-semibold text-(--primary)">{image.title}</p>
+            <div className="px-5 py-4 flex flex-col gap-2">
+              <p className="text-base font-extrabold text-(--primary) tracking-tight leading-snug line-clamp-2">{image.title}</p>
               {image.bio ? (
-                <p className="mt-1 text-xs text-slate-600">{image.bio}</p>
+                <p className="mt-1 text-xs font-bold uppercase tracking-widest text-slate-700 bg-slate-200 rounded px-2 py-1 w-fit shadow-sm">
+                  {image.bio}
+                </p>
               ) : null}
             </div>
           </button>
