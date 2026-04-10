@@ -11,9 +11,10 @@ type GalleryImage = {
 
 type MasonryGalleryProps = {
   images: GalleryImage[];
+  grid?: boolean;
 };
 
-export function MasonryGallery({ images }: MasonryGalleryProps) {
+export function MasonryGallery({ images, grid = false }: MasonryGalleryProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   useEffect(() => {
@@ -79,7 +80,13 @@ export function MasonryGallery({ images }: MasonryGalleryProps) {
 
   return (
     <>
-      <section className="mt-8 columns-1 gap-4 sm:columns-2 lg:columns-3">
+      <section
+        className={
+          grid
+            ? "mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4"
+            : "mt-8 columns-1 gap-4 sm:columns-2 lg:columns-3"
+        }
+      >
         {images.map((image, index) => (
           <button
             key={image.src}

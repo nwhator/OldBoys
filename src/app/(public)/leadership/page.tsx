@@ -28,7 +28,7 @@ export default async function LeadershipPage() {
         </p>
       </header>
 
-      <MasonryGallery images={galleryImages} />
+      <MasonryGallery images={galleryImages} grid />
       {leaders.length === 0 ? (
         <p className="mt-8 text-sm text-slate-500">No leadership profiles published yet.</p>
       ) : null}
