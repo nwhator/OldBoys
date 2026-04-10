@@ -104,7 +104,7 @@ export function MasonryGallery({ images, grid = false }: MasonryGalleryProps) {
                   poster="/images/video-placeholder.png"
                 />
               ) : (
-                <Image src={image.src} alt={image.title} width={900} height={1200} className="h-auto w-full object-cover transition duration-500 rounded-t-2xl" />
+                <Image src={image.src} alt={image.title} fill={false} unoptimized className="object-cover transition duration-500 rounded-t-2xl" />
               )}
             </div>
             <div className="px-5 py-4 flex flex-col gap-2">
