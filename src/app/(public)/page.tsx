@@ -136,14 +136,17 @@ export default async function HomePage() {
                 <Link href="/contact" className="btn-outline rounded-md border border-slate-300 px-5 py-2 text-xs font-bold uppercase tracking-wider text-slate-800">Contact Secretariat</Link>
               </div>
             </article>
-            <article className="relative min-h-80 overflow-hidden rounded-xl border border-slate-200">
-              <Image
-                src="/images/renuion.jpg"
-                alt="2026 annual reunion flyer"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
+            <article className="overflow-hidden rounded-xl border border-slate-200">
+              <div className="p-4 md:p-6 flex items-center justify-center">
+                <Image
+                  src="/images/renuion.jpg"
+                  alt="2026 annual reunion flyer"
+                  width={900}
+                  height={900}
+                  className="object-contain w-full h-auto"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
             </article>
           </div>
         </div>

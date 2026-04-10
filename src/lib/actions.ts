@@ -206,6 +206,24 @@ export async function saveAuditSetting(formData: FormData) {
   revalidatePath("/admin/audit-settings");
 }
 
+export async function saveAuditSettingsBulk(formData: FormData) {
+  await requireAdmin();
+  const bankName = String(formData.get("bank_name") ?? "").trim();
+  const accountName = String(formData.get("account_name") ?? "").trim();
+  const accountNumber = String(formData.get("account_number") ?? "").trim();
+
+  const supabase = await createSupabaseServerClient();
+  const entries = [
+    { key: "payments.bank_name", value: bankName },
+    { key: "payments.account_name", value: accountName },
+    { key: "payments.account_number", value: accountNumber }
+  ];
+
+  await supabase.from("audit_settings").upsert(entries, { onConflict: "key" });
+  revalidatePath("/admin/audit-settings");
+  redirect("/admin/audit-settings?updated=payments");
+}
+
 export async function saveEmailTemplate(formData: FormData): Promise<void> {
   await requireAdmin();
   const id = String(formData.get("id") ?? "").trim();
@@ -323,11 +341,21 @@ export async function createPaymentRecord(formData: FormData) {
   }
   const profileId = profile.id;
   const amount = Number(formData.get("amount") ?? 0);
+  const payerReference = String(formData.get("payer_reference") ?? "").trim() || null;
 
   if (!Number.isFinite(amount) || amount <= 0) {
     return;
   }
 
+  // server-side validation for optional payer reference
+  if (payerReference) {
+    const re = /^[A-Za-z0-9._-]{4,64}$/;
+    if (!re.test(payerReference)) {
+      redirect("/payments?error=payer_reference_invalid");
+    }
+  }
+
+  // internal reference for the record (not the admin transaction code)
   const reference = `dues_${Date.now()}_${profileId.slice(0, 8)}`;
   const supabase = await createSupabaseServerClient();
 
@@ -335,11 +363,32 @@ export async function createPaymentRecord(formData: FormData) {
     user_id: profileId,
     amount,
     status: "pending",
-    reference
+    reference,
+    payer_reference: payerReference
   });
-
   revalidatePath("/payments");
   revalidatePath("/admin/payments");
+  redirect(`/payments?created=1&ref=${encodeURIComponent(reference)}`);
+}
+
+export async function confirmPayment(formData: FormData) {
+  await requireAdmin();
+  const id = String(formData.get("id") ?? "").trim();
+
+  if (!id) {
+    return;
+  }
+
+  const txCode = `TX_${Date.now()}_${id.slice(0, 8)}`;
+  const supabase = await createSupabaseServerClient();
+
+  await supabase
+    .from("payments")
+    .update({ status: "success", transaction_code: txCode })
+    .eq("id", id);
+  revalidatePath("/admin/payments");
+  revalidatePath("/payments");
+  redirect(`/admin/payments?confirmed=1&tx=${encodeURIComponent(txCode)}`);
 }
 
 export async function updateOwnProfile(formData: FormData) {

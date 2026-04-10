@@ -25,6 +25,22 @@ export function LoginForm() {
       return;
     }
 
+    // Redirect admins to /admin, regular users to /dashboard
+    const { data } = await supabase.auth.getUser();
+    const user = data.user;
+    if (user) {
+      try {
+        const { data: profile } = await supabase.from("users").select("role,membership_status").eq("id", user.id).single();
+        if (profile?.role === "admin" && profile?.membership_status === "approved") {
+          router.push("/admin");
+          router.refresh();
+          return;
+        }
+      } catch {
+        // ignore lookup errors and fall back to dashboard
+      }
+    }
+
     router.push("/dashboard");
     router.refresh();
   }

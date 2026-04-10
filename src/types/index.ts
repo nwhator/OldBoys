@@ -50,6 +50,8 @@ export type Payment = {
   amount: number;
   status: "pending" | "success" | "failed";
   reference: string;
+  transaction_code?: string | null;
+  payer_reference?: string | null;
   created_at: string;
 };
 
