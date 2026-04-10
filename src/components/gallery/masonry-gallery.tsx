@@ -6,6 +6,7 @@ import Image from "next/image";
 type GalleryImage = {
   src: string;
   title: string;
+  bio?: string;
 };
 
 type MasonryGalleryProps = {
@@ -84,13 +85,16 @@ export function MasonryGallery({ images }: MasonryGalleryProps) {
             key={image.src}
             type="button"
             onClick={() => openAt(index)}
-            className="group mb-4 block w-full break-inside-avoid overflow-hidden rounded-xl border border-slate-200 bg-white text-left"
+            className="group mb-4 block w-full break-inside-avoid overflow-hidden rounded-xl border border-slate-200 bg-white text-left transition-transform duration-300 hover:scale-95"
           >
             <div className="relative min-h-44 w-full">
-              <Image src={image.src} alt={image.title} width={900} height={1200} className="h-auto w-full object-cover transition duration-500 group-hover:scale-[1.02]" />
+              <Image src={image.src} alt={image.title} width={900} height={1200} className="h-auto w-full object-cover transition duration-500" />
             </div>
             <div className="px-3 py-2">
               <p className="text-sm font-semibold text-(--primary)">{image.title}</p>
+              {image.bio ? (
+                <p className="mt-1 text-xs text-slate-600">{image.bio}</p>
+              ) : null}
             </div>
           </button>
         ))}
