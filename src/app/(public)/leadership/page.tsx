@@ -14,8 +14,8 @@ export default async function LeadershipPage() {
     .filter((leader) => leader.image_url)
     .map((leader) => ({
       src: leader.image_url!,
-      title: leader.name + (leader.title ? ` — ${leader.title}` : ""),
-      bio: leader.bio || undefined
+      title: leader.name,
+      bio: leader.title || leader.bio || undefined
     }));
 
   // Hardcoded Excos content — images come from public/excos/

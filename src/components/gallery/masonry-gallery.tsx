@@ -95,20 +95,20 @@ export function MasonryGallery({ images, grid = false }: MasonryGalleryProps) {
             onClick={() => openAt(index)}
             className="group mb-6 block w-full break-inside-avoid overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-md transition-all duration-300 hover:scale-97 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-(--primary)"
           >
-            <div className={`relative ${grid ? "h-48" : "min-h-48"} w-full bg-slate-100 flex items-center justify-center`}>
-              {image.type === "video" ? (
+            {image.type === "video" ? (
+              <div className={`relative w-full ${grid ? "pb-[166.666%]" : "min-h-48"} bg-slate-100 overflow-hidden rounded-t-2xl`}>
                 <video
                   src={image.src}
                   controls
-                  className="h-auto w-full object-cover transition duration-500 rounded-t-2xl"
+                  className="absolute inset-0 h-full w-full object-cover transition duration-500"
                   poster="/images/video-placeholder.png"
                 />
-              ) : grid ? (
-                <Image src={image.src} alt={image.title} fill unoptimized className="object-cover transition duration-500 rounded-t-2xl" />
-              ) : (
-                <Image src={image.src} alt={image.title} unoptimized className="object-cover transition duration-500 rounded-t-2xl" />
-              )}
-            </div>
+              </div>
+            ) : (
+              <div className={`relative w-full ${grid ? "pb-[166.666%]" : "min-h-48"} bg-slate-100 overflow-hidden rounded-t-2xl`}>
+                <Image src={image.src} alt={image.title} fill unoptimized className="object-cover transition duration-500" />
+              </div>
+            )}
             <div className="px-5 py-4 flex flex-col gap-2">
               <p className="text-base font-extrabold text-(--primary) tracking-tight leading-snug line-clamp-2">{image.title}</p>
               {image.bio ? (
