@@ -1,10 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getLatestPublishedBlogPosts, getPublicCommunityMembers } from "@/lib/data";
+import { getGalleryItems, getLatestPublishedBlogPosts, getPublicCommunityMembers } from "@/lib/data";
+
+function sampleRandom<T>(items: T[], count: number) {
+  const array = [...items];
+  for (let i = array.length - 1; i > 0 && i > array.length - count - 1; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array.slice(0, count);
+}
 
 export default async function HomePage() {
   const latestPosts = await getLatestPublishedBlogPosts(3);
   const communityPreview = await getPublicCommunityMembers(6, false);
+  const galleryItems = await getGalleryItems(true);
+  const galleryPreview = sampleRandom(galleryItems, 4);
   const highlights = [
     { label: "Scholarships Supported", value: "160", note: "Students funded through alumni initiatives" },
     { label: "Active Chapters", value: "24", note: "Coordinated chapter leadership structure" },
@@ -96,12 +107,17 @@ export default async function HomePage() {
               <p className="mt-1 text-sm text-slate-600">Moments from chapter events, reunions, and service projects.</p>
             </div>
             <div className="grid grid-cols-2 gap-2">
-              <div className="relative h-28 overflow-hidden rounded">
-                <Image src="https://images.unsplash.com/photo-1517048676732-d65bc937f952" alt="Alumni event" fill className="object-cover" sizes="50vw" />
-              </div>
-              <div className="relative h-28 overflow-hidden rounded">
-                <Image src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="Seminar" fill className="object-cover" sizes="50vw" />
-              </div>
+              {galleryPreview.map((item) => (
+                <div key={item.id} className="relative h-28 overflow-hidden rounded-lg bg-slate-100">
+                  <Image
+                    src={item.image_url}
+                    alt={item.title || "Gallery image"}
+                    fill
+                    className="object-cover transition duration-500 hover:scale-105"
+                    sizes="50vw"
+                  />
+                </div>
+              ))}
             </div>
           </article>
         </div>

@@ -66,7 +66,22 @@ export async function getActiveElectionBundle() {
     .limit(1)
     .single<Election>();
 
-  if (!election) {
+  let activeElection = election;
+
+  if (!activeElection) {
+    const { data: fallbackElection } = await supabase
+      .from("elections")
+      .select("*")
+      .lte("starts_at", now)
+      .gte("ends_at", now)
+      .order("starts_at", { ascending: false })
+      .limit(1)
+      .single<Election>();
+
+    activeElection = fallbackElection;
+  }
+
+  if (!activeElection) {
     return null;
   }
 
