@@ -145,7 +145,7 @@ export function MasonryGallery({ images, grid = false }: MasonryGalleryProps) {
                 </div>
               ) : (
                 <div className={`relative w-full ${grid ? "pb-[166.666%]" : "min-h-48"} bg-slate-100 overflow-hidden rounded-t-2xl`}>
-                  <Image src={image.src} alt={image.title} fill unoptimized className="object-cover transition duration-500" />
+                  <Image src={image.src!} alt={image.title} fill unoptimized className="object-cover transition duration-500" />
                   {image.set ? (
                     <span className="absolute top-3 right-3 z-10 rounded-md bg-amber-500 text-white px-2 py-1 text-xs font-semibold shadow-md">
                       {image.set}
@@ -181,7 +181,7 @@ export function MasonryGallery({ images, grid = false }: MasonryGalleryProps) {
 
             <div className="relative z-10 w-full max-w-4xl">
               <Image
-                src={images[activeIndex].src}
+                src={images[activeIndex].src!}
                 alt={images[activeIndex].title}
                 width={1400}
                 height={1800}
