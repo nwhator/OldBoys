@@ -100,7 +100,7 @@ export async function getActiveElectionBundle() {
   const { data: positions } = await supabase
     .from("positions")
     .select("*")
-    .eq("election_id", election.id)
+    .eq("election_id", activeElection.id)
     .order("sort_order", { ascending: true })
     .returns<Position[]>();
 
@@ -114,7 +114,7 @@ export async function getActiveElectionBundle() {
     .returns<Candidate[]>();
 
   return {
-    election,
+    election: activeElection,
     positions: positions ?? [],
     candidates: candidates ?? []
   };
