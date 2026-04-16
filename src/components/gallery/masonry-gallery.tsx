@@ -84,7 +84,7 @@ export function MasonryGallery({ images, grid = false }: MasonryGalleryProps) {
       <section
         className={
           grid
-            ? "mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4"
+            ? "mt-8 grid gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
             : "mt-8 columns-1 gap-4 sm:columns-2 lg:columns-3"
         }
       >
@@ -95,7 +95,7 @@ export function MasonryGallery({ images, grid = false }: MasonryGalleryProps) {
             onClick={() => openAt(index)}
             className="group mb-6 block w-full break-inside-avoid overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-md transition-all duration-300 hover:scale-97 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-(--primary)"
           >
-            <div className="relative min-h-48 w-full bg-slate-100 flex items-center justify-center">
+            <div className={`relative ${grid ? "h-48" : "min-h-48"} w-full bg-slate-100 flex items-center justify-center`}>
               {image.type === "video" ? (
                 <video
                   src={image.src}
@@ -103,8 +103,10 @@ export function MasonryGallery({ images, grid = false }: MasonryGalleryProps) {
                   className="h-auto w-full object-cover transition duration-500 rounded-t-2xl"
                   poster="/images/video-placeholder.png"
                 />
+              ) : grid ? (
+                <Image src={image.src} alt={image.title} fill unoptimized className="object-cover transition duration-500 rounded-t-2xl" />
               ) : (
-                <Image src={image.src} alt={image.title} fill={false} unoptimized className="object-cover transition duration-500 rounded-t-2xl" />
+                <Image src={image.src} alt={image.title} unoptimized className="object-cover transition duration-500 rounded-t-2xl" />
               )}
             </div>
             <div className="px-5 py-4 flex flex-col gap-2">
