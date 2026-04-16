@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import path from "node:path";
+import { readdir } from "node:fs/promises";
 import { MasonryGallery } from "@/components/gallery/masonry-gallery";
 import { getGalleryItems } from "@/lib/data";
 
@@ -16,6 +18,40 @@ export default async function GalleryPage() {
     type: /\.(mp4|webm|ogg)$/i.test(item.image_url) ? "video" as const : "image" as const
   }));
 
+  const imagesDir = path.join(process.cwd(), "public", "images");
+  const videosDir = path.join(process.cwd(), "public", "videos");
+  let localImages: string[] = [];
+  let localVideos: string[] = [];
+
+  try {
+    localImages = (await readdir(imagesDir)).filter((file) => /\.(jpg|jpeg|png|webp|gif)$/i.test(file));
+  } catch {
+    localImages = [];
+  }
+
+  try {
+    localVideos = (await readdir(videosDir)).filter((file) => /\.(mp4|webm|ogg)$/i.test(file));
+  } catch {
+    localVideos = [];
+  }
+
+  const localGalleryItems = [
+    ...localImages.map((fileName) => ({
+      src: `/images/${fileName}`,
+      title: fileName.replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ").replace(/\b\w/g, (part) => part.toUpperCase()),
+      bio: undefined,
+      type: "image" as const
+    })),
+    ...localVideos.map((fileName) => ({
+      src: `/videos/${fileName}`,
+      title: fileName.replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ").replace(/\b\w/g, (part) => part.toUpperCase()),
+      bio: undefined,
+      type: "video" as const
+    }))
+  ];
+
+  const allGalleryItems = galleryItems.length > 0 ? galleryItems : localGalleryItems;
+
   return (
     <main className="mx-auto max-w-7xl px-4 py-14 md:px-8">
       <header>
@@ -25,8 +61,8 @@ export default async function GalleryPage() {
           A collection of reunion highlights, school memories, and community events from the association.
         </p>
       </header>
-      <MasonryGallery images={galleryItems} />
-      {galleryItems.length === 0 ? <p className="mt-8 text-sm text-slate-500">No gallery items found yet.</p> : null}
+      <MasonryGallery images={allGalleryItems} />
+      {allGalleryItems.length === 0 ? <p className="mt-8 text-sm text-slate-500">No gallery items found yet.</p> : null}
     </main>
   );
 }

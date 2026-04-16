@@ -11,11 +11,21 @@ export default async function HomePage() {
   const galleryItems = await getGalleryItems(true);
 
   const localImagesDir = path.join(process.cwd(), "public", "images");
+  const localVideosDir = path.join(process.cwd(), "public", "videos");
+
   let localImageFiles: string[] = [];
+  let localVideoFiles: string[] = [];
+
   try {
     localImageFiles = (await readdir(localImagesDir)).filter((file) => /\.(jpg|jpeg|png|webp|gif)$/i.test(file));
   } catch {
     localImageFiles = [];
+  }
+
+  try {
+    localVideoFiles = (await readdir(localVideosDir)).filter((file) => /\.(mp4|webm|ogg)$/i.test(file));
+  } catch {
+    localVideoFiles = [];
   }
 
   const gallerySources = [
@@ -33,6 +43,11 @@ export default async function HomePage() {
       src: `/images/${fileName}`,
       title: fileName.replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ").replace(/\b\w/g, (part) => part.toUpperCase()),
       type: "image" as const
+    })),
+    ...localVideoFiles.map((fileName) => ({
+      src: `/videos/${fileName}`,
+      title: fileName.replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ").replace(/\b\w/g, (part) => part.toUpperCase()),
+      type: "video" as const
     }))
   ];
 
