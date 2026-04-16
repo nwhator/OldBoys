@@ -69,7 +69,19 @@ export async function getActiveElectionBundle() {
   let activeElection = election;
 
   if (!activeElection) {
-    const { data: fallbackElection } = await supabase
+    const { data: flaggedElection } = await supabase
+      .from("elections")
+      .select("*")
+      .eq("is_active", true)
+      .order("starts_at", { ascending: false })
+      .limit(1)
+      .single<Election>();
+
+    activeElection = flaggedElection;
+  }
+
+  if (!activeElection) {
+    const { data: timelineElection } = await supabase
       .from("elections")
       .select("*")
       .lte("starts_at", now)
@@ -78,7 +90,7 @@ export async function getActiveElectionBundle() {
       .limit(1)
       .single<Election>();
 
-    activeElection = fallbackElection;
+    activeElection = timelineElection;
   }
 
   if (!activeElection) {
