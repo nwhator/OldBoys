@@ -9,6 +9,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "",
     "/about",
     "/leadership",
+    "/leadership/national-executive-council",
+    "/leadership/national-expanded-executive-council",
     "/gallery",
     "/membership-card",
     "/contact",

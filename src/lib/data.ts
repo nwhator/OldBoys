@@ -156,9 +156,27 @@ export async function getVotesByUserInElection(userId: string, electionId: strin
     .from("votes")
     .select("position_id,candidate_id")
     .eq("user_id", userId)
-    .eq("election_id", electionId);
+    .eq("election_id", electionId)
+    .returns<Vote[]>();
 
   return data ?? [];
+}
+
+export async function getElectionVoteCounts(electionId: string) {
+  const supabase = await createSupabaseServerClient();
+  const { data } = await supabase
+    .from("votes")
+    .select("candidate_id")
+    .eq("election_id", electionId)
+    .returns<Pick<Vote, "candidate_id">[]>();
+
+  return (data ?? []).reduce<Record<string, number>>((counts, vote) => {
+    if (!vote.candidate_id) {
+      return counts;
+    }
+    counts[vote.candidate_id] = (counts[vote.candidate_id] ?? 0) + 1;
+    return counts;
+  }, {});
 }
 
 export async function getAllElections() {
