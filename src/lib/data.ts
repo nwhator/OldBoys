@@ -250,7 +250,8 @@ export async function getPublicCommunityMembers(limit = 24, includeAdmins = true
   let query = admin
     .from("users")
     .select("id,full_name,avatar_url,role,membership_status,graduation_set,created_at")
-    .eq("membership_status", "approved");
+    .eq("membership_status", "approved")
+    .neq("full_name", "Promise Nwhator");
 
   if (!includeAdmins) {
     query = query.neq("role", "admin");

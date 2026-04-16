@@ -9,6 +9,9 @@ export function SignupForm() {
 	const [success, setSuccess] = useState<string | null>(null);
 	const [loading, setLoading] = useState(false);
 
+	const currentYear = new Date().getFullYear();
+	const graduationYears = Array.from({ length: 2026 - 1980 + 1 }, (_, index) => String(2026 - index));
+
 	async function handleSubmit(formData: FormData) {
 		setLoading(true);
 		setError(null);
@@ -17,6 +20,7 @@ export function SignupForm() {
 		const fullName = String(formData.get("full_name") ?? "").trim();
 		const email = String(formData.get("email") ?? "").trim();
 		const password = String(formData.get("password") ?? "");
+		const graduationSet = String(formData.get("graduation_set") ?? "").trim();
 		const registrationCode = String(formData.get("registration_code") ?? "").trim();
 
 		const supabase = createSupabaseBrowserClient();
@@ -26,6 +30,7 @@ export function SignupForm() {
 			options: {
 				data: {
 					full_name: fullName,
+					graduation_set: graduationSet,
 					registration_code: registrationCode
 				}
 			}

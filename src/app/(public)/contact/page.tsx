@@ -18,9 +18,9 @@ export default function ContactPage() {
             Contact the association secretariat for membership, events, partnerships, and support.
           </p>
           <div className="mt-6 space-y-2 text-sm text-slate-700">
-            <p><strong>Email:</strong> contact@oldboys-hgco.org</p>
-            <p><strong>Phone:</strong> +234 (0) 802 123 4567</p>
-            <p><strong>Location:</strong> Owerri, Imo State, Nigeria</p>
+            <p><strong>Address:</strong> HOLY GHOST COLLEGE OWERRI</p>
+            <p><strong>Phone number:</strong> 08034095121</p>
+            <p><strong>Email:</strong> hgcowoldboysdata@gmail.com</p>
           </div>
         </div>
         <ContactForm />

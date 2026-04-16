@@ -7,7 +7,7 @@ import { getGalleryItems, getLatestPublishedBlogPosts, getPublicCommunityMembers
 
 export default async function HomePage() {
   const latestPosts = await getLatestPublishedBlogPosts(3);
-  const communityPreview = await getPublicCommunityMembers(6, false);
+  const communityPreview = await getPublicCommunityMembers(6);
   const galleryItems = await getGalleryItems(true);
 
   const localImagesDir = path.join(process.cwd(), "public", "images");
