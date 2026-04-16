@@ -51,7 +51,7 @@ export default async function CommunityPage({ searchParams }: CommunityPageProps
   const params = (await searchParams) ?? {};
   const sortKeyRaw = typeof params.sort === "string" ? params.sort : "set_desc";
   const sortKey = ["set_desc", "set_asc", "name_asc"].includes(sortKeyRaw) ? sortKeyRaw : "set_desc";
-  const members = await getPublicCommunityMembers(200);
+  const members = await getPublicCommunityMembers(1000);
   const sortedMembers = sortMembers(members, sortKey);
 
   return (

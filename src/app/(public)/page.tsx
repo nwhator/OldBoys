@@ -1,21 +1,42 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import path from "node:path";
+import { readdir } from "node:fs/promises";
 import { getGalleryItems, getLatestPublishedBlogPosts, getPublicCommunityMembers } from "@/lib/data";
 
 export default async function HomePage() {
   const latestPosts = await getLatestPublishedBlogPosts(3);
   const communityPreview = await getPublicCommunityMembers(6, false);
   const galleryItems = await getGalleryItems(true);
-  const galleryPreview = galleryItems
-    .map((item) => {
-      const isVideo = /\.(mp4|webm|ogg)$/i.test(item.image_url);
-      return {
-        src: item.image_url,
-        title: item.title,
-        type: isVideo ? "video" as const : "image" as const
-      };
-    })
+
+  const localImagesDir = path.join(process.cwd(), "public", "images");
+  let localImageFiles: string[] = [];
+  try {
+    localImageFiles = (await readdir(localImagesDir)).filter((file) => /\.(jpg|jpeg|png|webp|gif)$/i.test(file));
+  } catch {
+    localImageFiles = [];
+  }
+
+  const gallerySources = [
+    ...galleryItems
+      .filter((item) => Boolean(item.image_url))
+      .map((item) => {
+        const isVideo = /\.(mp4|webm|ogg)$/i.test(item.image_url);
+        return {
+          src: item.image_url,
+          title: item.title,
+          type: isVideo ? "video" as const : "image" as const
+        };
+      }),
+    ...localImageFiles.map((fileName) => ({
+      src: `/images/${fileName}`,
+      title: fileName.replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ").replace(/\b\w/g, (part) => part.toUpperCase()),
+      type: "image" as const
+    }))
+  ];
+
+  const galleryPreview = gallerySources
     .sort(() => Math.random() - 0.5)
     .slice(0, 4);
 
@@ -132,13 +153,17 @@ export default async function HomePage() {
             <div className="grid grid-cols-2 gap-2">
               {galleryPreview.map((item, idx) => (
                 <div key={`${item.src}-${idx}`} className="relative h-28 overflow-hidden rounded-lg bg-slate-100">
-                  <Image
-                    src={item.src}
-                    alt={item.title || "Gallery image"}
-                    fill
-                    className="object-cover transition duration-500 hover:scale-105"
-                    sizes="50vw"
-                  />
+                  {item.type === "video" ? (
+                    <video src={item.src} controls className="h-full w-full object-cover" />
+                  ) : (
+                    <Image
+                      src={item.src}
+                      alt={item.title || "Gallery image"}
+                      fill
+                      className="object-cover transition duration-500 hover:scale-105"
+                      sizes="50vw"
+                    />
+                  )}
                 </div>
               ))}
             </div>

@@ -26,7 +26,7 @@ export default async function GalleryPage() {
         </p>
       </header>
       <MasonryGallery images={galleryItems} />
-      {galleryItems.length === 0 ? <p className="mt-8 text-sm text-slate-500">No images or videos found in public/images or public/videos yet.</p> : null}
+      {galleryItems.length === 0 ? <p className="mt-8 text-sm text-slate-500">No gallery items found yet.</p> : null}
     </main>
   );
 }
