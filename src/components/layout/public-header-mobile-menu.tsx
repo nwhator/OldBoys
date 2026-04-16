@@ -86,7 +86,16 @@ export function PublicHeaderMobileMenu({ isAuthenticated }: PublicHeaderMobileMe
               <Link href="/about" aria-current={isActivePath("/about") ? "page" : undefined} onClick={closeMenu} className={`rounded-md border px-3 py-2 text-center transition-colors ${isActivePath("/about") ? "border-(--primary) bg-(--primary) text-white" : "border-slate-200 hover:border-(--primary) hover:bg-(--primary) hover:text-white"}`}>About</Link>
               <Link href="/blog" aria-current={isActivePath("/blog") ? "page" : undefined} onClick={closeMenu} className={`rounded-md border px-3 py-2 text-center transition-colors ${isActivePath("/blog") ? "border-(--primary) bg-(--primary) text-white" : "border-slate-200 hover:border-(--primary) hover:bg-(--primary) hover:text-white"}`}>Blog</Link>
               <Link href="/gallery" aria-current={isActivePath("/gallery") ? "page" : undefined} onClick={closeMenu} className={`rounded-md border px-3 py-2 text-center transition-colors ${isActivePath("/gallery") ? "border-(--primary) bg-(--primary) text-white" : "border-slate-200 hover:border-(--primary) hover:bg-(--primary) hover:text-white"}`}>Gallery</Link>
-              <Link href="/leadership" aria-current={isActivePath("/leadership") ? "page" : undefined} onClick={closeMenu} className={`rounded-md border px-3 py-2 text-center transition-colors ${isActivePath("/leadership") ? "border-(--primary) bg-(--primary) text-white" : "border-slate-200 hover:border-(--primary) hover:bg-(--primary) hover:text-white"}`}>Leadership</Link>
+              {/* Leadership Dropdown for mobile */}
+              <div className="relative">
+                <details>
+                  <summary className={`rounded-md border px-3 py-2 text-center transition-colors cursor-pointer ${isActivePath("/leadership") ? "border-(--primary) bg-(--primary) text-white" : "border-slate-200 hover:border-(--primary) hover:bg-(--primary) hover:text-white"}`}>Leadership</summary>
+                  <div className="flex flex-col mt-2 bg-white border border-slate-200 rounded-xl shadow-lg">
+                    <Link href="/leadership/national-executive-council" onClick={closeMenu} className="px-4 py-2 text-slate-800 hover:bg-(--primary) hover:text-white">National Executive Council</Link>
+                    <Link href="/leadership/national-expanded-executive-council" onClick={closeMenu} className="px-4 py-2 text-slate-800 hover:bg-(--primary) hover:text-white">National Expanded Executive Council</Link>
+                  </div>
+                </details>
+              </div>
               <Link href="/community" aria-current={isActivePath("/community") ? "page" : undefined} onClick={closeMenu} className={`rounded-md border px-3 py-2 text-center transition-colors ${isActivePath("/community") ? "border-(--primary) bg-(--primary) text-white" : "border-slate-200 hover:border-(--primary) hover:bg-(--primary) hover:text-white"}`}>Community</Link>
               <Link href="/contact" aria-current={isActivePath("/contact") ? "page" : undefined} onClick={closeMenu} className={`rounded-md border px-3 py-2 text-center transition-colors ${isActivePath("/contact") ? "border-(--primary) bg-(--primary) text-white" : "border-slate-200 hover:border-(--primary) hover:bg-(--primary) hover:text-white"}`}>Contact</Link>
             </nav>
