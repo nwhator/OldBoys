@@ -27,7 +27,7 @@ export default async function MemberDashboardPage() {
         </article>
         <article className="editorial-card rounded-xl p-5">
           <p className="text-xs uppercase tracking-widest text-slate-500">Active Election</p>
-          <p className="mt-2 text-xl font-bold text-(--primary)">{electionBundle?.election.title ?? "None"}</p>
+          <p className="mt-2 text-xl font-bold text-(--primary)">{electionBundle?.election?.title ?? "None"}</p>
         </article>
         <article className="editorial-card rounded-xl p-5">
           <p className="text-xs uppercase tracking-widest text-slate-500">Latest Payment</p>
