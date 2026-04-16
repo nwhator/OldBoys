@@ -12,6 +12,8 @@ const excos = [
   { src: "/excos/justin.jpg", title: "Chief Justin K.C. Amadi", bio: "Chairman", set: "81' Set" },
   { src: "/excos/theophilus.jpg", title: "Theophilus Okonkwo", bio: "Secretary", set: "81' Set" },
   { src: "/excos/nwachukwu.jpg", title: "Nwachukwu Henry Montel", bio: "Secretary", set: "88' Set" },
+  { src: "/excos/onuoha.jpg", title: "Onuoha John Jr.", bio: "Chairman", set: "98' Set" },
+  { src: "/excos/iheanyichukwu.jpg", title: "Iheanyichukwu Nwanna", bio: "Secretary", set: "98' Set" },
   { src: "/excos/victor.jpg", title: "Rev. T. Victor Anowey PHD JP.", bio: "Chairman", set: "99' Set" },
   { src: "/excos/obiako.jpg", title: "Obiako Alex Nnaemka", bio: "Secretary", set: "99' Set" }
 ];

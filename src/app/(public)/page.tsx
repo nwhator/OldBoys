@@ -1,21 +1,24 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import { getGalleryItems, getLatestPublishedBlogPosts, getPublicCommunityMembers } from "@/lib/data";
-
-function sampleRandom<T>(items: T[], count: number) {
-  const array = [...items];
-  for (let i = array.length - 1; i > 0 && i > array.length - count - 1; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array.slice(0, count);
-}
 
 export default async function HomePage() {
   const latestPosts = await getLatestPublishedBlogPosts(3);
   const communityPreview = await getPublicCommunityMembers(6, false);
   const galleryItems = await getGalleryItems(true);
-  const galleryPreview = sampleRandom(galleryItems, 4);
+  const galleryPreview = galleryItems
+    .map((item) => {
+      const isVideo = /\.(mp4|webm|ogg)$/i.test(item.image_url);
+      return {
+        src: item.image_url,
+        title: item.title,
+        type: isVideo ? "video" as const : "image" as const
+      };
+    })
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 4);
+
   const highlights = [
     { label: "Scholarships Supported", value: "160", note: "Students funded through alumni initiatives" },
     { label: "Active Chapters", value: "24", note: "Coordinated chapter leadership structure" },
@@ -78,6 +81,26 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* Gallery Preview Section */}
+      <section className="mx-auto mt-12 max-w-7xl px-4">
+        <h2 className="mb-4 text-2xl font-black text-(--primary)">Gallery Highlights</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {galleryPreview.map((item, idx) => (
+            <div key={item.src + idx} className="rounded-xl overflow-hidden border border-slate-200 bg-white shadow-sm">
+              {item.type === "image" ? (
+                <Image src={item.src} alt={item.title} width={400} height={300} className="w-full h-40 object-cover" />
+              ) : (
+                <video src={item.src} controls className="w-full h-40 object-cover" />
+              )}
+              <div className="p-2 text-xs font-semibold text-center text-slate-700 truncate">{item.title}</div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-4 text-right">
+          <Link href="/gallery" className="text-(--primary) font-bold hover:underline">View Full Gallery →</Link>
+        </div>
+      </section>
+
       <section className="py-14">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="grid gap-6 md:grid-cols-12">
@@ -107,10 +130,10 @@ export default async function HomePage() {
               <p className="mt-1 text-sm text-slate-600">Moments from chapter events, reunions, and service projects.</p>
             </div>
             <div className="grid grid-cols-2 gap-2">
-              {galleryPreview.map((item) => (
-                <div key={item.id} className="relative h-28 overflow-hidden rounded-lg bg-slate-100">
+              {galleryPreview.map((item, idx) => (
+                <div key={`${item.src}-${idx}`} className="relative h-28 overflow-hidden rounded-lg bg-slate-100">
                   <Image
-                    src={item.image_url}
+                    src={item.src}
                     alt={item.title || "Gallery image"}
                     fill
                     className="object-cover transition duration-500 hover:scale-105"
