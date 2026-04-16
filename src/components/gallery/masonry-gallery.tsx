@@ -110,14 +110,14 @@ export function MasonryGallery({ images, grid = false }: MasonryGalleryProps) {
         }
       >
         {images.map((image, index) => {
-          // Render set-only header entries (no src) as non-clickable cards
+          // Render set-only header entries (no src) as non-clickable header cards
           if (!image.src) {
             return (
               <div
                 key={`${image.title}-${index}`}
-                className="mb-6 block w-full break-inside-avoid rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-md"
+                className="mb-6 block w-full break-inside-avoid rounded-2xl border border-amber-200 bg-amber-50 p-4 text-center shadow-sm"
               >
-                <p className="text-sm font-bold uppercase tracking-widest text-slate-700">{image.title}</p>
+                <p className="text-sm font-extrabold uppercase tracking-widest text-amber-700">{image.title}</p>
               </div>
             );
           }
@@ -127,7 +127,7 @@ export function MasonryGallery({ images, grid = false }: MasonryGalleryProps) {
               key={`${image.src}-${index}`}
               type="button"
               onClick={() => openAt(index)}
-              className="group mb-6 block w-full break-inside-avoid overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-md transition-all duration-300 hover:scale-97 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-(--primary)"
+              className="group mb-6 block w-full break-inside-avoid overflow-hidden rounded-2xl border border-slate-100 bg-gradient-to-b from-white to-slate-50 text-left shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-amber-100"
             >
               {image.type === "video" ? (
                 <div className={`relative w-full ${grid ? "pb-[166.666%]" : "min-h-48"} bg-slate-100 overflow-hidden rounded-t-2xl`}>
@@ -145,7 +145,7 @@ export function MasonryGallery({ images, grid = false }: MasonryGalleryProps) {
                 </div>
               ) : (
                 <div className={`relative w-full ${grid ? "pb-[166.666%]" : "min-h-48"} bg-slate-100 overflow-hidden rounded-t-2xl`}>
-                  <Image src={image.src!} alt={image.title} fill unoptimized className="object-cover transition duration-500" />
+                  <Image src={image.src!} alt={image.title} fill unoptimized className="object-cover transition-transform duration-500 group-hover:scale-105 transform" />
                   {image.set ? (
                     <span className="absolute top-3 right-3 z-10 rounded-md bg-amber-500 text-white px-2 py-1 text-xs font-semibold shadow-md">
                       {image.set}
@@ -153,10 +153,10 @@ export function MasonryGallery({ images, grid = false }: MasonryGalleryProps) {
                   ) : null}
                 </div>
               )}
-              <div className="px-5 py-4 flex flex-col gap-2">
+              <div className="px-5 py-4 flex flex-col gap-2 border-t border-slate-100 bg-white">
                 <p className="text-base font-extrabold text-(--primary) tracking-tight leading-snug line-clamp-2">{image.title}</p>
                 {image.bio ? (
-                  <p className="mt-1 text-xs font-bold uppercase tracking-widest text-slate-700 bg-slate-200 rounded px-2 py-1 w-fit shadow-sm">
+                  <p className="mt-1 text-xs font-medium uppercase tracking-widest text-slate-700 bg-slate-100 rounded px-2 py-1 w-fit shadow-sm">
                     {image.bio}
                   </p>
                 ) : null}
