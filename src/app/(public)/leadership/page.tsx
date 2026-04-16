@@ -20,12 +20,15 @@ export default async function LeadershipPage() {
 
   // Hardcoded Excos content — images come from public/excos/
   const excos = [
-    {
-      src: "/excos/ugwonali.jpg",
-      title: "Ugwonali Chimezie",
-      bio: "Chairman 92' Set"
-    }
-    // Add more excos here as needed, files should be placed in public/excos/
+    { src: "/excos/dike.jpg", title: "Dr. Dike Anozie Ksji", bio: "Chairman", set: "80' Set" },
+    { src: "/excos/felix.jpg", title: "Dr. Felix M. Eke", bio: "Secretary", set: "80' Set" },
+    { src: "/excos/justin.jpg", title: "Chief Justin K.C. Amadi", bio: "Chairman", set: "81' Set" },
+    { src: "/excos/theophilus.jpg", title: "Theophilus Okonkwo", bio: "Secretary", set: "81' Set" },
+    { src: "/excos/nwachukwu.jpg", title: "Nwachukwu Henry Montel", bio: "Secretary", set: "88' Set" },
+    { src: "/excos/ugwonali.jpg", title: "Ugwonali Chimezie", bio: "Chairman", set: "92' Set" },
+    { src: "/excos/victor.jpg", title: "Rev. T. Victor Anowey PHD JP.", bio: "Chairman", set: "99' Set" },
+    { src: "/excos/obiako.jpg", title: "Obiako Alex Nnaemka", bio: "Secretary", set: "99' Set" }
+    // Add more excos here as needed; files should be placed in public/excos/
   ];
 
   return (

@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 type GalleryImage = {
-  src: string;
+  src?: string | null;
   title: string;
   bio?: string;
+  set?: string;
   type?: "image" | "video";
 };
 
@@ -17,6 +18,26 @@ type MasonryGalleryProps = {
 
 export function MasonryGallery({ images, grid = false }: MasonryGalleryProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  function findNextIndex(from: number) {
+    if (images.length === 0) return from;
+    let i = from;
+    for (let k = 0; k < images.length; k++) {
+      i = (i + 1) % images.length;
+      if (images[i].src) return i;
+    }
+    return from;
+  }
+
+  function findPrevIndex(from: number) {
+    if (images.length === 0) return from;
+    let i = from;
+    for (let k = 0; k < images.length; k++) {
+      i = i === 0 ? images.length - 1 : i - 1;
+      if (images[i].src) return i;
+    }
+    return from;
+  }
 
   useEffect(() => {
     if (activeIndex === null) {
@@ -34,14 +55,14 @@ export function MasonryGallery({ images, grid = false }: MasonryGalleryProps) {
           if (prev === null) {
             return prev;
           }
-          return (prev + 1) % images.length;
+          return findNextIndex(prev);
         });
       } else if (event.key === "ArrowLeft") {
         setActiveIndex((prev) => {
           if (prev === null) {
             return prev;
           }
-          return prev === 0 ? images.length - 1 : prev - 1;
+          return findPrevIndex(prev);
         });
       }
     }
@@ -66,7 +87,7 @@ export function MasonryGallery({ images, grid = false }: MasonryGalleryProps) {
       if (prev === null) {
         return prev;
       }
-      return (prev + 1) % images.length;
+      return findNextIndex(prev);
     });
   }
 
@@ -75,7 +96,7 @@ export function MasonryGallery({ images, grid = false }: MasonryGalleryProps) {
       if (prev === null) {
         return prev;
       }
-      return prev === 0 ? images.length - 1 : prev - 1;
+      return findPrevIndex(prev);
     });
   }
 
@@ -88,37 +109,61 @@ export function MasonryGallery({ images, grid = false }: MasonryGalleryProps) {
             : "mt-8 columns-1 gap-4 sm:columns-2 lg:columns-3"
         }
       >
-        {images.map((image, index) => (
-          <button
-            key={image.src}
-            type="button"
-            onClick={() => openAt(index)}
-            className="group mb-6 block w-full break-inside-avoid overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-md transition-all duration-300 hover:scale-97 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-(--primary)"
-          >
-            {image.type === "video" ? (
-              <div className={`relative w-full ${grid ? "pb-[166.666%]" : "min-h-48"} bg-slate-100 overflow-hidden rounded-t-2xl`}>
-                <video
-                  src={image.src}
-                  controls
-                  className="absolute inset-0 h-full w-full object-cover transition duration-500"
-                  poster="/images/video-placeholder.png"
-                />
+        {images.map((image, index) => {
+          // Render set-only header entries (no src) as non-clickable cards
+          if (!image.src) {
+            return (
+              <div
+                key={`${image.title}-${index}`}
+                className="mb-6 block w-full break-inside-avoid rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-md"
+              >
+                <p className="text-sm font-bold uppercase tracking-widest text-slate-700">{image.title}</p>
               </div>
-            ) : (
-              <div className={`relative w-full ${grid ? "pb-[166.666%]" : "min-h-48"} bg-slate-100 overflow-hidden rounded-t-2xl`}>
-                <Image src={image.src} alt={image.title} fill unoptimized className="object-cover transition duration-500" />
+            );
+          }
+
+          return (
+            <button
+              key={`${image.src}-${index}`}
+              type="button"
+              onClick={() => openAt(index)}
+              className="group mb-6 block w-full break-inside-avoid overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-md transition-all duration-300 hover:scale-97 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-(--primary)"
+            >
+              {image.type === "video" ? (
+                <div className={`relative w-full ${grid ? "pb-[166.666%]" : "min-h-48"} bg-slate-100 overflow-hidden rounded-t-2xl`}>
+                  <video
+                    src={image.src}
+                    controls
+                    className="absolute inset-0 h-full w-full object-cover transition duration-500"
+                    poster="/images/video-placeholder.png"
+                  />
+                  {image.set ? (
+                    <span className="absolute top-3 right-3 z-10 rounded-md bg-amber-500 text-white px-2 py-1 text-xs font-semibold shadow-md">
+                      {image.set}
+                    </span>
+                  ) : null}
+                </div>
+              ) : (
+                <div className={`relative w-full ${grid ? "pb-[166.666%]" : "min-h-48"} bg-slate-100 overflow-hidden rounded-t-2xl`}>
+                  <Image src={image.src} alt={image.title} fill unoptimized className="object-cover transition duration-500" />
+                  {image.set ? (
+                    <span className="absolute top-3 right-3 z-10 rounded-md bg-amber-500 text-white px-2 py-1 text-xs font-semibold shadow-md">
+                      {image.set}
+                    </span>
+                  ) : null}
+                </div>
+              )}
+              <div className="px-5 py-4 flex flex-col gap-2">
+                <p className="text-base font-extrabold text-(--primary) tracking-tight leading-snug line-clamp-2">{image.title}</p>
+                {image.bio ? (
+                  <p className="mt-1 text-xs font-bold uppercase tracking-widest text-slate-700 bg-slate-200 rounded px-2 py-1 w-fit shadow-sm">
+                    {image.bio}
+                  </p>
+                ) : null}
               </div>
-            )}
-            <div className="px-5 py-4 flex flex-col gap-2">
-              <p className="text-base font-extrabold text-(--primary) tracking-tight leading-snug line-clamp-2">{image.title}</p>
-              {image.bio ? (
-                <p className="mt-1 text-xs font-bold uppercase tracking-widest text-slate-700 bg-slate-200 rounded px-2 py-1 w-fit shadow-sm">
-                  {image.bio}
-                </p>
-              ) : null}
-            </div>
-          </button>
-        ))}
+            </button>
+          );
+        })}
       </section>
 
       {activeIndex !== null ? (
