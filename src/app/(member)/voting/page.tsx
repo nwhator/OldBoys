@@ -1,6 +1,6 @@
 import { castVote } from "@/lib/actions";
 import { requireApprovedMember } from "@/lib/auth";
-import { getActiveElectionBundle, getElectionVoteCounts, getVotesByUserInElection } from "@/lib/data";
+import { getActiveElectionBundle, getVotesByUserInElection } from "@/lib/data";
 
 export default async function VotingPage() {
   const profile = await requireApprovedMember();
@@ -16,7 +16,6 @@ export default async function VotingPage() {
   }
 
   const votes = await getVotesByUserInElection(profile.id, bundle.election.id);
-  const voteCounts = await getElectionVoteCounts(bundle.election.id);
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-12 md:px-8">
@@ -27,14 +26,12 @@ export default async function VotingPage() {
         {bundle.positions.map((position) => {
           const alreadyVoted = votes.find((vote) => vote.position_id === position.id);
           const candidates = bundle.candidates.filter((candidate) => candidate.position_id === position.id);
-          const totalPositionVotes = candidates.reduce((sum, candidate) => sum + (voteCounts[candidate.id] ?? 0), 0);
 
           return (
             <section key={position.id} className="editorial-card rounded-xl p-5">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
                   <h2 className="text-2xl font-bold text-(--primary)">{position.name}</h2>
-                  <p className="mt-2 text-sm text-slate-600">Total votes cast for this position: {totalPositionVotes}</p>
                 </div>
                 {alreadyVoted ? <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-700">Already voted</span> : null}
               </div>
@@ -42,16 +39,12 @@ export default async function VotingPage() {
               <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {candidates.map((candidate) => {
                   const isSelected = alreadyVoted?.candidate_id === candidate.id;
-                  const candidateVotes = voteCounts[candidate.id] ?? 0;
                   return (
                     <article key={candidate.id} className="rounded-lg border border-slate-200 bg-white p-4">
                       <div className="flex items-start justify-between gap-3">
                         <div>
                           <h3 className="text-lg font-bold text-(--primary)">{candidate.name}</h3>
                           <p className="mt-2 text-sm text-slate-600">{candidate.manifesto ?? "No manifesto provided."}</p>
-                        </div>
-                        <div className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-slate-700">
-                          {candidateVotes} vote{candidateVotes === 1 ? "" : "s"}
                         </div>
                       </div>
 

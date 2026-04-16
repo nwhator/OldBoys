@@ -10,7 +10,8 @@ import type {
   LeadershipProfile,
   Payment,
   Position,
-  Profile
+  Profile,
+  Vote
 } from "@/types";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
