@@ -7,12 +7,16 @@ export const metadata: Metadata = {
 };
 
 const excos = [
+  { src: "/excos/tom.jpg", title: "Dr. Tom Onyeagwa", bio: "Chairman 70s Forum", set: "78' Set" },
+  { src: "/excos/julius.jpg", title: "Prof. Julius Etomaihe", bio: "Secretary 70s Forum", set: "78' Set" },
   { src: "/excos/dike.jpg", title: "Dr. Dike Anozie Ksji", bio: "Chairman", set: "80' Set" },
   { src: "/excos/felix.jpg", title: "Dr. Felix M. Eke", bio: "Secretary", set: "80' Set" },
   { src: "/excos/justin.jpg", title: "Chief Justin K.C. Amadi", bio: "Chairman", set: "81' Set" },
   { src: "/excos/theophilus.jpg", title: "Theophilus Okonkwo", bio: "Secretary", set: "81' Set" },
+  { src: "/excos/uzoma.jpg", title: "Uzoma Nwamara GON.", bio: "Chairman", set: "85' Set" },
+  { src: "/excos/ikenna.jpg", title: "Ikenna Ihejirika", bio: "Secretary", set: "85' Set" },
   { src: "/excos/nwachukwu.jpg", title: "Nwachukwu Henry Montel", bio: "Secretary", set: "88' Set" },
-  { src: "/excos/onuoha.jpg", title: "Onuoha John Jr.", bio: "Chairman", set: "98' Set" },
+  { src: "/excos/onuoha98.jpg", title: "Onuoha John Jnr.", bio: "Chairman", set: "98' Set" },
   { src: "/excos/iheanyichukwu.jpg", title: "Iheanyichukwu Nwanna", bio: "Secretary", set: "98' Set" },
   { src: "/excos/victor.jpg", title: "Rev. T. Victor Anowey PHD JP.", bio: "Chairman", set: "99' Set" },
   { src: "/excos/obiako.jpg", title: "Obiako Alex Nnaemka", bio: "Secretary", set: "99' Set" }
