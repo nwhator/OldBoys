@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export function WelcomePopup() {
   const [open, setOpen] = useState(false);
@@ -35,7 +36,10 @@ export function WelcomePopup() {
 
         <div className="mb-6 text-center">
           <p className="text-xs font-bold uppercase tracking-[0.35em] text-amber-700">WELCOME &ndash; HGC OBA</p>
-          <h2 className="mt-2 text-xl font-black text-(--primary) md:text-2xl">Prof. Martins Uchenna Nwankwo</h2>
+          <div className="mx-auto mb-3 mt-2 h-24 w-24 overflow-hidden rounded-full border-2 border-amber-700">
+            <Image src="/images/president.jpg" alt="Prof. Martins Uchenna Nwankwo" width={96} height={96} className="h-full w-full object-cover" />
+          </div>
+          <h2 className="text-xl font-black text-(--primary) md:text-2xl">Prof. Martins Uchenna Nwankwo</h2>
           <p className="text-sm font-semibold text-slate-500">National President</p>
         </div>
 
