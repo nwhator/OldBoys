@@ -37,9 +37,9 @@ export function WelcomePopup() {
         <div className="mb-6 text-center">
           <p className="text-xs font-bold uppercase tracking-[0.35em] text-amber-700">WELCOME &ndash; HGC OBA</p>
           <div className="mx-auto mb-3 mt-2 h-24 w-24 overflow-hidden rounded-full border-2 border-amber-700">
-            <Image src="/images/president.jpg" alt="Prof. Martins Uchenna Nwankwo" width={96} height={96} className="h-full w-full object-cover" />
+            <Image src="/images/president.jpg" alt="Prof. Nwankwo Uchenna Martins" width={96} height={96} className="h-full w-full object-cover" />
           </div>
-          <h2 className="text-xl font-black text-(--primary) md:text-2xl">Prof. Martins Uchenna Nwankwo</h2>
+          <h2 className="text-xl font-black text-(--primary) md:text-2xl">Prof. Nwankwo Uchenna Martins</h2>
           <p className="text-sm font-semibold text-slate-500">National President</p>
         </div>
 
@@ -73,7 +73,7 @@ export function WelcomePopup() {
             Explore. Engage. Hold us accountable.
           </p>
           <p className="mt-1 text-xs font-bold uppercase tracking-[0.2em] text-(--primary)">Recta Sapere!</p>
-          <p className="mt-4 text-xs text-slate-400">&mdash; Prof. Martins Uchenna Nwankwo</p>
+          <p className="mt-4 text-xs text-slate-400">&mdash; Prof. Nwankwo Uchenna Martins</p>
         </div>
       </div>
     </div>
