@@ -7,16 +7,12 @@ export function WelcomePopup() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const dismissed = localStorage.getItem("welcome-dismissed");
-    if (!dismissed) {
-      const timer = setTimeout(() => setOpen(true), 600);
-      return () => clearTimeout(timer);
-    }
+    const timer = setTimeout(() => setOpen(true), 600);
+    return () => clearTimeout(timer);
   }, []);
 
   function handleDismiss() {
     setOpen(false);
-    localStorage.setItem("welcome-dismissed", "true");
   }
 
   if (!open) return null;
