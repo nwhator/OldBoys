@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { PublicHeader } from "@/components/layout/public-header";
 import { PublicFooter } from "@/components/layout/public-footer";
+import { WelcomePopup } from "@/components/ui/WelcomePopup";
 
 export default function PublicLayout({ children }: { children: ReactNode }) {
   return (
@@ -8,6 +9,7 @@ export default function PublicLayout({ children }: { children: ReactNode }) {
       <PublicHeader />
       <main className="flex-1">{children}</main>
       <PublicFooter />
+      <WelcomePopup />
     </div>
   );
 }
