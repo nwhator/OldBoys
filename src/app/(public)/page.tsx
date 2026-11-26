@@ -1,377 +1,137 @@
-
 import Image from "next/image";
 import Link from "next/link";
-import path from "node:path";
-import { readdir } from "node:fs/promises";
-import { getGalleryItems, getLatestPublishedBlogPosts, getPublicCommunityMembers } from "@/lib/data";
 
-export default async function HomePage() {
-  const latestPosts = await getLatestPublishedBlogPosts(3);
-  const communityPreview = await getPublicCommunityMembers(6);
-  const galleryItems = await getGalleryItems(true);
-
-  const localImagesDir = path.join(process.cwd(), "public", "images");
-  const localVideosDir = path.join(process.cwd(), "public", "videos");
-
-  let localImageFiles: string[] = [];
-  let localVideoFiles: string[] = [];
-
-  try {
-    localImageFiles = (await readdir(localImagesDir)).filter((file) => /\.(jpg|jpeg|png|webp|gif)$/i.test(file));
-  } catch {
-    localImageFiles = [];
+const priorities = [
+  {
+    title: "Stay connected",
+    description: "Reconnect with classmates and build stronger ties across our alumni community."
+  },
+  {
+    title: "Give back",
+    description: "Support students and young alumni through mentorship, scholarships, and service."
+  },
+  {
+    title: "Keep our story alive",
+    description: "Preserve the memories, traditions, and achievements that unite generations."
   }
+];
 
-  try {
-    localVideoFiles = (await readdir(localVideosDir)).filter((file) => /\.(mp4|webm|ogg)$/i.test(file));
-  } catch {
-    localVideoFiles = [];
-  }
-
-  const gallerySources = [
-    ...galleryItems
-      .filter((item) => Boolean(item.image_url))
-      .map((item) => {
-        const isVideo = /\.(mp4|webm|ogg)$/i.test(item.image_url);
-        return {
-          src: item.image_url,
-          title: item.title,
-          type: isVideo ? "video" as const : "image" as const
-        };
-      }),
-    ...localImageFiles.map((fileName) => ({
-      src: `/images/${fileName}`,
-      title: fileName.replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ").replace(/\b\w/g, (part) => part.toUpperCase()),
-      type: "image" as const
-    })),
-    ...localVideoFiles.map((fileName) => ({
-      src: `/videos/${fileName}`,
-      title: fileName.replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ").replace(/\b\w/g, (part) => part.toUpperCase()),
-      type: "video" as const
-    }))
-  ];
-
-  const galleryPreview = gallerySources
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 4);
-
-  const highlights = [
-    { label: "Scholarships Supported", value: "160", note: "Students funded through alumni initiatives" },
-    { label: "Active Chapters", value: "24", note: "Coordinated chapter leadership structure" },
-    { label: "Years of Legacy", value: "90+", note: "Generations of brotherhood and service" }
-  ];
-
-  const pillars = [
-    {
-      title: "Membership & Welfare",
-      description:
-        "Stay connected with your set, receive welfare support updates, and keep your association records current."
-    },
-    {
-      title: "Leadership & Service",
-      description:
-        "Support chapter initiatives, mentor younger alumni, and contribute to responsible leadership across the association."
-    },
-    {
-      title: "Mentorship & Scholarships",
-      description:
-        "Support students and young alumni with career guidance, internship pathways, and targeted scholarship opportunities."
-    },
-    {
-      title: "Heritage Preservation",
-      description:
-        "Archive institutional stories, preserve class memories, and document milestones that shape our shared identity."
-    }
-  ];
-
-  const timeline = [
-    { period: "Q2", title: "Member Verification Drive", detail: "Digital profile cleanup and chapter-level records reconciliation." },
-    { period: "Q3", title: "Annual Reunion Planning", detail: "Set coordination, travel updates, and event planning for the yearly homecoming." },
-  ];
-
+export default function HomePage() {
   return (
-    <main className="overflow-x-hidden">
-      <section className="relative isolate min-h-[72vh] overflow-hidden">
+    <>
+      <section className="relative isolate min-h-[min(680px,78vh)] overflow-hidden bg-(--primary)">
         <Image
-          src="/favicon.svg"
-          alt="Alumni gathering"
+          src="/images/school.jpg"
+          alt="Holy Ghost College Owerri"
           fill
           priority
-          quality={72}
+          quality={78}
           sizes="100vw"
           className="object-cover"
         />
-        <div className="hero-overlay absolute inset-0" />
-        <div className="relative mx-auto flex min-h-[72vh] max-w-7xl items-center px-4 py-16 md:px-8">
-          <div className="fade-in max-w-3xl text-white">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.4em] text-amber-300">Holy Ghost College Owerri</p>
-            <h1 className="text-4xl font-black leading-tight md:text-7xl">Welcome to the Old Boys Alumni Community</h1>
-            <p className="mt-5 max-w-2xl text-white/85 md:text-lg">
-              Holy Ghost College Owerri Old Boys' Association connects alumni through mentorship, reunions, scholarships, and meaningful community impact across Nigeria and beyond.
+        <div className="absolute inset-0 bg-gradient-to-r from-[#00113a]/90 via-[#00113a]/65 to-[#00113a]/20" />
+        <div className="relative mx-auto flex min-h-[min(680px,78vh)] max-w-7xl items-center px-5 py-20 md:px-8">
+          <div className="max-w-3xl text-white">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-amber-300">
+              Holy Ghost College Owerri
+            </p>
+            <h1 className="mt-5 text-4xl font-black leading-tight md:text-6xl">
+              One school. A lifetime of brotherhood.
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">
+              Welcome to the Old Boys&apos; Association — bringing generations together to reconnect,
+              support one another, and give back to our school.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/about" className="btn-primary rounded-md px-5 py-2 text-xs font-bold uppercase tracking-wider">Explore Our Story</Link>
-              <Link href="/login" className="btn-outline rounded-md border border-white/40 px-5 py-2 text-xs font-bold uppercase tracking-wider text-white">Member Login</Link>
+              <Link
+                href="/signup"
+                className="btn-primary rounded-lg px-5 py-3 text-sm font-bold"
+              >
+                Join the community
+              </Link>
+              <Link
+                href="/about"
+                className="rounded-lg border border-white/60 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-white/10"
+              >
+                Our story
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Gallery Preview Section */}
-      <section className="mx-auto mt-12 max-w-7xl px-4">
-        <h2 className="mb-4 text-2xl font-black text-(--primary)">Gallery Highlights</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {galleryPreview.map((item, idx) => (
-            <div key={item.src + idx} className="rounded-xl overflow-hidden border border-slate-200 bg-white shadow-sm">
-              {item.type === "image" ? (
-                <Image src={item.src} alt={item.title} width={400} height={300} className="w-full h-40 object-cover" />
-              ) : (
-                <video src={item.src} controls className="w-full h-40 object-cover" />
-              )}
-              <div className="p-2 text-xs font-semibold text-center text-slate-700 truncate">{item.title}</div>
-            </div>
-          ))}
-        </div>
-        <div className="mt-4 text-right">
-          <Link href="/gallery" className="text-(--primary) font-bold hover:underline">View Full Gallery →</Link>
-        </div>
-      </section>
-
-      <section className="py-14">
-        <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="grid gap-6 md:grid-cols-12">
-          <article className="editorial-card reveal-up tone-cream rounded-xl p-8 md:col-span-4">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-slate-500">Membership</p>
-            <h3 className="mt-3 text-3xl font-black text-(--primary)">Member Status</h3>
-            <p className="mt-3 text-sm text-slate-600">Access your profile, verify standing, and manage your association records.</p>
-            <div className="relative mt-4 h-24 overflow-hidden rounded-lg">
-              <Image src="https://images.unsplash.com/photo-1523240795612-9a054b0db644" alt="Members at alumni meet" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
-            </div>
-            <Link href="/dashboard" className="btn-primary mt-6 inline-block rounded-md px-4 py-2 text-sm font-bold">Check Status</Link>
-          </article>
-
-          <article className="reveal-up rounded-xl tone-blue p-8 text-white md:col-span-4">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-amber-300">Events</p>
-            <h3 className="mt-3 text-3xl font-black">Upcoming Reunion</h3>
-            <p className="mt-3 text-sm text-white/80">Get updates on reunion plans, chapter activities, and important dates for this year.</p>
-            <div className="mt-6 flex items-center justify-between rounded-lg bg-(--primary) px-4 py-3">
-              <span className="text-xs font-bold uppercase tracking-widest text-white/80">Reunion & Events</span>
-              <Link href="/gallery" className="btn-outline rounded-md border border-amber-300 px-3 py-1 text-sm font-bold text-amber-300">View</Link>
-            </div>
-          </article>
-
-          <article className="reveal-up rounded-xl border border-slate-200 bg-white p-2 md:col-span-4">
-            <div className="mb-2 rounded-lg p-4">
-              <h3 className="text-2xl font-black text-(--primary)">Gallery Updates</h3>
-              <p className="mt-1 text-sm text-slate-600">Moments from chapter events, reunions, and service projects.</p>
-            </div>
-            <div className="grid grid-cols-2 gap-2">
-              {galleryPreview.map((item, idx) => (
-                <div key={`${item.src}-${idx}`} className="relative h-28 overflow-hidden rounded-lg bg-slate-100">
-                  {item.type === "video" ? (
-                    <video src={item.src} controls className="h-full w-full object-cover" />
-                  ) : (
-                    <Image
-                      src={item.src}
-                      alt={item.title || "Gallery image"}
-                      fill
-                      className="object-cover transition duration-500 hover:scale-105"
-                      sizes="50vw"
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
-          </article>
-        </div>
-        </div>
-      </section>
-
-      <section className="py-14">
-        <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {highlights.map((item) => (
-            <article key={item.label} className="editorial-card reveal-up rounded-xl p-5">
-              <p className="text-xs uppercase tracking-[0.25em] text-slate-500">{item.label}</p>
-              <p className="mt-2 text-4xl font-black text-(--primary)">{item.value}</p>
-              <p className="mt-2 text-sm text-slate-600">{item.note}</p>
-            </article>
-          ))}
-        </div>
-        </div>
-      </section>
-
-      <section className="py-14">
-        <div className="mx-auto max-w-7xl px-4 md:px-8">
-          <div className="grid items-stretch gap-6 rounded-2xl border border-slate-200 bg-white p-5 md:grid-cols-2 md:p-8">
-            <article>
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-amber-700">Upcoming Event - 2026</p>
-              <h2 className="mt-3 text-3xl font-black text-(--primary) md:text-4xl">Annual Reunion Flyer</h2>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600 md:text-base">
-                Mark your calendar for the 2026 Old Boys Annual Reunion. View the official flyer design and share with your set and chapter networks.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link href="/gallery" className="btn-primary rounded-md px-5 py-2 text-xs font-bold uppercase tracking-wider">Open Gallery</Link>
-                <Link href="/contact" className="btn-outline rounded-md border border-slate-300 px-5 py-2 text-xs font-bold uppercase tracking-wider text-slate-800">Contact Secretariat</Link>
-              </div>
-            </article>
-            <article className="overflow-hidden rounded-xl border border-slate-200">
-              <div className="p-4 md:p-6 flex items-center justify-center">
-                <Image
-                  src="/images/renuion.jpg"
-                  alt="2026 annual reunion flyer"
-                  width={900}
-                  height={900}
-                  className="object-contain w-full h-auto"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-14">
-        <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
+      <section className="bg-white py-16 md:py-20" aria-labelledby="oldboys-film-heading">
+        <div className="mx-auto grid max-w-7xl gap-8 px-5 md:grid-cols-[0.8fr_1.2fr] md:items-center md:px-8">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-slate-500">What We Stand For</p>
-            <h2 className="mt-2 text-3xl font-black text-(--primary)">Association Pillars</h2>
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-amber-700">Our school, our story</p>
+            <h2 id="oldboys-film-heading" className="mt-3 text-3xl font-black text-(--primary) md:text-4xl">
+              A look back at where it all began
+            </h2>
+            <p className="mt-4 leading-relaxed text-slate-600">
+              Relive the memories and spirit of Holy Ghost College Owerri. This film is here for every
+              Old Boy to watch and share.
+            </p>
           </div>
-          <Link href="/about" className="text-sm font-bold text-(--primary-container)">
-            Learn more
-          </Link>
-        </div>
-        <div className="grid gap-5 md:grid-cols-2">
-          {pillars.map((pillar) => (
-            <article key={pillar.title} className="editorial-card reveal-up rounded-xl p-6">
-              <h3 className="text-2xl font-black text-(--primary)">{pillar.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600">{pillar.description}</p>
-            </article>
-          ))}
-        </div>
-        <div className="mt-6 grid gap-3 sm:grid-cols-3">
-          <div className="relative h-32 overflow-hidden rounded-xl">
-            <Image src="https://images.unsplash.com/photo-1529390079861-591de354faf5" alt="Alumni mentorship" fill className="object-cover" sizes="33vw" />
+          <div className="overflow-hidden rounded-2xl bg-slate-950 shadow-xl">
+            <video
+              className="aspect-video w-full"
+              controls
+              playsInline
+              preload="none"
+              poster="/images/group_pic.jpg"
+              aria-label="Holy Ghost College Owerri Old Boys"
+            >
+              <source src="/videos/oldboys.mp4" type="video/mp4" />
+              Your browser does not support HTML video.
+            </video>
           </div>
-          <div className="relative h-32 overflow-hidden rounded-xl">
-            <Image src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40" alt="Leadership meeting" fill className="object-cover" sizes="33vw" />
-          </div>
-          <div className="relative h-32 overflow-hidden rounded-xl">
-            <Image src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="Scholarship support" fill className="object-cover" sizes="33vw" />
-          </div>
-        </div>
         </div>
       </section>
 
-      <section className="py-14">
-        <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="grid gap-6 lg:grid-cols-3">
-          {timeline.map((item) => (
-            <article key={item.title} className="reveal-up rounded-xl border border-slate-200 bg-white p-6">
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-slate-500">{item.period}</p>
-              <h3 className="mt-2 text-2xl font-black text-(--primary)">{item.title}</h3>
-              <p className="mt-2 text-sm text-slate-600">{item.detail}</p>
-            </article>
-          ))}
-        </div>
-        </div>
-      </section>
-
-      <section className="py-14">
-        <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="mb-6 flex items-center justify-between gap-4">
-          <h2 className="text-3xl font-black text-(--primary)">Dispatch from the Heritage</h2>
-          <Link href="/blog" className="text-sm font-bold text-(--primary-container)">View all</Link>
-        </div>
-        <div className="grid gap-8 lg:grid-cols-3">
-          <article className="lg:col-span-2">
-            {latestPosts[0] ? (
-              <div className="group rounded-xl border border-slate-200 bg-white p-5">
-                <div className="relative mb-5 aspect-video overflow-hidden rounded-lg">
-                  <Image
-                    src={latestPosts[0].featured_image_url || "https://images.unsplash.com/photo-1497215842964-222b430dc094"}
-                    alt={latestPosts[0].title}
-                    fill
-                    className="object-cover transition duration-500 group-hover:scale-105"
-                    sizes="(max-width: 1024px) 100vw, 66vw"
-                  />
-                </div>
-                <p className="text-xs uppercase tracking-widest text-slate-500">{new Date(latestPosts[0].created_at).toLocaleDateString()}</p>
-                <h3 className="mt-2 text-3xl font-black text-(--primary)">{latestPosts[0].title}</h3>
-                <p className="mt-3 line-clamp-4 text-sm text-slate-600">{latestPosts[0].content}</p>
-                <Link href={`/blog/${latestPosts[0].slug}`} className="mt-4 inline-block text-sm font-bold text-(--primary-container)">Read full report</Link>
-              </div>
-            ) : (
-              <article className="editorial-card rounded-xl p-5">
-                <p className="text-sm text-slate-600">No posts published yet.</p>
-              </article>
-            )}
-          </article>
-
-          <aside className="space-y-4">
-            {latestPosts.slice(1, 4).map((post) => (
-              <article key={post.id} className="rounded-xl border border-slate-200 bg-white p-4">
-                <p className="text-xs font-bold uppercase tracking-widest text-amber-700">News</p>
-                <h4 className="mt-2 text-lg font-bold text-(--primary)">{post.title}</h4>
-                <Link href={`/blog/${post.slug}`} className="mt-3 inline-block text-xs font-bold uppercase tracking-wider text-(--primary-container)">Read</Link>
+      <section className="bg-[#f6f8ff] py-16 md:py-20" aria-labelledby="association-heading">
+        <div className="mx-auto max-w-7xl px-5 md:px-8">
+          <div className="max-w-2xl">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-amber-700">Stronger together</p>
+            <h2 id="association-heading" className="mt-3 text-3xl font-black text-(--primary) md:text-4xl">
+              What brings us together
+            </h2>
+          </div>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {priorities.map((priority, index) => (
+              <article key={priority.title} className="rounded-2xl border border-slate-200 bg-white p-6">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#fff4d1] text-sm font-black text-(--primary)">
+                  0{index + 1}
+                </span>
+                <h3 className="mt-5 text-xl font-bold text-(--primary)">{priority.title}</h3>
+                <p className="mt-2 leading-relaxed text-slate-600">{priority.description}</p>
               </article>
             ))}
-          </aside>
-        </div>
-        </div>
-      </section>
-
-      <section className="py-14">
-        <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="mb-6 flex items-center justify-between gap-4">
-          <h2 className="text-3xl font-black text-(--primary)">Community Members</h2>
-          <Link href="/community" className="text-sm font-bold text-(--primary-container)">Open directory</Link>
-        </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {communityPreview.map((member) => (
-            <article key={member.id} className="editorial-card reveal-up rounded-xl p-5">
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-(--primary-container) text-sm font-black text-white">
-                  {member.full_name
-                    .split(" ")
-                    .filter(Boolean)
-                    .slice(0, 2)
-                    .map((part) => part[0]?.toUpperCase() ?? "")
-                    .join("")}
-                </div>
-                <div>
-                  <h3 className="text-lg font-black text-(--primary)">{member.full_name}</h3>
-                  <p className="text-xs uppercase tracking-wider text-slate-500">{member.set_label}</p>
-                </div>
-              </div>
-              <p className="mt-3 text-sm text-slate-600">{member.chapter}</p>
-            </article>
-          ))}
-          {communityPreview.length === 0 ? <p className="text-sm text-slate-600">Community members will appear after approvals.</p> : null}
-        </div>
+          </div>
         </div>
       </section>
 
-      <section className="py-14">
-        <div className="mx-auto max-w-7xl px-4 pb-2 md:px-8">
-        <div className="rounded-2xl tone-blue px-6 py-10 text-center text-white md:px-10">
-          <p className="text-xs font-bold uppercase tracking-[0.35em] text-[#f2c84b]">Join The Network</p>
-          <h2 className="mt-3 text-3xl font-black md:text-5xl">Reconnect, Contribute, and Build Legacy</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm text-white/85 md:text-base">
-            Stay connected with fellow alumni, support shared projects, and help grow a lasting legacy for current and future generations.
+      <section className="px-5 py-16 md:px-8 md:py-20">
+        <div className="mx-auto max-w-7xl rounded-2xl bg-(--primary) px-6 py-10 text-center text-white md:px-12 md:py-14">
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-amber-300">Your place in the story</p>
+          <h2 className="mx-auto mt-3 max-w-3xl text-3xl font-black md:text-4xl">
+            Reconnect with the people who will always feel like family.
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/80">
+            Find your community, share your story, and help build a lasting legacy for the next generation.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link href="/signup" className="btn-primary rounded-md px-5 py-2 text-xs font-bold uppercase tracking-wider">
-              Start Registration
+          <div className="mt-7 flex flex-wrap justify-center gap-3">
+            <Link href="/signup" className="btn-primary rounded-lg px-5 py-3 text-sm font-bold">
+              Become a member
             </Link>
-            <Link href="/contact" className="btn-outline rounded-md border border-white/40 px-5 py-2 text-xs font-bold uppercase tracking-wider text-white">
-              Contact Secretariat
+            <Link
+              href="/contact"
+              className="rounded-lg border border-white/50 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-white/10"
+            >
+              Contact us
             </Link>
           </div>
         </div>
-        </div>
       </section>
-    </main>
+    </>
   );
 }
